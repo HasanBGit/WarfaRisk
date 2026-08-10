@@ -1,0 +1,26 @@
+Usable stays: 121
+Held-out split: 97 train / 24 test stays (same split as the LSTM comparator)
+
+Building train MDPDataset...
+[2m2026-07-26 11:57.16[0m [[32m[1minfo     [0m] [1mSignatures have been automatically determined.[0m [36maction_signature[0m=[35mSignature(dtype=[dtype('int64')], shape=[(1,)])[0m [36mobservation_signature[0m=[35mSignature(dtype=[dtype('float32')], shape=[(1,)])[0m [36mreward_signature[0m=[35mSignature(dtype=[dtype('float32')], shape=[(1,)])[0m
+[2m2026-07-26 11:57.16[0m [[32m[1minfo     [0m] [1mAction-space has been automatically determined.[0m [36maction_space[0m=[35m<ActionSpace.DISCRETE: 2>[0m
+[2m2026-07-26 11:57.16[0m [[32m[1minfo     [0m] [1mAction size has been automatically determined.[0m [36maction_size[0m=[35m5[0m
+Train transitions: 259
+
+Fitting DiscreteBCQ (500 gradient steps — small dataset, no need for the 10000-step default)...
+[2m2026-07-26 11:57.16[0m [[32m[1minfo     [0m] [1mdataset info                  [0m [36mdataset_info[0m=[35mDatasetInfo(observation_signature=Signature(dtype=[dtype('float32')], shape=[(1,)]), action_signature=Signature(dtype=[dtype('int64')], shape=[(1,)]), reward_signature=Signature(dtype=[dtype('float32')], shape=[(1,)]), action_space=<ActionSpace.DISCRETE: 2>, action_size=5)[0m
+[2m2026-07-26 11:57.16[0m [[32m[1mdebug    [0m] [1mBuilding models...            [0m
+[2m2026-07-26 11:57.18[0m [[32m[1mdebug    [0m] [1mModels have been built.       [0m
+[2m2026-07-26 11:57.18[0m [[32m[1minfo     [0m] [1mDirectory is created at d3rlpy_logs/DiscreteBCQ_20260726115718[0m
+[2m2026-07-26 11:57.18[0m [[32m[1minfo     [0m] [1mParameters                    [0m [36mparams[0m=[35m{'observation_shape': [1], 'action_size': 5, 'config': {'type': 'discrete_bcq', 'params': {'batch_size': 32, 'gamma': 0.99, 'observation_scaler': {'type': 'none', 'params': {}}, 'action_scaler': {'type': 'none', 'params': {}}, 'reward_scaler': {'type': 'none', 'params': {}}, 'compile_graph': False, 'learning_rate': 6.25e-05, 'optim_factory': {'type': 'adam', 'params': {'clip_grad_norm': None, 'lr_scheduler_factory': {'type': 'none', 'params': {}}, 'betas': [0.9, 0.999], 'eps': 1e-08, 'weight_decay': 0, 'amsgrad': False}}, 'encoder_factory': {'type': 'default', 'params': {'activation': 'relu', 'use_batch_norm': False, 'dropout_rate': None}}, 'q_func_factory': {'type': 'mean', 'params': {'share_encoder': False}}, 'n_critics': 1, 'action_flexibility': 0.3, 'beta': 0.5, 'target_update_interval': 8000, 'share_encoder': True}}}[0m
+Fit done.
+
+Train action-agreement: 48/259 = 0.1853
+Held-out action-agreement: 14/63 = 0.2222
+Train predicted-action distribution: {2: 169, 1: 90}
+Held-out predicted-action distribution: {2: 44, 1: 19}
+
+Distinct actions the policy actually chooses: 2 (out of 5 possible bins)
+
+Done at 2026-07-26T11:57:18.594396
+PHASE7_BCQ_DONE

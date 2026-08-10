@@ -1,0 +1,103 @@
+=== Phase 5: MAPIE conformal calibration, iwpc_6256 ===
+Overall 90% interval empirical coverage: 0.8981 (n_test=1207)
+                        group     n  coverage
+0                     overall  1207  0.898094
+1            African American     5  0.600000
+2            African-American    24  0.625000
+3                       Asian     4  1.000000
+4                       Black    73  0.821918
+5   Black or African American    52  0.692308
+6                   Caucasian   124  0.862903
+7                     Chinese    28  0.892857
+8                 Han Chinese    45  1.000000
+9                    Hispanic     2  1.000000
+10                     Indian    11  1.000000
+11               Intermediate    14  0.857143
+12                   Japanese   170  0.958824
+13                     Korean    53  0.962264
+14                      Malay    18  1.000000
+15                      Other     1  1.000000
+16           Other Mixed Race     2  1.000000
+17           Pacific Islander     1  1.000000
+18                      White   493  0.912779
+
+=== Phase 5: MAPIE conformal calibration, iwpc_1780 ===
+/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+  warnings.warn(
+Overall 90% interval empirical coverage: 0.9326 (n_test=356)
+               group    n  coverage
+0            overall  356  0.932584
+1              Asian   93  1.000000
+2              Black   74  0.878378
+3  Other/unspecified  189  0.920635
+
+All done at 2026-07-26T09:21:46.264674
+MAPIE_DONE

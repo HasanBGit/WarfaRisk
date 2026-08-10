@@ -1,0 +1,29 @@
+Fitting 5-member deep ensemble on (4830, 35) train rows...
+Ensemble fit done.
+
+Overall 90% interval empirical coverage: 0.2494 (n_test=1207)
+
+=== Coverage by ancestry group ===
+                        group     n  coverage
+0                     overall  1207  0.249379
+1            African American     5  0.000000
+2            African-American    24  0.208333
+3                       Asian     4  0.750000
+4                       Black    73  0.205479
+5   Black or African American    52  0.096154
+6                   Caucasian   124  0.201613
+7                     Chinese    28  0.321429
+8                 Han Chinese    45  0.177778
+9                    Hispanic     2  0.000000
+10                     Indian    11  0.454545
+11               Intermediate    14  0.285714
+12                   Japanese   170  0.305882
+13                     Korean    53  0.377358
+14                      Malay    18  0.166667
+15                      Other     1  0.000000
+16           Other Mixed Race     2  0.000000
+17           Pacific Islander     1  0.000000
+18                      White   493  0.253550
+
+Saved at 2026-07-26T08:28:59.266661
+PHASE5_DONE

@@ -1,0 +1,88 @@
+Fitting EBM on (1424, 11) train rows...
+
+=== EBM native feature importance ===
+                      feature  importance
+7                   VKORC1.AA    6.979692
+6                   VKORC1.AG    4.281049
+2                         Age    3.133805
+0                      Weight    2.154942
+1                      Height    1.583935
+9                   CYP2C9.13    1.226393
+4                  Amiodarone    1.199072
+8                   CYP2C9.12    1.175340
+10               CYP2C9.other    0.700675
+5                      Gender    0.481257
+3                      Enzyme    0.253964
+26         Height & VKORC1.AA    0.040157
+15            Weight & Gender    0.034542
+47     Amiodarone & VKORC1.AA    0.026181
+52         Gender & VKORC1.AA    0.025247
+17         Weight & VKORC1.AA    0.023740
+35            Age & CYP2C9.12    0.022958
+51         Gender & VKORC1.AG    0.022560
+32               Age & Gender    0.020747
+34            Age & VKORC1.AA    0.019951
+25         Height & VKORC1.AG    0.019918
+31           Age & Amiodarone    0.018053
+14        Weight & Amiodarone    0.016627
+39            Enzyme & Gender    0.016272
+12               Weight & Age    0.015106
+13            Weight & Enzyme    0.014505
+48     Amiodarone & CYP2C9.12    0.013106
+37         Age & CYP2C9.other    0.013002
+20      Weight & CYP2C9.other    0.012660
+28         Height & CYP2C9.13    0.012550
+30               Age & Enzyme    0.012538
+18         Weight & CYP2C9.12    0.012374
+21               Height & Age    0.012259
+23        Height & Amiodarone    0.011501
+59   VKORC1.AG & CYP2C9.other    0.011409
+16         Weight & VKORC1.AG    0.011399
+11            Weight & Height    0.011216
+36            Age & CYP2C9.13    0.011057
+40         Enzyme & VKORC1.AG    0.010745
+50  Amiodarone & CYP2C9.other    0.010588
+33            Age & VKORC1.AG    0.010009
+19         Weight & CYP2C9.13    0.009430
+53         Gender & CYP2C9.12    0.009337
+54         Gender & CYP2C9.13    0.009273
+60      VKORC1.AA & CYP2C9.12    0.007992
+57      VKORC1.AG & CYP2C9.12    0.007730
+27         Height & CYP2C9.12    0.007501
+22            Height & Enzyme    0.007447
+24            Height & Gender    0.007345
+58      VKORC1.AG & CYP2C9.13    0.006574
+46     Amiodarone & VKORC1.AG    0.006219
+38        Enzyme & Amiodarone    0.004526
+49     Amiodarone & CYP2C9.13    0.004321
+29      Height & CYP2C9.other    0.003773
+55      Gender & CYP2C9.other    0.002615
+61      VKORC1.AA & CYP2C9.13    0.002569
+45        Amiodarone & Gender    0.002244
+56      VKORC1.AG & VKORC1.AA    0.002202
+43         Enzyme & CYP2C9.13    0.001515
+62   VKORC1.AA & CYP2C9.other    0.000876
+41         Enzyme & VKORC1.AA    0.000771
+64   CYP2C9.12 & CYP2C9.other    0.000291
+42         Enzyme & CYP2C9.12    0.000197
+63      CYP2C9.12 & CYP2C9.13    0.000190
+44      Enzyme & CYP2C9.other    0.000189
+65   CYP2C9.13 & CYP2C9.other    0.000086
+
+=== SHAP vs EBM top-10 rank comparison ===
+        feature  shap_rank  ebm_rank  rank_agreement
+7     VKORC1.AA          1         1            True
+8     VKORC1.AG          2         2            True
+0           Age          3         3            True
+9        Weight          4         4            True
+6        Height          5         5            True
+3     CYP2C9.13          6         6            True
+2     CYP2C9.12          7         8            True
+4  CYP2C9.other          8         9            True
+1    Amiodarone          9         7            True
+5        Gender         10        10            True
+
+10/10 features appear in both top-10 lists
+
+Done at 2026-07-26T10:12:00.961070
+EBM_1780_DONE

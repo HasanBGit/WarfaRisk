@@ -1,0 +1,12 @@
+Built sequences for 160 stays
+Usable stays (>=2 INR, >=1 dose): 121
+Held-out split: 97 train / 24 test stays
+
+Training LSTM dose classifier on 97 stays...
+Training done.
+
+Train accuracy: 54/104 = 0.5192
+Held-out test accuracy: 7/26 = 0.2692
+
+Done at 2026-07-26T11:51:06.374935
+PHASE7_LSTM_DONE

@@ -1,0 +1,29 @@
+Building eICU longitudinal sequences...
+Built sequences for 160 stays
+
+TTR dataframe: (160, 3)
+Event rate (reached therapeutic range): 0.494
+                 id  duration_minutes
+count  1.600000e+02        160.000000
+mean   1.394347e+06       4135.093750
+std    9.522331e+05       5423.098366
+min    1.417650e+05          0.000000
+25%    5.322572e+05          0.000000
+50%    1.403930e+06       2442.000000
+75%    1.855917e+06       5627.000000
+max    3.346187e+06      32384.000000
+
+Merged with demographics: (160, 9), non-null age_years: 160
+
+Held-out split: 128 train / 32 test
+
+=== In-sample (fit==eval, same data) — original numbers, kept for comparison ===
+Cox PH in-sample concordance: 0.5821
+RSF in-sample concordance: 0.8360
+
+=== Held-out (fit on train, evaluate on test) — the real result ===
+Cox PH held-out concordance index: 0.6322
+RSF held-out concordance index: 0.6628
+
+Done at 2026-07-26T09:38:37.182824
+PHASE7B_DONE

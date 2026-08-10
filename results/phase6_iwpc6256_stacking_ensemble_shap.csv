@@ -1,0 +1,36 @@
+feature,mean_abs_shap
+VKORC1     -1639 consensus,3.256526858791549
+Age,3.1434670362242225
+CYP2C9 consensus,2.8633617444338144
+Weight (kg),2.7085197603098385
+VKORC1 1542 consensus,2.15476778248474
+VKORC1 1173 consensus,1.523296508989767
+VKORC1 2255 consensus,1.4382170677451445
+Indication for Warfarin Treatment,0.9756886978516043
+Height (cm),0.8630275288338289
+Amiodarone (Cordarone),0.6046363969519436
+Valve Replacement,0.44312152686656203
+VKORC1 497 consensus,0.3761175972914676
+Simvastatin (Zocor),0.2696011827991764
+Current Smoker,0.2083860523675263
+Aspirin,0.14857954197991707
+Congestive Heart Failure and/or Cardiomyopathy,0.13418699484808497
+Diabetes,0.10073677538050489
+Atorvastatin (Lipitor),0.06945665655232568
+VKORC1 3730 consensus,0.06561880557494716
+Gender,0.04177786481445115
+VKORC1     -4451 consensus,0.038228769664361104
+Phenytoin (Dilantin),0.025818316232209072
+Lovastatin (Mevacor),0.020679889751077818
+Acetaminophen or Paracetamol (Tylenol),0.01509701153757486
+"Herbal Medications, Vitamins, Supplements",0.01392518090113534
+Fluvastatin (Lescol),0.013503963231005875
+Rifampin or Rifampicin,0.0
+Sulfonamide Antibiotics,0.0
+Macrolide Antibiotics,0.0
+Anti-fungal Azoles,0.0
+Carbamazepine (Tegretol),0.0
+Rosuvastatin (Crestor),0.0
+Pravastatin (Pravachol),0.0
+Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day,0.0
+Cerivastatin (Baycol),0.0

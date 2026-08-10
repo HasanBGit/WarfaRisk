@@ -1,0 +1,29 @@
+
+==================== MIMIC-III ====================
+MIMIC-III: 34 total sequences, 32 usable (>=2 INR, >=1 dose)
+MIMIC-III: held-out split 26 train / 6 test (small — read accordingly)
+
+MIMIC-III — LSTM dose classifier:
+MIMIC-III LSTM train accuracy: 13/25 = 0.5200
+MIMIC-III LSTM held-out accuracy: 1/4 = 0.2500
+
+MIMIC-III — survival (TTR):
+MIMIC-III TTR n=34, event rate=0.676
+MIMIC-III merged with demographics: 34 rows with non-null age
+MIMIC-III Cox PH in-sample concordance (n=34, too small to split further): 0.6399
+
+==================== MIMIC-IV ====================
+MIMIC-IV: 62 total sequences, 35 usable (>=2 INR, >=1 dose)
+MIMIC-IV: held-out split 28 train / 7 test (small — read accordingly)
+
+MIMIC-IV — LSTM dose classifier:
+MIMIC-IV LSTM train accuracy: 24/40 = 0.6000
+MIMIC-IV LSTM held-out accuracy: 3/11 = 0.2727
+
+MIMIC-IV — survival (TTR):
+MIMIC-IV TTR n=62, event rate=0.403
+MIMIC-IV merged with demographics: 62 rows with non-null age
+MIMIC-IV Cox PH in-sample concordance (n=62, too small to split further): 0.6901
+
+Done at 2026-07-26T12:01:21.666769
+PHASE7_MIMIC_DONE

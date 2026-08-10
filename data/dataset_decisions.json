@@ -1,0 +1,72 @@
+{
+  "iwpc_full_6256": {
+    "verdict": "KEEP",
+    "reason": "Primary real-patient dataset: genotype + clinical covariates + therapeutic dose target.",
+    "n_rows": 6037,
+    "n_cols": 68,
+    "saved_to": "cleaned/iwpc_full_6256_clean.csv"
+  },
+  "iwpc_1780": {
+    "verdict": "KEEP",
+    "reason": "Secondary real-patient cohort with genotype, INR, and dose; use for validation (scaling differs from the 6256 cohort).",
+    "n_rows": 1780,
+    "n_cols": 16,
+    "saved_to": "cleaned/iwpc_1780_clean.csv"
+  },
+  "mimic3_demo": {
+    "verdict": "KEEP",
+    "reason": "Real (demo-scale) patients with warfarin Rx + INR trajectory + admission/diagnosis history; no genotype. Use for clinical-only validation.",
+    "n_rows": 17,
+    "n_cols": null,
+    "saved_to": "cleaned/mimic3_*_clean.csv"
+  },
+  "mimic4_demo": {
+    "verdict": "KEEP",
+    "reason": "Real (demo-scale) MIMIC-IV patients (23) with warfarin Rx and INR labs; no genotype. Use for clinical-only validation alongside MIMIC-III.",
+    "n_rows": 23,
+    "n_cols": null,
+    "saved_to": "cleaned/mimic4_*_clean.csv"
+  },
+  "eicu_crd_demo": {
+    "verdict": "KEEP",
+    "reason": "Has 160 real patient-stays with both a warfarin order and an INR/PT lab result; no genotype. Use for clinical-only validation alongside MIMIC-III/IV.",
+    "n_rows": 160,
+    "n_cols": null,
+    "saved_to": "cleaned/eicu_*_clean.csv"
+  },
+  "pharmgkb_allele_tables": {
+    "verdict": "KEEP (reference)",
+    "reason": "Curated variant-to-allele lookup tables for VKORC1/CYP2C9/CYP4F2; used for genotype interpretation, not as training rows.",
+    "n_rows": null,
+    "n_cols": null,
+    "saved_to": null
+  },
+  "population_allele_freq": {
+    "verdict": "KEEP (reference)",
+    "reason": "Population-level MAF context (1000 Genomes population_frequencies sheet plus Saudi NGS cohort), not per-patient data; excluded from the modeling pipeline.",
+    "n_rows": null,
+    "n_cols": null,
+    "saved_to": null
+  },
+  "faers_warfarin": {
+    "verdict": "DROP (context only)",
+    "reason": "Spontaneous adverse-event reports: no genotype/INR/dose fields, not patient-linked to other cohorts. Not usable as a supervised training source; kept only for narrative safety discussion.",
+    "n_rows": 2100,
+    "n_cols": 14,
+    "saved_to": "cleaned/faers_warfarin_deduped.csv"
+  },
+  "nomen_pk": {
+    "verdict": "DROP (external reference code only)",
+    "reason": "Simulated PK/PD data (Bjorkman model) from an external project; no real patients. SI-AIEP-paper kept only as methodology reference for SHAP-based explainability.",
+    "n_rows": null,
+    "n_cols": null,
+    "saved_to": null
+  },
+  "mipd_simulation": {
+    "verdict": "DROP (benchmark reference only)",
+    "reason": "Simulated cohort with simulator-assigned genotype and model-generated optimal-dose ground truth; not real patients. Useful only as an algorithm benchmark, not training data.",
+    "n_rows": null,
+    "n_cols": null,
+    "saved_to": null
+  }
+}

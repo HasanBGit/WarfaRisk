@@ -1,0 +1,14 @@
+feature,shap_rank,ebm_rank,rank_agreement
+VKORC1     -1639 consensus,1.0,3.0,True
+Age,2.0,1.0,True
+CYP2C9 consensus,3.0,2.0,True
+Weight (kg),4.0,4.0,True
+VKORC1 1542 consensus,5.0,5.0,True
+VKORC1 1173 consensus,6.0,6.0,True
+VKORC1 2255 consensus,7.0,7.0,True
+Indication for Warfarin Treatment,8.0,,False
+Height (cm),9.0,,False
+Amiodarone (Cordarone),10.0,,False
+Cerivastatin (Baycol),,8.0,False
+Current Smoker,,9.0,False
+Congestive Heart Failure and/or Cardiomyopathy,,10.0,False

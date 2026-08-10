@@ -1,0 +1,46 @@
+# Documentation-only, see configs/pipeline.yaml's disclaimer — nothing reads
+# this file yet.
+
+autogluon_extreme_quality:
+  # src/warfarisk/phase3_genetics_ablation.py — this is the Phase 3 winner on
+  # both cohorts (combined feature set). Function default for time_limit is
+  # 1800s; the numbers reported in docs/RESULTS.md were run with the 600s
+  # override below (see RESULTS.md's Phase 3 run notes), not the default.
+  preset: extreme_quality
+  time_limit_s: 600
+  excluded_model_types: [TABDPT, TABICL, TABM, MITRA]
+  # Excluded after a first attempt: TABDPT alone overran its allotted ~460s
+  # slice by >15 minutes with no way to interrupt mid-fit (AutoGluon's
+  # time_limit is only checked *between* models); killed manually, portfolio
+  # narrowed, re-run clean. See docs/RESULTS.md for the full account.
+  feature_set: combined
+
+mapie_conformal:
+  # src/warfarisk/phase5_calibration.py — split conformal prediction wrapped
+  # around the fitted stacking-ensemble model.
+  alpha: 0.10
+  api: CrossConformalRegressor   # mapie>=1.4's public API (mapie==1.0.1 is
+                                  # incompatible with scikit-learn>=1.6, see
+                                  # docs/KNOWN_ISSUES.md)
+
+ngboost:
+  # src/warfarisk/phase5_calibration.py — predictive-distribution uncertainty,
+  # the best-calibrated per-ancestry-subgroup method found so far (see
+  # docs/RESULTS.md's Phase 5 NGBoost-vs-MAPIE comparison).
+  target_coverage: 0.90
+
+deep_ensemble:
+  # src/warfarisk/phase5_calibration.py — 5 MLPs, identical architecture,
+  # different random seeds; interval = mean +/- 1.645 * inter-model std
+  # (90%-nominal). Found badly miscalibrated in docs/RESULTS.md (24.9%/21.6%
+  # overall coverage) — kept here as a documented negative result, not a
+  # recommended configuration.
+  n_models: 5
+  interval_z: 1.645
+
+catboost:
+  # src/warfarisk/phase3_genetics_ablation.py's run_catboost_ablation() /
+  # build_catboost_autocat() — native categorical handling via Pool +
+  # cat_features, missing genotype filled with the literal string "missing"
+  # rather than dropped or imputed.
+  feature_set: combined

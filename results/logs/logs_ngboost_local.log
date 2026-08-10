@@ -1,0 +1,44 @@
+
+=== Phase 5: NGBoost predictive distribution, iwpc6256 ===
+[iter 0] loss=4.2676 val_loss=0.0000 scale=1.0000 norm=12.7527
+[iter 100] loss=3.9863 val_loss=0.0000 scale=1.0000 norm=10.1441
+[iter 200] loss=3.8630 val_loss=0.0000 scale=1.0000 norm=9.2785
+[iter 300] loss=3.8020 val_loss=0.0000 scale=1.0000 norm=8.9146
+[iter 400] loss=3.7686 val_loss=0.0000 scale=1.0000 norm=8.7139
+Overall 90% interval empirical coverage: 0.8898 (n_test=1207)
+                        group     n  coverage
+0                     overall  1207  0.889809
+1            African American     5  0.600000
+2            African-American    24  0.791667
+3                       Asian     4  1.000000
+4                       Black    73  0.904110
+5   Black or African American    52  0.865385
+6                   Caucasian   124  0.862903
+7                     Chinese    28  0.928571
+8                 Han Chinese    45  0.977778
+9                    Hispanic     2  1.000000
+10                     Indian    11  1.000000
+11               Intermediate    14  0.857143
+12                   Japanese   170  0.864706
+13                     Korean    53  0.924528
+14                      Malay    18  1.000000
+15                      Other     1  1.000000
+16           Other Mixed Race     2  1.000000
+17           Pacific Islander     1  1.000000
+18                      White   493  0.896552
+
+=== Phase 5: NGBoost predictive distribution, iwpc1780 ===
+[iter 0] loss=4.1856 val_loss=0.0000 scale=1.0000 norm=12.4633
+[iter 100] loss=3.9298 val_loss=0.0000 scale=1.0000 norm=9.9283
+[iter 200] loss=3.8157 val_loss=0.0000 scale=1.0000 norm=9.1268
+[iter 300] loss=3.7595 val_loss=0.0000 scale=1.0000 norm=8.7499
+[iter 400] loss=3.7242 val_loss=0.0000 scale=1.0000 norm=8.5200
+Overall 90% interval empirical coverage: 0.9101 (n_test=356)
+               group    n  coverage
+0            overall  356  0.910112
+1              Asian   93  0.956989
+2              Black   74  0.905405
+3  Other/unspecified  189  0.888889
+
+Done at 2026-07-26T10:20:45.187070
+NGBOOST_DONE

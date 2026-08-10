@@ -1,0 +1,13 @@
+[PASS] iwpc_6256[clinical]_no_leakage_columns
+[PASS] iwpc_1780[clinical]_no_leakage_columns
+[PASS] iwpc_6256[genetic]_no_leakage_columns
+[PASS] iwpc_1780[genetic]_no_leakage_columns
+[PASS] iwpc_6256[combined]_no_leakage_columns
+[PASS] iwpc_1780[combined]_no_leakage_columns
+[PASS] iwpc_6256_train_test_ids_disjoint
+[PASS] iwpc_1780_train_test_ids_disjoint
+[PASS] eicu_train_test_ids_disjoint
+[PASS] mimic3_train_test_ids_disjoint
+[PASS] mimic4_train_test_ids_disjoint
+
+11/11 checks passed.

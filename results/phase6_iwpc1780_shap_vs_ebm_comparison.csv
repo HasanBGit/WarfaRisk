@@ -1,0 +1,11 @@
+feature,shap_rank,ebm_rank,rank_agreement
+VKORC1.AA,1,1,True
+VKORC1.AG,2,2,True
+Age,3,3,True
+Weight,4,4,True
+Height,5,5,True
+CYP2C9.13,6,6,True
+CYP2C9.12,7,8,True
+CYP2C9.other,8,9,True
+Amiodarone,9,7,True
+Gender,10,10,True

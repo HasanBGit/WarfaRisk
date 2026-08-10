@@ -1,0 +1,42 @@
+=== Phase 4: ancestry holdout with real CatBoost (autocat wrapper), iwpc_6256 ===
+       n        mae        r2      pw20                                                           evaluation                      group
+0   2397   9.691919  0.345351  0.434710                                          train_non_White__test_White                      White
+1    480   9.592763  0.411749  0.443750                                         White_internal_80_20_control                      White
+2    828   6.404642  0.120428  0.419082                                    train_non_Japanese__test_Japanese                   Japanese
+3    166   6.516891  0.030315  0.421687                                      Japanese_internal_80_20_control                   Japanese
+4    662  10.859072  0.208997  0.418429                                  train_non_Caucasian__test_Caucasian                  Caucasian
+5    133  11.560011  0.217747  0.406015                                     Caucasian_internal_80_20_control                  Caucasian
+6    326  11.420619  0.211286  0.460123                                          train_non_Black__test_Black                      Black
+7     66  12.413190  0.047242  0.393939                                         Black_internal_80_20_control                      Black
+8    263   6.774282 -0.078124  0.505703                                        train_non_Korean__test_Korean                     Korean
+9     53   5.955824  0.322543  0.509434                                        Korean_internal_80_20_control                     Korean
+10   255  13.456440  0.077099  0.368627  train_non_Black or African American__test_Black or African American  Black or African American
+11    51  12.991435  0.060413  0.333333                     Black or African American_internal_80_20_control  Black or African American
+12   250   6.906092  0.114461  0.396000                              train_non_Han Chinese__test_Han Chinese                Han Chinese
+13    50   4.772378  0.068059  0.440000                                   Han Chinese_internal_80_20_control                Han Chinese
+14   142   6.546518  0.248747  0.514085                                      train_non_Chinese__test_Chinese                    Chinese
+15    29   5.417843  0.348695  0.620690                                       Chinese_internal_80_20_control                    Chinese
+16   107  14.381342  0.286763  0.448598                    train_non_African-American__test_African-American           African-American
+17    22  17.761171 -0.027619  0.363636                              African-American_internal_80_20_control           African-American
+18    82   6.886127  0.242601  0.439024                                          train_non_Malay__test_Malay                      Malay
+19    17   6.582583  0.225430  0.352941                                         Malay_internal_80_20_control                      Malay
+20    64   8.167334  0.177711  0.468750                            train_non_Intermediate__test_Intermediate               Intermediate
+21    13   6.930896  0.040307  0.538462                                  Intermediate_internal_80_20_control               Intermediate
+22    38  11.207214  0.359516  0.447368                                        train_non_Indian__test_Indian                     Indian
+23     8  14.782578  0.386968  0.500000                                        Indian_internal_80_20_control                     Indian
+24    32  10.873542  0.308445  0.562500                    train_non_African American__test_African American           African American
+25     7   9.104206 -0.211113  0.714286                              African American_internal_80_20_control           African American
+26    31   4.889874  0.579308  0.677419                                          train_non_Asian__test_Asian                      Asian
+27     7   7.118426  0.387891  0.428571                                         Asian_internal_80_20_control                      Asian
+
+=== Phase 4: ancestry holdout with real CatBoost (autocat wrapper), iwpc_1780 ===
+      n        mae        r2      pw20                                           evaluation              group
+0  1048  10.003000  0.279689  0.423664  train_non_Other/unspecified__test_Other/unspecified  Other/unspecified
+1   210  10.137439  0.242434  0.452381             Other/unspecified_internal_80_20_control  Other/unspecified
+2   392   6.970568  0.195335  0.438776                          train_non_Asian__test_Asian              Asian
+3    79   6.180545  0.314682  0.430380                         Asian_internal_80_20_control              Asian
+4   340  12.542721  0.092207  0.394118                          train_non_Black__test_Black              Black
+5    68  12.717526  0.141518  0.455882                         Black_internal_80_20_control              Black
+
+All done at 2026-07-26T09:10:55.408889
+CATBOOST_PHASE4_RERUN_DONE

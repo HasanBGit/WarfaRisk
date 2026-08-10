@@ -1,0 +1,237 @@
+Fitting EBM on (4830, 35) train rows...
+/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/interpret/glassbox/_ebm/_ebm.py:871: UserWarning: Missing values detected. Our visualizations do not currently display missing values. To retain the glassbox nature of the model you need to either set the missing values to an extreme value like -1000 that will be visible on the graphs, or manually examine the missing value score in ebm.term_scores_[term_index][0]
+  warn(
+
+=== EBM native feature importance (all features) ===
+                                                                                                             feature  importance
+1                                                                                                                Age    3.134411
+27                                                                                                  CYP2C9 consensus    2.860801
+28                                                                                        VKORC1     -1639 consensus    2.489553
+3                                                                                                        Weight (kg)    2.392050
+31                                                                                             VKORC1 1542 consensus    1.643628
+30                                                                                             VKORC1 1173 consensus    1.511974
+33                                                                                             VKORC1 2255 consensus    1.298449
+17                                                                                             Cerivastatin (Baycol)    1.223343
+26                                                                                                    Current Smoker    1.183528
+6                                                                     Congestive Heart Failure and/or Cardiomyopathy    1.108863
+4                                                                                  Indication for Warfarin Treatment    1.024509
+2                                                                                                        Height (cm)    1.019023
+25                                                                         Herbal Medications, Vitamins, Supplements    0.818877
+18                                                                                            Amiodarone (Cordarone)    0.745907
+7                                                                                                  Valve Replacement    0.660403
+5                                                                                                           Diabetes    0.497482
+32                                                                                             VKORC1 3730 consensus    0.442251
+13                                                                                              Fluvastatin (Lescol)    0.380506
+34                                                                                        VKORC1     -4451 consensus    0.379047
+9                                                                             Acetaminophen or Paracetamol (Tylenol)    0.334205
+10                                                    Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day    0.329713
+197                                                               VKORC1     -1639 consensus & VKORC1 1542 consensus    0.259886
+29                                                                                              VKORC1 497 consensus    0.252429
+15                                                                                           Pravastatin (Pravachol)    0.226431
+20                                                                                              Phenytoin (Dilantin)    0.193470
+24                                                                                                Anti-fungal Azoles    0.189581
+19                                                                                          Carbamazepine (Tegretol)    0.161882
+188                                                                           Current Smoker & VKORC1 1542 consensus    0.149251
+11                                                                                               Simvastatin (Zocor)    0.148281
+190                                                                    CYP2C9 consensus & VKORC1     -1639 consensus    0.139298
+196                                                               VKORC1     -1639 consensus & VKORC1 1173 consensus    0.138510
+134                                           Congestive Heart Failure and/or Cardiomyopathy & Cerivastatin (Baycol)    0.136017
+21                                                                                            Rifampin or Rifampicin    0.133592
+135                                           Congestive Heart Failure and/or Cardiomyopathy & VKORC1 1542 consensus    0.130491
+204                                                                    VKORC1 1173 consensus & VKORC1 3730 consensus    0.121247
+201                                                                     VKORC1 497 consensus & VKORC1 1542 consensus    0.120267
+203                                                                    VKORC1 1173 consensus & VKORC1 1542 consensus    0.114961
+170                                                Cerivastatin (Baycol) & Herbal Medications, Vitamins, Supplements    0.114605
+187                                                                           Current Smoker & VKORC1 1173 consensus    0.113096
+171                                                               Cerivastatin (Baycol) & VKORC1     -1639 consensus    0.107818
+16                                                                                            Rosuvastatin (Crestor)    0.105042
+209                                                               VKORC1 1542 consensus & VKORC1     -4451 consensus    0.104466
+121                                    Indication for Warfarin Treatment & Herbal Medications, Vitamins, Supplements    0.100834
+160       Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day & Herbal Medications, Vitamins, Supplements    0.100798
+172                                                              Amiodarone (Cordarone) & VKORC1     -1639 consensus    0.100112
+205                                                                    VKORC1 1173 consensus & VKORC1 2255 consensus    0.098558
+152                                                                        Valve Replacement & VKORC1 1542 consensus    0.098249
+199                                                               VKORC1     -1639 consensus & VKORC1 2255 consensus    0.097287
+65                                                      Height (cm) & Congestive Heart Failure and/or Cardiomyopathy    0.095926
+194                                                                         CYP2C9 consensus & VKORC1 2255 consensus    0.095806
+0                                                                                                             Gender    0.095416
+74                                                                          Height (cm) & VKORC1     -1639 consensus    0.095061
+198                                                               VKORC1     -1639 consensus & VKORC1 3730 consensus    0.093617
+12                                                                                            Atorvastatin (Lipitor)    0.091340
+128                                                        Indication for Warfarin Treatment & VKORC1 3730 consensus    0.090604
+42                                                                                    Gender & VKORC1 1542 consensus    0.090246
+206                                                               VKORC1 1173 consensus & VKORC1     -4451 consensus    0.090190
+99                                                                               Weight (kg) & VKORC1 1173 consensus    0.089495
+96                                                                                    Weight (kg) & CYP2C9 consensus    0.087073
+195                                                                VKORC1     -1639 consensus & VKORC1 497 consensus    0.086986
+22                                                                                           Sulfonamide Antibiotics    0.086446
+208                                                                    VKORC1 1542 consensus & VKORC1 2255 consensus    0.086046
+98                                                                                Weight (kg) & VKORC1 497 consensus    0.085218
+59                                                                                       Age & VKORC1 1542 consensus    0.084784
+61                                                                                       Age & VKORC1 2255 consensus    0.083584
+139                               Valve Replacement & Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day    0.083162
+23                                                                                             Macrolide Antibiotics    0.082110
+60                                                                                       Age & VKORC1 3730 consensus    0.081326
+100                                                                              Weight (kg) & VKORC1 1542 consensus    0.081084
+63                                                                   Height (cm) & Indication for Warfarin Treatment    0.080759
+154                                                                                  Aspirin & VKORC1 1542 consensus    0.080467
+200                                                                     VKORC1 497 consensus & VKORC1 1173 consensus    0.080287
+57                                                                                  Age & VKORC1     -1639 consensus    0.079458
+83                                                                                             Weight (kg) & Aspirin    0.079141
+163                                                 Fluvastatin (Lescol) & Herbal Medications, Vitamins, Supplements    0.078341
+41                                                                                    Gender & VKORC1 1173 consensus    0.077556
+76                                                                               Height (cm) & VKORC1 1173 consensus    0.076079
+126                                                        Indication for Warfarin Treatment & VKORC1 1173 consensus    0.074638
+36                                                                                              Gender & Weight (kg)    0.074417
+37                                                           Gender & Congestive Heart Failure and/or Cardiomyopathy    0.073694
+45                                                                           Age & Indication for Warfarin Treatment    0.073303
+72                                                                                      Height (cm) & Current Smoker    0.072196
+207                                                                    VKORC1 1542 consensus & VKORC1 3730 consensus    0.072073
+14                                                                                              Lovastatin (Mevacor)    0.071826
+104                               Indication for Warfarin Treatment & Congestive Heart Failure and/or Cardiomyopathy    0.071460
+58                                                                                       Age & VKORC1 1173 consensus    0.071268
+192                                                                         CYP2C9 consensus & VKORC1 1542 consensus    0.069418
+125                                                         Indication for Warfarin Treatment & VKORC1 497 consensus    0.068971
+136                                           Congestive Heart Failure and/or Cardiomyopathy & VKORC1 3730 consensus    0.068879
+55                                                                   Age & Herbal Medications, Vitamins, Supplements    0.067700
+161                      Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day & VKORC1     -1639 consensus    0.067507
+66                                                                                   Height (cm) & Valve Replacement    0.066295
+153                                                                             Aspirin & VKORC1     -1639 consensus    0.064470
+107               Indication for Warfarin Treatment & Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day    0.064381
+191                                                                         CYP2C9 consensus & VKORC1 1173 consensus    0.064204
+8                                                                                                            Aspirin    0.062566
+67                                                                                             Height (cm) & Aspirin    0.061304
+127                                                        Indication for Warfarin Treatment & VKORC1 1542 consensus    0.060992
+202                                                                     VKORC1 497 consensus & VKORC1 2255 consensus    0.060758
+133  Congestive Heart Failure and/or Cardiomyopathy & Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day    0.060266
+84                                                              Weight (kg) & Acetaminophen or Paracetamol (Tylenol)    0.058206
+158                                                   Acetaminophen or Paracetamol (Tylenol) & VKORC1 1542 consensus    0.058191
+181                                                   Anti-fungal Azoles & Herbal Medications, Vitamins, Supplements    0.058189
+122                                                               Indication for Warfarin Treatment & Current Smoker    0.057585
+78                                                                               Height (cm) & VKORC1 3730 consensus    0.057401
+43                                                                                                 Age & Height (cm)    0.056070
+132                                                                                 Diabetes & VKORC1 3730 consensus    0.055986
+79                                                                               Height (cm) & VKORC1 2255 consensus    0.055460
+40                                                                               Gender & VKORC1     -1639 consensus    0.054879
+80                                                                   Weight (kg) & Indication for Warfarin Treatment    0.054866
+97                                                                          Weight (kg) & VKORC1     -1639 consensus    0.054629
+123                                                             Indication for Warfarin Treatment & CYP2C9 consensus    0.054330
+101                                                                              Weight (kg) & VKORC1 3730 consensus    0.054034
+174                                                                  Carbamazepine (Tegretol) & VKORC1 497 consensus    0.053468
+131                                                                                 Diabetes & VKORC1 1542 consensus    0.053401
+75                                                                                Height (cm) & VKORC1 497 consensus    0.052996
+186                                                                      Current Smoker & VKORC1     -1639 consensus    0.049842
+157                                                   Acetaminophen or Paracetamol (Tylenol) & VKORC1 1173 consensus    0.049640
+130                                                                                    Diabetes & Anti-fungal Azoles    0.049301
+189                                                                           Current Smoker & VKORC1 2255 consensus    0.049253
+56                                                                                            Age & CYP2C9 consensus    0.048911
+70                                                                              Height (cm) & Amiodarone (Cordarone)    0.048114
+51                                                                                      Age & Atorvastatin (Lipitor)    0.047667
+95                                                                                      Weight (kg) & Current Smoker    0.047405
+183                                                                        Anti-fungal Azoles & VKORC1 497 consensus    0.045637
+53                                                                                        Age & Phenytoin (Dilantin)    0.045524
+82                                                      Weight (kg) & Congestive Heart Failure and/or Cardiomyopathy    0.045002
+166                                                                     Fluvastatin (Lescol) & VKORC1 3730 consensus    0.044866
+48                                                                                           Age & Valve Replacement    0.044719
+140                                                                       Valve Replacement & Atorvastatin (Lipitor)    0.043848
+73                                                                                    Height (cm) & CYP2C9 consensus    0.042865
+173                                                                   Amiodarone (Cordarone) & VKORC1 1173 consensus    0.042768
+124                                                   Indication for Warfarin Treatment & VKORC1     -1639 consensus    0.042684
+179                                                                     Phenytoin (Dilantin) & VKORC1 3730 consensus    0.042206
+49                                                                                                     Age & Aspirin    0.041811
+176                                                                 Carbamazepine (Tegretol) & VKORC1 3730 consensus    0.041489
+162                                                                 Simvastatin (Zocor) & VKORC1     -1639 consensus    0.041435
+168                                                                  Pravastatin (Pravachol) & VKORC1 1542 consensus    0.041016
+165                                                                     Fluvastatin (Lescol) & VKORC1 1542 consensus    0.040548
+193                                                                         CYP2C9 consensus & VKORC1 3730 consensus    0.039658
+46                                                                                                    Age & Diabetes    0.039374
+129                                                        Indication for Warfarin Treatment & VKORC1 2255 consensus    0.038975
+182                                                                  Anti-fungal Azoles & VKORC1     -1639 consensus    0.038793
+77                                                                               Height (cm) & VKORC1 1542 consensus    0.038519
+110                                                         Indication for Warfarin Treatment & Fluvastatin (Lescol)    0.038359
+145                                                                        Valve Replacement & Cerivastatin (Baycol)    0.038354
+103                                                                     Indication for Warfarin Treatment & Diabetes    0.038267
+64                                                                                            Height (cm) & Diabetes    0.038130
+164                                                                     Fluvastatin (Lescol) & VKORC1 1173 consensus    0.037928
+175                                                                 Carbamazepine (Tegretol) & VKORC1 1542 consensus    0.036579
+108                                                          Indication for Warfarin Treatment & Simvastatin (Zocor)    0.035889
+102                                                                              Weight (kg) & VKORC1 2255 consensus    0.035819
+159                        Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day & Carbamazepine (Tegretol)    0.035682
+69                                                                                 Height (cm) & Simvastatin (Zocor)    0.035639
+105                                                            Indication for Warfarin Treatment & Valve Replacement    0.035523
+86                                                                              Weight (kg) & Atorvastatin (Lipitor)    0.035303
+155                                                Acetaminophen or Paracetamol (Tylenol) & Carbamazepine (Tegretol)    0.035292
+68                                      Height (cm) & Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day    0.035275
+62                                                                                         Height (cm) & Weight (kg)    0.033862
+35                                                                                                      Gender & Age    0.033715
+52                                                                                    Age & Carbamazepine (Tegretol)    0.033615
+185                                                                       Anti-fungal Azoles & VKORC1 1542 consensus    0.033230
+106                                       Indication for Warfarin Treatment & Acetaminophen or Paracetamol (Tylenol)    0.033173
+85                                                                                 Weight (kg) & Simvastatin (Zocor)    0.032436
+90                                                                              Weight (kg) & Amiodarone (Cordarone)    0.032163
+109                                                       Indication for Warfarin Treatment & Atorvastatin (Lipitor)    0.031377
+81                                                                                            Weight (kg) & Diabetes    0.031373
+142                                                                         Valve Replacement & Lovastatin (Mevacor)    0.030569
+54                                                                                          Age & Anti-fungal Azoles    0.029780
+141                                                                         Valve Replacement & Fluvastatin (Lescol)    0.029591
+138                                                       Valve Replacement & Acetaminophen or Paracetamol (Tylenol)    0.029219
+178                                                                     Phenytoin (Dilantin) & VKORC1 1173 consensus    0.028933
+156                                                    Acetaminophen or Paracetamol (Tylenol) & Phenytoin (Dilantin)    0.028339
+147                                                                         Valve Replacement & Phenytoin (Dilantin)    0.028307
+148                                                                       Valve Replacement & Rifampin or Rifampicin    0.027561
+38                                                                                      Gender & Simvastatin (Zocor)    0.026989
+115                                                     Indication for Warfarin Treatment & Carbamazepine (Tegretol)    0.026684
+146                                                                     Valve Replacement & Carbamazepine (Tegretol)    0.026528
+47                                                              Age & Congestive Heart Failure and/or Cardiomyopathy    0.026434
+117                                                       Indication for Warfarin Treatment & Rifampin or Rifampicin    0.025950
+167                                                                     Fluvastatin (Lescol) & VKORC1 2255 consensus    0.024995
+143                                                                      Valve Replacement & Pravastatin (Pravachol)    0.024928
+87                                                                                Weight (kg) & Fluvastatin (Lescol)    0.024835
+50                                                                                         Age & Simvastatin (Zocor)    0.024555
+137                                           Congestive Heart Failure and/or Cardiomyopathy & VKORC1 2255 consensus    0.023596
+94                                                                                  Weight (kg) & Anti-fungal Azoles    0.023302
+39                                                                                       Gender & Anti-fungal Azoles    0.023158
+44                                                                                                 Age & Weight (kg)    0.022979
+169                                                                 Cerivastatin (Baycol) & Carbamazepine (Tegretol)    0.021454
+89                                                                               Weight (kg) & Cerivastatin (Baycol)    0.021329
+151                                                                           Valve Replacement & Anti-fungal Azoles    0.021170
+111                                                         Indication for Warfarin Treatment & Lovastatin (Mevacor)    0.020945
+184                                                                       Anti-fungal Azoles & VKORC1 1173 consensus    0.020910
+118                                                      Indication for Warfarin Treatment & Sulfonamide Antibiotics    0.020654
+88                                                                                Weight (kg) & Lovastatin (Mevacor)    0.020588
+180                                                                     Phenytoin (Dilantin) & VKORC1 2255 consensus    0.020507
+119                                                        Indication for Warfarin Treatment & Macrolide Antibiotics    0.020233
+71                                                                                  Height (cm) & Anti-fungal Azoles    0.020086
+120                                                           Indication for Warfarin Treatment & Anti-fungal Azoles    0.019981
+91                                                                            Weight (kg) & Carbamazepine (Tegretol)    0.019960
+112                                                      Indication for Warfarin Treatment & Pravastatin (Pravachol)    0.019826
+150                                                                        Valve Replacement & Macrolide Antibiotics    0.019679
+116                                                         Indication for Warfarin Treatment & Phenytoin (Dilantin)    0.019509
+114                                                        Indication for Warfarin Treatment & Cerivastatin (Baycol)    0.018797
+92                                                                                Weight (kg) & Phenytoin (Dilantin)    0.018334
+149                                                                      Valve Replacement & Sulfonamide Antibiotics    0.018140
+144                                                                       Valve Replacement & Rosuvastatin (Crestor)    0.017368
+93                                                                             Weight (kg) & Sulfonamide Antibiotics    0.016577
+177                                                                 Carbamazepine (Tegretol) & VKORC1 2255 consensus    0.016410
+113                                                       Indication for Warfarin Treatment & Rosuvastatin (Crestor)    0.014873
+
+=== SHAP vs EBM top-10 rank comparison ===
+                                           feature  shap_rank  ebm_rank  rank_agreement
+8                       VKORC1     -1639 consensus        1.0       3.0            True
+0                                              Age        2.0       1.0            True
+2                                 CYP2C9 consensus        3.0       2.0            True
+12                                     Weight (kg)        4.0       4.0            True
+10                           VKORC1 1542 consensus        5.0       5.0            True
+9                            VKORC1 1173 consensus        6.0       6.0            True
+11                           VKORC1 2255 consensus        7.0       7.0            True
+7                Indication for Warfarin Treatment        8.0       NaN           False
+6                                      Height (cm)        9.0       NaN           False
+1                           Amiodarone (Cordarone)       10.0       NaN           False
+3                            Cerivastatin (Baycol)        NaN       8.0           False
+5                                   Current Smoker        NaN       9.0           False
+4   Congestive Heart Failure and/or Cardiomyopathy        NaN      10.0           False
+
+7/13 features appear in both top-10 lists
+
+Done at 2026-07-26T09:31:30.620614
+EBM_DONE

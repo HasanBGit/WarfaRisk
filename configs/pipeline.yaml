@@ -1,0 +1,40 @@
+# Documents constants that are currently hardcoded in the pipeline (see the
+# file:line references below). Editing this file does NOT change model
+# behavior — nothing in src/warfarisk/ reads it yet. It exists to make the
+# pipeline's key knobs discoverable without reading source. Wiring phase
+# entrypoints to actually read from here is a reasonable follow-up, not done
+# in this release.
+
+seed: 20260725
+# src/warfarisk/common/splits.py: Split.DEFAULT_SEED. Fixed, never re-rolled —
+# two independent regenerations from this seed produced byte-identical splits.
+
+split_strategy: patient_id_level
+# src/warfarisk/common/splits.py: make_split() shuffles unique IDs (patient or
+# stay), not rows — required for any dataset with >1 row per patient
+# (eICU/MIMIC longitudinal labs), harmless for one-row-per-patient (IWPC).
+
+test_fraction: 0.2
+# src/warfarisk/common/splits.py: DEFAULT_TEST_FRACTION — 80/20 split.
+
+pw20_threshold: 0.50
+# The IWPC-established clinical-acceptability threshold for "proportion of
+# predictions within 20% of the true dose" (PW20) — see docs/RESULTS.md and
+# the paper. No model in this project's Phase 3 sweep has cleared it yet.
+
+feature_sets:
+  - clinical    # age, weight, height, indication, comorbidity/comedication flags
+  - genetic     # CYP2C9 star-allele consensus, VKORC1 -1639 consensus
+  - combined    # union of clinical + genetic
+
+conformal_alpha: 0.10
+# src/warfarisk/phase5_calibration.py: MAPIE/NGBoost/deep-ensemble all target a
+# 90%-nominal prediction interval (1 - alpha).
+
+cohorts:
+  iwpc_6256:
+    n_after_cleaning: 6037
+    n_test: 1207
+  iwpc_1780:
+    n_after_cleaning: 1780
+    n_test: 356

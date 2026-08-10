@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+.venv/
+build/
+dist/
+
+# secrets
+.env
+
+# OS
+.DS_Store
+
+# regenerated, not source
+data_dictionary.json
+runs.tsv
+hf_artifacts/
+catboost_info/
+d3rlpy_logs/
+
+# patient-level data — never committed (see data/DATA.md)
+data/eda_notebooks/cleaned/
+data/usable/
+data/not_usable/
+
+# hard rule: per-row prediction exports are excluded everywhere, no matter the
+# directory, because paired with data/splits/*.json they re-identify real
+# patients (see data/DATA.md's "no ID+outcome pairing" rule)
+*_predictions.csv

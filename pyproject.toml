@@ -1,0 +1,73 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "warfarisk"
+version = "0.1.0"
+description = "WarfaRisk: a nine-phase reproducible ML pipeline for warfarin dose prediction on the IWPC cohorts — leakage-free preprocessing, nested clinical/genetic ablation, ancestry-stratified fairness evaluation, conformal calibration, and SHAP explainability."
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy",
+    "pandas",
+    "scikit-learn",
+    "shap",
+    "openpyxl",
+    "huggingface_hub",
+]
+
+# Per-phase optional dependency groups. Install only what a given phase needs, e.g.:
+#   uv sync --extra phase3
+#   uv run --extra phase7 python -m warfarisk.phase7_longitudinal_rl
+[project.optional-dependencies]
+phase1 = [
+    "warfit-learn",
+]
+phase3 = [
+    "xgboost",
+    "catboost",
+    "torch",
+    "tabpfn",
+    "autogluon.tabular[tabarena]",
+]
+phase5 = [
+    "mapie>=1.4",
+    "ngboost",
+    "torch",
+    "uncertainty-toolbox",
+]
+phase6 = [
+    "interpret",
+]
+phase7 = [
+    "d3rlpy",
+    "torch",
+]
+phase7b = [
+    "scikit-survival>=0.28",
+    "pycox",
+    "torch",
+]
+phase7c = [
+    "hyperimpute",
+]
+phase7d = [
+    "transformers",
+    "torch",
+    "huggingface_hub",
+]
+phase9 = [
+    "sentence-transformers",
+    "faiss-cpu",
+    "transformers",
+    "torch",
+    "huggingface_hub",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/warfarisk"]
+
+[tool.uv]
+package = true
