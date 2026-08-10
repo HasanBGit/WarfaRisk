@@ -4,16 +4,11 @@
 <img src="https://placehold.co/800x200/dbeafe/1e40af?text=WarfaRisk" alt="WarfaRisk — Warfarin Dose Prediction Pipeline">
 </p>
 
-> **Note:** this repository is hosted at `github.com/HasanBGit/PRSgene` — the
-> name is a placeholder from when the repo was created and doesn't reflect
-> the project (WarfaRisk). Renaming it is a suggested follow-up, not done in
-> this release.
-
 This repository contains the official code, splits, and results for **WarfaRisk**, a nine-phase, fully reproducible machine learning pipeline for warfarin maintenance-dose prediction on the public IWPC pharmacogenomic cohorts. Our best model (AutoGluon `extreme_quality`, combined clinical+genetic features) reaches **MAE 8.552 / R² 0.475 / PW20 0.466** on IWPC-6256 and **MAE 7.959 / R² 0.480 / PW20 0.497** on IWPC-1780 — and our ancestry-stratified calibration analysis surfaces a per-subgroup coverage gap that the aggregate number alone hides entirely.
 
 #### By: Hassan Barmandah, Omar Abdullah Bawazir, Siraj Aldeen Marghalani, Moath Shaat, and Mariam M. AlEissa (corresponding author) — AI Center (AIC), Alfaisal University, Riyadh (with Umm Al-Qura University, Saudi Electronic University, Ministry of Health, King Khaled Eye Specialist Hospital Research Center)
 
-[![Code](https://img.shields.io/badge/GitHub-Code-blue)](https://github.com/HasanBGit/PRSgene)
+[![Code](https://img.shields.io/badge/GitHub-Code-blue)](https://github.com/HasanBGit/WarfaRisk)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-3%20Models-F9D371?logo=huggingface&logoColor=black)](https://huggingface.co/HassanB4)
 [![License](https://img.shields.io/badge/License-Apache%202.0-lightgrey)](LICENSE)
 
