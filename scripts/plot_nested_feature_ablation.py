@@ -90,6 +90,10 @@ def main():
     ax.set_xlabel("")
     ax.set_xticks(x)
     display_names = [m.replace("_", " ").replace("stacking ensemble", "stacking").title() for m in models]
+    # Blank the AutoGluon tick label: at the leftmost position its rotated
+    # text collides with the y-axis "0" tick, and it's already named in the
+    # "Field ceiling" annotation directly above its bar.
+    display_names[best_idx] = ""
     ax.set_xticklabels(display_names, rotation=30, ha="right")
     ax.set_ylim(0, df["mae"].max() + 2.5)
 
