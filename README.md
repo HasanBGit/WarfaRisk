@@ -1,10 +1,10 @@
 # Beyond Mean Absolute Error: Ancestry-Stratified Calibration and Explainability for Warfarin Dosing Models
 
 <p align="center">
-<img src="https://placehold.co/800x200/dbeafe/1e40af?text=WarfaRisk" alt="WarfaRisk: Warfarin Dose Prediction Pipeline">
+<img src="https://placehold.co/800x200/dbeafe/1e40af?text=Beyond+MAE" alt="Beyond Mean Absolute Error: Warfarin Dosing Pipeline">
 </p>
 
-This repository contains the official code, splits, and results behind this paper (codebase name: **WarfaRisk**), a nine-phase, fully reproducible machine learning pipeline for warfarin maintenance-dose prediction on the public IWPC pharmacogenomic cohorts. Our best model (AutoGluon `extreme_quality`, combined clinical+genetic features) reaches **MAE 8.552 / R² 0.475 / PW20 0.466** on IWPC-6256 and **MAE 7.959 / R² 0.480 / PW20 0.497** on IWPC-1780. Our ancestry-stratified calibration analysis surfaces a per-subgroup coverage gap that the aggregate number alone hides entirely.
+This repository contains the official code, splits, and results behind this paper, a nine-phase, fully reproducible machine learning pipeline for warfarin maintenance-dose prediction on the public IWPC pharmacogenomic cohorts. Our best model (AutoGluon `extreme_quality`, combined clinical+genetic features) reaches **MAE 8.552 / R² 0.475 / PW20 0.466** on IWPC-6256 and **MAE 7.959 / R² 0.480 / PW20 0.497** on IWPC-1780. Our ancestry-stratified calibration analysis surfaces a per-subgroup coverage gap that the aggregate number alone hides entirely.
 
 #### By: Hassan Barmandah, Omar Abdullah Bawazir, Siraj Aldeen Marghalani, Moath Shaat, Abdullah N. Alkattan, and Mariam M. AlEissa (corresponding author), Alfaisal University, Riyadh (with Umm Al-Qura University, Saudi Electronic University, Ministry of Health, Public Health Authority, King Khaled Eye Specialist Hospital Research Center, King Abdullah Petroleum Studies and Research Center)
 
@@ -18,7 +18,7 @@ This repository contains the official code, splits, and results behind this pape
 
 ## Model Description
 
-Warfarin has one of the narrowest therapeutic indices in clinical medicine. Stable dosing varies roughly ten-fold across patients, and the gap between an under-dose (thromboembolism) and an over-dose (major hemorrhage) is clinically decisive. WarfaRisk is a nine-phase pipeline that predicts stable weekly warfarin dose from clinical and pharmacogenomic features on the International Warfarin Pharmacogenetics Consortium (IWPC) cohorts (**IWPC-6256**, n=6,037; **IWPC-1780**, n=1,780), with a longitudinal-dosing extension track on three ICU demo cohorts (MIMIC-III, MIMIC-IV, eICU; clinical-only, no genotype).
+Warfarin has one of the narrowest therapeutic indices in clinical medicine. Stable dosing varies roughly ten-fold across patients, and the gap between an under-dose (thromboembolism) and an over-dose (major hemorrhage) is clinically decisive. This is a nine-phase pipeline that predicts stable weekly warfarin dose from clinical and pharmacogenomic features on the International Warfarin Pharmacogenetics Consortium (IWPC) cohorts (**IWPC-6256**, n=6,037; **IWPC-1780**, n=1,780), with a longitudinal-dosing extension track on three ICU demo cohorts (MIMIC-III, MIMIC-IV, eICU; clinical-only, no genotype).
 
 The pipeline moves from mandatory baselines, through a nested clinical/genetic/combined feature ablation across nine model architectures, to ancestry-stratified leave-one-group-out fairness evaluation, a three-way calibration comparison (MAPIE conformal prediction, NGBoost, deep ensemble), and SHAP-vs-EBM cross-validated explainability, all on fixed, patient-level train/test splits under one documented random seed (`20260725`).
 
@@ -68,7 +68,7 @@ See the model cards for [`warfarisk-baselines`](https://huggingface.co/HassanB4/
 
 ### Option B: reproduce the pipeline
 
-WarfaRisk has no single inference entrypoint: it's nine phases, each invoked explicitly:
+This pipeline has no single inference entrypoint: it's nine phases, each invoked explicitly:
 
 ```bash
 uv sync                                        # base deps only
