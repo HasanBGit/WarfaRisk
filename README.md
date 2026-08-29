@@ -1,10 +1,10 @@
-# WarfaRisk: Ancestry-Stratified, Reproducible Machine Learning for Warfarin Dose Prediction
+# Beyond Mean Absolute Error: Ancestry-Stratified Calibration and Explainability for Warfarin Dosing Models
 
 <p align="center">
 <img src="https://placehold.co/800x200/dbeafe/1e40af?text=WarfaRisk" alt="WarfaRisk: Warfarin Dose Prediction Pipeline">
 </p>
 
-This repository contains the official code, splits, and results for **WarfaRisk**, a nine-phase, fully reproducible machine learning pipeline for warfarin maintenance-dose prediction on the public IWPC pharmacogenomic cohorts. Our best model (AutoGluon `extreme_quality`, combined clinical+genetic features) reaches **MAE 8.552 / R² 0.475 / PW20 0.466** on IWPC-6256 and **MAE 7.959 / R² 0.480 / PW20 0.497** on IWPC-1780. Our ancestry-stratified calibration analysis surfaces a per-subgroup coverage gap that the aggregate number alone hides entirely.
+This repository contains the official code, splits, and results behind this paper (codebase name: **WarfaRisk**), a nine-phase, fully reproducible machine learning pipeline for warfarin maintenance-dose prediction on the public IWPC pharmacogenomic cohorts. Our best model (AutoGluon `extreme_quality`, combined clinical+genetic features) reaches **MAE 8.552 / R² 0.475 / PW20 0.466** on IWPC-6256 and **MAE 7.959 / R² 0.480 / PW20 0.497** on IWPC-1780. Our ancestry-stratified calibration analysis surfaces a per-subgroup coverage gap that the aggregate number alone hides entirely.
 
 #### By: Hassan Barmandah, Omar Abdullah Bawazir, Siraj Aldeen Marghalani, Moath Shaat, Abdullah N. Alkattan, and Mariam M. AlEissa (corresponding author), Alfaisal University, Riyadh (with Umm Al-Qura University, Saudi Electronic University, Ministry of Health, Public Health Authority, King Khaled Eye Specialist Hospital Research Center, King Abdullah Petroleum Studies and Research Center)
 
