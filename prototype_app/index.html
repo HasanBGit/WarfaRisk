@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WarfaRisk Enterprise — Clinical Decision Support & Precision Warfarin Dosing</title>
+    <meta name="description" content="WarfaRisk B2B Healthcare SaaS Platform for Ancestry-Stratified Calibration, Split-Conformal Residual Uncertainty Quantification, SHAP Feature Attribution, and OpenRouter RAG Explanation Layer.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app-shell">
+
+    <!-- Icon Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-brand" title="WarfaRisk">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C12 2 5 10.5 5 15.5C5 19.6421 8.13401 22 12 22C15.866 22 19 19.6421 19 15.5C19 10.5 12 2 12 2Z" fill="white" fill-opacity="0.92"/>
+            </svg>
+        </div>
+
+        <nav class="sidebar-nav">
+            <button class="nav-tab-btn active" id="btn-step-1" onclick="app.switchScreen(1)" title="Patient Intake & Search">
+                <span class="tab-badge">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2h6a1 1 0 0 1 1 1v1H8V3a1 1 0 0 1 1-1Z"/><rect x="5" y="4" width="14" height="18" rx="2"/><path d="M9 12h6M9 16h4"/></svg>
+                </span>
+                <span class="tab-label">Intake</span>
+            </button>
+            <button class="nav-tab-btn" id="btn-step-2" onclick="app.switchScreen(2)" title="Dose & Uncertainty Command">
+                <span class="tab-badge">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"/><path d="M12 12 15 9"/><path d="M12 6v1"/></svg>
+                </span>
+                <span class="tab-label">Dosing</span>
+            </button>
+            <button class="nav-tab-btn" id="btn-step-3" onclick="app.switchScreen(3)" title="SHAP & Grounded RAG">
+                <span class="tab-badge">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V6a2 2 0 0 1 2-2h9l5 5v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M14 4v4a1 1 0 0 0 1 1h4"/><path d="M8 13h5M8 16h8"/></svg>
+                </span>
+                <span class="tab-label">Explain</span>
+            </button>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button class="sidebar-icon-btn" onclick="app.openSettingsModal()" title="API Settings" aria-label="API Settings">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>
+            </button>
+            <div class="sidebar-avatar" title="Dr. S. Jenkins, MD (FHIR v4)">SJ</div>
+        </div>
+    </aside>
+
+    <div class="app-main">
+
+        <!-- Top Bar -->
+        <header class="topbar">
+            <div class="topbar-titles">
+                <h1>WarfaRisk <span class="eyebrow">Enterprise CDS v2.4</span></h1>
+            </div>
+            <div class="topbar-actions">
+                <button class="btn-primary" onclick="app.runPredictionAndNavigate()">
+                    Predict Dose →
+                </button>
+            </div>
+        </header>
+
+        <!-- Patient Context Ribbon -->
+        <div class="patient-ribbon">
+            <div>
+                <strong>Active Patient:</strong>
+                <span id="summary-patient-desc">MRN-884920 • 68y Male, 72.0kg, 168cm, Han Chinese | VKORC1: AG, CYP2C9: *1/*1</span>
+            </div>
+            <div class="status-chip-group">
+                <span class="status-chip" id="summary-model-type">Model: Combined Pharmacogenomic (CatBoost/Stacking)</span>
+            </div>
+        </div>
+
+        <!-- Main Workspace Container -->
+        <main class="main-wrapper">
+
+            <!-- SCREEN 1: PATIENT INTAKE & CLINICAL PARAMETERS -->
+            <section class="screen-pane active" id="screen-1">
+
+                <!-- Quick Clinical Case Presets -->
+                <div class="card-panel">
+                    <div class="card-header">
+                        <h2>Clinical Case Presets</h2>
+                        <span class="ui-badge cyan">Trained Model Validation Cohort</span>
+                    </div>
+                    <div class="preset-list">
+                        <button class="preset-card-btn" onclick="app.loadPreset('han_chinese')">
+                            <span class="preset-card-swatch case-a"></span>
+                            <span class="preset-card-main">
+                                <span class="preset-card-title">Case A — Han Chinese Male</span>
+                                <span class="preset-card-meta">68y • VKORC1 AG • CYP2C9 *1/*1</span>
+                            </span>
+                            <span class="preset-card-badge">31.8 mg/wk</span>
+                        </button>
+                        <button class="preset-card-btn" onclick="app.loadPreset('african_american')">
+                            <span class="preset-card-swatch case-b"></span>
+                            <span class="preset-card-main">
+                                <span class="preset-card-title">Case B — Black / African American Female</span>
+                                <span class="preset-card-meta">54y • CYP2C9 *1/*3</span>
+                            </span>
+                            <span class="preset-card-badge">33.7 mg/wk</span>
+                        </button>
+                        <button class="preset-card-btn" onclick="app.loadPreset('caucasian')">
+                            <span class="preset-card-swatch case-c"></span>
+                            <span class="preset-card-main">
+                                <span class="preset-card-title">Case C — Caucasian Male</span>
+                                <span class="preset-card-meta">72y • VKORC1 AA • CYP2C9 *2/*2</span>
+                            </span>
+                            <span class="preset-card-badge">10.4 mg/wk</span>
+                        </button>
+                        <button class="preset-card-btn" onclick="app.loadPreset('clinical_only')">
+                            <span class="preset-card-swatch case-d"></span>
+                            <span class="preset-card-main">
+                                <span class="preset-card-title">Case D — Missing Genotypes</span>
+                                <span class="preset-card-meta">Clinical-Only Fallback</span>
+                            </span>
+                            <span class="preset-card-badge muted">MAE: 10.86 mg/wk</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Clinical & Pharmacogenomic Intake Form -->
+                <div class="card-panel">
+                    <div class="card-header">
+                        <h2>Patient Clinical & Genotype Data Entry</h2>
+                        <span class="card-header-note">Physiological hull &amp; validation rules enforced</span>
+                    </div>
+
+                    <form id="patient-form" onsubmit="event.preventDefault(); app.runPredictionAndNavigate();">
+                        <div class="form-grid-3">
+
+                            <!-- Demographics & Physical -->
+                            <div class="input-field-group">
+                                <label for="input-age">Age (Years) <span class="sub">18 - 100 yrs</span></label>
+                                <input type="number" id="input-age" class="form-input" value="68" min="18" max="100" required onchange="app.updatePatientSummary()">
+                            </div>
+
+                            <div class="input-field-group">
+                                <label for="input-weight">Weight (kg) <span class="sub">30 - 200 kg</span></label>
+                                <input type="number" id="input-weight" class="form-input" value="72" min="30" max="200" step="0.1" required onchange="app.updatePatientSummary()">
+                            </div>
+
+                            <div class="input-field-group">
+                                <label for="input-height">Height (cm) <span class="sub">100 - 220 cm</span></label>
+                                <input type="number" id="input-height" class="form-input" value="168" min="100" max="220" required onchange="app.updatePatientSummary()">
+                            </div>
+
+                            <div class="input-field-group">
+                                <label for="input-ancestry">Ancestry Classification <span class="sub">Phase 4-5 Calibration</span></label>
+                                <select id="input-ancestry" class="form-select" onchange="app.updatePatientSummary()">
+                                    <option value="Han Chinese" selected>Han Chinese</option>
+                                    <option value="Black or African American">Black or African American</option>
+                                    <option value="Caucasian">Caucasian</option>
+                                    <option value="Japanese">Japanese</option>
+                                    <option value="Hispanic">Hispanic</option>
+                                    <option value="Other / Unspecified">Other / Unspecified</option>
+                                </select>
+                            </div>
+
+                            <!-- Genotype Matrix -->
+                            <div class="input-field-group">
+                                <label for="input-vkorc1">VKORC1 -1639G>A Genotype <span class="sub">rs9923231</span></label>
+                                <select id="input-vkorc1" class="form-select" onchange="app.updatePatientSummary()">
+                                    <option value="GG">GG (Wild-Type - Normal Sensitivity)</option>
+                                    <option value="AG" selected>AG (Heterozygous - High Sensitivity)</option>
+                                    <option value="AA">AA (Homozygous Variant - Markedly High Sensitivity)</option>
+                                    <option value="unknown">Unknown / Not Genotyped</option>
+                                </select>
+                            </div>
+
+                            <div class="input-field-group">
+                                <label for="input-cyp2c9">CYP2C9 Star Allele Consensus <span class="sub">Clearance</span></label>
+                                <select id="input-cyp2c9" class="form-select" onchange="app.updatePatientSummary()">
+                                    <option value="*1/*1" selected>*1/*1 (Normal Metabolizer)</option>
+                                    <option value="*1/*2">*1/*2 (Intermediate Metabolizer - ~30% clearance reduction)</option>
+                                    <option value="*1/*3">*1/*3 (Intermediate Metabolizer - ~80% clearance reduction)</option>
+                                    <option value="*2/*2">*2/*2 (Poor Metabolizer)</option>
+                                    <option value="*2/*3">*2/*3 (Poor Metabolizer)</option>
+                                    <option value="*3/*3">*3/*3 (Poor Metabolizer)</option>
+                                    <option value="unknown">Unknown / Not Genotyped</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <!-- Comedications & Drug Interactions -->
+                        <div class="med-section">
+                            <label class="med-section-label">Concomitant Medication Flags (DDI Impact)</label>
+                            <div class="med-grid">
+                                <label class="med-check-card">
+                                    <input type="checkbox" id="check-amiodarone">
+                                    <span>Amiodarone (CYP2C9/3A4 Inhibitor)</span>
+                                </label>
+                                <label class="med-check-card">
+                                    <input type="checkbox" id="check-statin">
+                                    <span>Statin Therapy (Simvastatin/Atorvastatin)</span>
+                                </label>
+                                <label class="med-check-card">
+                                    <input type="checkbox" id="check-inducer">
+                                    <span>Enzyme Inducer (Rifampin/Carbamazepine/Phenytoin)</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-submit-row">
+                            <button type="submit" class="btn-primary btn-lg">
+                                Calculate Recommended Dose →
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- SCREEN 2: DOSE RECOMMENDATION & CONFORMAL UNCERTAINTY -->
+            <section class="screen-pane" id="screen-2">
+                <div class="dose-hero-layout">
+
+                    <!-- Main Dose Recommendation Widget -->
+                    <div class="dose-stat-card">
+                        <span class="dose-stat-eyebrow">Recommended Stable Maintenance Weekly Dose</span>
+                        <div class="dose-number-huge" id="res-weekly-dose">31.8</div>
+                        <div class="dose-unit-text">mg / week</div>
+                        <div class="dose-sub-detail" id="res-daily-dose">Equivalent to 4.54 mg / day</div>
+                        <div class="dose-iwpc-note" id="res-iwpc-comp">
+                            Baseline Published IWPC Formula (2009): 36.5 mg/week
+                        </div>
+                    </div>
+
+                    <!-- MAPIE 90% Conformal Prediction Interval -->
+                    <div class="gauge-card">
+                        <div class="card-header">
+                            <h2>MAPIE 90% Conformal Interval</h2>
+                            <span class="ui-badge cyan">Split Conformal</span>
+                        </div>
+                        <p class="gauge-desc">
+                            Non-parametric 90% residual-based prediction interval bounding therapeutic uncertainty:
+                        </p>
+
+                        <div class="gauge-value-text" id="res-interval-text">
+                            [22.6 — 47.4 mg/week]
+                        </div>
+
+                        <div class="gauge-track">
+                            <div class="gauge-fill" id="interval-fill-bar" style="left: 20%; width: 60%;"></div>
+                            <div class="gauge-pin" id="interval-marker-dot" style="left: 50%;"></div>
+                        </div>
+
+                        <div class="gauge-scale">
+                            <span>Min (5.0 mg/wk)</span>
+                            <span>Predicted Target</span>
+                            <span>Max (95.0 mg/wk)</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Ancestry Calibration & Portability Audit -->
+                <div class="card-panel" style="margin-top: 1.5rem;">
+                    <div class="card-header">
+                        <h2>Ancestry Calibration &amp; Portability Audit</h2>
+                        <span class="ui-badge" id="badge-calibration-status">Nominal</span>
+                    </div>
+
+                    <div class="clinical-alert-box green" id="card-calibration-notice">
+                        <span class="status-dot-indicator green"></span>
+                        <div>
+                            <strong>Subgroup Conformal Calibration Coverage: Nominal (≥90%)</strong>
+                            <p id="text-calibration-detail">Patient ancestry group achieves empirical conformal coverage meeting target calibration standards.</p>
+                        </div>
+                    </div>
+
+                    <div class="clinical-alert-box amber" id="card-portability-notice" style="display: none;">
+                        <span class="status-dot-indicator amber"></span>
+                        <div>
+                            <strong>Ancestry Portability Penalty Flag (Phase 4 Validation)</strong>
+                            <p id="text-portability-detail">Han Chinese ancestry exhibits an out-of-distribution transferability error (+2.13 mg/week MAE penalty, CatBoost).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="screen-nav-row">
+                    <button class="btn-secondary" onclick="app.switchScreen(1)">← Back to Intake</button>
+                    <button class="btn-primary" onclick="app.switchScreen(3)">View SHAP &amp; RAG Explanation →</button>
+                </div>
+            </section>
+
+            <!-- SCREEN 3: SHAP EXPLAINABILITY & RAG RATIONALE -->
+            <section class="screen-pane" id="screen-3">
+
+                <div class="explain-grid">
+
+                    <!-- SHAP Feature Attribution Panel -->
+                    <div class="card-panel">
+                        <div class="card-header">
+                            <h2>Patient SHAP Feature Attributions</h2>
+                            <span class="ui-badge red">Phase 6 SHAP</span>
+                        </div>
+                        <p class="card-header-note" style="margin-bottom: 1.1rem;">
+                            Per-feature impact (+/- mg/week) calculated from the trained Stacking Ensemble model relative to baseline population mean (35.0 mg/wk):
+                        </p>
+
+                        <div class="shap-list-layout" id="shap-bar-list">
+                            <!-- Rendered dynamically -->
+                        </div>
+
+                        <!-- Guideline Evidence Drawer -->
+                        <details class="evidence-box">
+                            <summary>Guideline Evidence Links (CPIC 2017 &amp; PharmGKB)</summary>
+                            <p>
+                                • <strong>VKORC1 -1639G&gt;A:</strong> <a href="https://www.pharmgkb.org/guidelineAnnotation/PA166104949" target="_blank">CPIC Guideline for VKORC1 Dosing</a><br>
+                                • <strong>CYP2C9 Star Alleles:</strong> <a href="https://www.pharmgkb.org/gene/PA126" target="_blank">PharmGKB CYP2C9 Gene Summary</a><br>
+                                • <strong>IWPC Published Formula:</strong> <a href="https://pubmed.ncbi.nlm.nih.gov/19228618/" target="_blank">IWPC Pharmacogenetic Dosing Consortium (2009)</a>
+                            </p>
+                        </details>
+                    </div>
+
+                    <!-- Grounded RAG Explanation Card -->
+                    <div class="rag-saas-card">
+                        <div class="card-header">
+                            <h2>Phase 9 RAG Explanation Layer</h2>
+                            <span class="ui-badge cyan" id="rag-provider-badge">OpenRouter / Gemini 2.5 Flash</span>
+                        </div>
+
+                        <div class="rag-toolbar">
+                            <span class="card-header-note">Strict-Citation Grounded Rationale</span>
+                            <button class="btn-secondary btn-sm" onclick="app.regenerateRAG()">Regenerate</button>
+                        </div>
+
+                        <div class="rag-text-box" id="rag-output-text">
+                            Generating grounded explanation via RAG vector search over real PharmGKB Excel allele tables and CPIC 2017 guidelines...
+                        </div>
+
+                        <!-- Citation Verification Audit -->
+                        <div class="rag-audit-row" id="rag-audit-status">
+                            <span>Citation Audit: <strong id="rag-citation-count">3/3 Verified</strong></span>
+                            <span>Strict Verification: Active</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="screen-nav-row">
+                    <button class="btn-secondary" onclick="app.switchScreen(2)">← Back to Dose Display</button>
+                    <button class="btn-primary" onclick="window.print()">Export Clinical Summary</button>
+                </div>
+            </section>
+
+        </main>
+    </div>
+</div>
+
+    <!-- API Settings Modal -->
+    <div class="modal-overlay" id="modal-settings">
+        <div class="modal-box">
+            <div class="modal-top">
+                <h3>External LLM API Settings</h3>
+                <button class="modal-close-btn" onclick="app.closeSettingsModal()">&times;</button>
+            </div>
+
+            <div class="input-field-group" style="margin-bottom: 1rem;">
+                <label for="setting-provider">API Provider</label>
+                <select id="setting-provider" class="form-select" onchange="app.onProviderChange()">
+                    <option value="openrouter" selected>OpenRouter API (Recommended)</option>
+                    <option value="gemini">Google Gemini API</option>
+                    <option value="openai">OpenAI Compatible Endpoint</option>
+                </select>
+            </div>
+
+            <div class="input-field-group" style="margin-bottom: 1rem;">
+                <label for="setting-key">API Key</label>
+                <input type="password" id="setting-key" class="form-input" placeholder="sk-or-v1-..." value="">
+                <span class="field-hint">Keys are stored locally in browser memory only.</span>
+            </div>
+
+            <div class="input-field-group" style="margin-bottom: 1rem;">
+                <label for="setting-model">Model ID</label>
+                <input type="text" id="setting-model" class="form-input" value="google/gemini-2.5-flash" placeholder="google/gemini-2.5-flash">
+            </div>
+
+            <div class="input-field-group" style="margin-bottom: 1.5rem;">
+                <label for="setting-endpoint">Custom REST Endpoint (Optional)</label>
+                <input type="text" id="setting-endpoint" class="form-input" placeholder="https://openrouter.ai/api/v1/chat/completions">
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn-secondary" onclick="app.closeSettingsModal()">Cancel</button>
+                <button class="btn-primary" onclick="app.saveSettings()">Save &amp; Connect</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/real_guidelines_corpus.js"></script>
+    <script src="js/vector_db.js"></script>
+    <script src="js/dosing_engine.js"></script>
+    <script src="js/api_service.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+</html>
