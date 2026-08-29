@@ -9,7 +9,7 @@ This repository contains the official code, splits, and results behind this pape
 #### By: Hassan Barmandah, Omar Abdullah Bawazir, Siraj Aldeen Marghalani, Moath Shaat, Abdullah N. Alkattan, and Mariam M. AlEissa (corresponding author), Alfaisal University, Riyadh (with Umm Al-Qura University, Saudi Electronic University, Ministry of Health, Public Health Authority, King Khaled Eye Specialist Hospital Research Center, King Abdullah Petroleum Studies and Research Center)
 
 [![Code](https://img.shields.io/badge/GitHub-Code-blue)](https://github.com/HasanBGit/WarfaRisk)
-[![HuggingFace](https://img.shields.io/badge/HuggingFace-3%20Models-F9D371?logo=huggingface&logoColor=black)](https://huggingface.co/collections/HassanB4/warfarisk-ancestry-stratified-warfarin-dose-prediction-6a79b7f715e8533e72db4b4e)
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-3%20Models-F9D371?logo=huggingface&logoColor=black)](https://huggingface.co/collections/HassanB4/beyond-mae-ancestry-stratified-warfarin-dose-prediction-6a79b7f715e8533e72db4b4e)
 [![License](https://img.shields.io/badge/License-Apache%202.0-lightgrey)](LICENSE)
 
 > **This is a research artifact, not a validated clinical tool.** It has not been evaluated prospectively, carries no regulatory clearance, and should not be used to make an actual dosing decision.
@@ -197,7 +197,7 @@ We thank the PharmGKB / International Warfarin Pharmacogenetics Consortium for t
 
 * [PharmGKB](https://www.pharmgkb.org/)
 * [PhysioNet](https://physionet.org/)
-* [Hugging Face Model Collection](https://huggingface.co/collections/HassanB4/warfarisk-ancestry-stratified-warfarin-dose-prediction-6a79b7f715e8533e72db4b4e)
+* [Hugging Face Model Collection](https://huggingface.co/collections/HassanB4/beyond-mae-ancestry-stratified-warfarin-dose-prediction-6a79b7f715e8533e72db4b4e)
 
 ---
 
