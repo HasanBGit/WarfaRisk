@@ -74,15 +74,17 @@ def main():
                 ax.text(bar.get_x() + bar.get_width() / 2, val + 0.12, f"{val:.2f}",
                         ha="center", va="bottom", fontsize=7.5, color="dimgrey", rotation=90)
 
-    # Highlight the field's best result (AutoGluon, combined-only). Text sits
-    # directly under its own bar, in that column's empty space below y=8.55,
-    # rather than extending sideways into the neighboring model's bars.
+    # Highlight the field's best result (AutoGluon, combined-only). AutoGluon
+    # sorts to the leftmost column (lowest combined MAE), so the callout runs
+    # horizontally into the open space above the neighbouring bars, with a
+    # short arrow down to the AutoGluon combined bar. Anchoring it under the
+    # bar would put the text on top of the y-axis.
     best_idx = models.index("autogluon_extreme_quality")
-    ax.annotate("Field ceiling:\nAutoGluon,\ncombined --\nMAE 8.55,\nR² 0.475",
-                xy=(best_idx, 8.552), xytext=(best_idx, 4.0),
-                fontsize=9.5, color="dimgrey", ha="center", va="top",
-                arrowprops=dict(arrowstyle="-", color="dimgrey", linewidth=0.9,
-                                 connectionstyle="arc3,rad=0"))
+    ax.annotate("Field ceiling: AutoGluon\ncombined only, MAE 8.55, R² 0.475",
+                xy=(best_idx + width, 8.7), xytext=(best_idx + 0.35, 13.1),
+                fontsize=9.5, color="dimgrey", ha="left", va="center",
+                arrowprops=dict(arrowstyle="->", color="dimgrey", linewidth=0.9,
+                                 connectionstyle="arc3,rad=0.0"))
 
     ax.set_title("Nested Clinical / Genetic / Combined Feature Ablation, 9 Architectures (IWPC-6256)",
                  loc="left", fontsize=13.5, pad=12)
@@ -97,8 +99,9 @@ def main():
     ax.set_xticklabels(display_names, rotation=30, ha="right")
     ax.set_ylim(0, df["mae"].max() + 2.5)
 
-    ax.legend(title="Feature set", loc="upper right", frameon=True, facecolor="white",
-              framealpha=0.8, edgecolor="lightgrey", labelcolor="dimgrey")
+    ax.legend(title="Feature set", loc="upper left", bbox_to_anchor=(1.01, 1.0),
+              frameon=True, facecolor="white", framealpha=0.9, edgecolor="lightgrey",
+              labelcolor="dimgrey", borderaxespad=0.0)
 
     sns.despine(left=True, bottom=True)
     ax.xaxis.grid(False)

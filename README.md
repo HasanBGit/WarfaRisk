@@ -1,7 +1,7 @@
 # Beyond Mean Absolute Error: Ancestry-Stratified Calibration and Explainability for Warfarin Dosing Models
 
 <p align="center">
-<img src="https://placehold.co/800x200/dbeafe/1e40af?text=Beyond+MAE" alt="Beyond Mean Absolute Error: Warfarin Dosing Pipeline">
+<img src="scripts/figures/fig_calibration_coverage_ci.png" alt="MAPIE and NGBoost hit the 90% coverage target on both IWPC cohorts; the deep-ensemble baseline misses it roughly four-fold" width="800">
 </p>
 
 This repository contains the official code, splits, and results behind this paper, a nine-phase, fully reproducible machine learning pipeline for warfarin maintenance-dose prediction on the public IWPC pharmacogenomic cohorts. Our best model (AutoGluon `extreme_quality`, combined clinical+genetic features) reaches **MAE 8.552 / R² 0.475 / PW20 0.466** on IWPC-6256 and **MAE 7.959 / R² 0.480 / PW20 0.497** on IWPC-1780. Our ancestry-stratified calibration analysis surfaces a per-subgroup coverage gap that the aggregate number alone hides entirely.
@@ -203,18 +203,16 @@ We thank the PharmGKB / International Warfarin Pharmacogenetics Consortium for t
 
 ## 📜 Citation
 
-This work is described in the following manuscript, submitted to the MDPI journal *AI* and under review as of August 2026. The DOI below will be updated once the paper is formally published.
+This work is described in the following manuscript, currently in preparation. The citation below will be updated once the paper is formally published.
 
-> Barmandah, H.; Bawazir, O.A.; Marghalani, S.A.; Shaat, M.; Alkattan, A.N.; AlEissa, M.M. Beyond Mean Absolute Error: Ancestry-Stratified Calibration and Explainability for Warfarin Dosing Models. *AI* **2026**, submitted.
+> Barmandah, H.; Bawazir, O.A.; Marghalani, S.A.; Shaat, M.; Alkattan, A.N.; AlEissa, M.M. Beyond Mean Absolute Error: Ancestry-Stratified Calibration and Explainability for Warfarin Dosing Models. Manuscript in preparation, 2026.
 
 ```bibtex
-@article{barmandah2026beyond,
+@unpublished{barmandah2026beyond,
     title={Beyond Mean Absolute Error: Ancestry-Stratified Calibration and Explainability for Warfarin Dosing Models},
     author={Barmandah, Hassan and Bawazir, Omar Abdullah and Marghalani, Siraj Aldeen and Shaat, Moath and Alkattan, Abdullah N. and AlEissa, Mariam M.},
-    journal={AI},
-    publisher={MDPI},
     year={2026},
-    note={Manuscript submitted, under review as of August 2026. Cite the published DOI once assigned.}
+    note={Manuscript in preparation. Cite the published version once assigned.}
 }
 ```
 
