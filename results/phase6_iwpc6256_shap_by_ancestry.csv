@@ -1,0 +1,631 @@
+feature,mean_abs_shap,group
+VKORC1     -1639 consensus,4.0841151412717,African American
+Age,2.204144532368546,African American
+Weight (kg),1.5670126836438636,African American
+Amiodarone (Cordarone),1.506918529238812,African American
+Height (cm),0.9818908308636418,African American
+Indication for Warfarin Treatment,0.9547688813197706,African American
+Current Smoker,0.8342466717985134,African American
+Aspirin,0.28594429309309677,African American
+Diabetes,0.12231332569357263,African American
+Gender,0.015503874095492837,African American
+Macrolide Antibiotics,0.0,African American
+Anti-fungal Azoles,0.0,African American
+"Herbal Medications, Vitamins, Supplements",0.0,African American
+VKORC1 1173 consensus,0.0,African American
+CYP2C9 consensus,0.0,African American
+VKORC1 497 consensus,0.0,African American
+Rifampin or Rifampicin,0.0,African American
+VKORC1 1542 consensus,0.0,African American
+VKORC1 3730 consensus,0.0,African American
+VKORC1 2255 consensus,0.0,African American
+Sulfonamide Antibiotics,0.0,African American
+Cerivastatin (Baycol),0.0,African American
+Phenytoin (Dilantin),0.0,African American
+Carbamazepine (Tegretol),0.0,African American
+Rosuvastatin (Crestor),0.0,African American
+Pravastatin (Pravachol),0.0,African American
+Lovastatin (Mevacor),0.0,African American
+Fluvastatin (Lescol),0.0,African American
+Atorvastatin (Lipitor),0.0,African American
+Simvastatin (Zocor),0.0,African American
+Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day,0.0,African American
+Acetaminophen or Paracetamol (Tylenol),0.0,African American
+Valve Replacement,0.0,African American
+Congestive Heart Failure and/or Cardiomyopathy,0.0,African American
+VKORC1     -4451 consensus,0.0,African American
+Age,4.273829228276383,African-American
+Weight (kg),3.2910643864555453,African-American
+VKORC1 1542 consensus,2.387579739186102,African-American
+CYP2C9 consensus,1.6808249644475355,African-American
+Simvastatin (Zocor),1.6559619207902132,African-American
+VKORC1     -1639 consensus,1.3212522277817522,African-American
+Height (cm),1.0244092914008356,African-American
+Indication for Warfarin Treatment,0.48902246471416083,African-American
+Current Smoker,0.4119231006836932,African-American
+Amiodarone (Cordarone),0.3643173796790223,African-American
+Aspirin,0.16306413337001882,African-American
+VKORC1 497 consensus,0.11685128674310279,African-American
+Gender,0.10581573354707896,African-American
+VKORC1 3730 consensus,0.07488456190910121,African-American
+Rifampin or Rifampicin,0.0,African-American
+VKORC1 1173 consensus,0.0,African-American
+"Herbal Medications, Vitamins, Supplements",0.0,African-American
+Anti-fungal Azoles,0.0,African-American
+VKORC1 2255 consensus,0.0,African-American
+Macrolide Antibiotics,0.0,African-American
+Sulfonamide Antibiotics,0.0,African-American
+Cerivastatin (Baycol),0.0,African-American
+Phenytoin (Dilantin),0.0,African-American
+Carbamazepine (Tegretol),0.0,African-American
+Rosuvastatin (Crestor),0.0,African-American
+Pravastatin (Pravachol),0.0,African-American
+Lovastatin (Mevacor),0.0,African-American
+Fluvastatin (Lescol),0.0,African-American
+Atorvastatin (Lipitor),0.0,African-American
+Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day,0.0,African-American
+Acetaminophen or Paracetamol (Tylenol),0.0,African-American
+Valve Replacement,0.0,African-American
+Congestive Heart Failure and/or Cardiomyopathy,0.0,African-American
+Diabetes,0.0,African-American
+VKORC1     -4451 consensus,0.0,African-American
+VKORC1     -1639 consensus,3.270556637860534,Asian
+CYP2C9 consensus,3.265535617651534,Asian
+Age,3.136125737477518,Asian
+Indication for Warfarin Treatment,2.546071714129421,Asian
+VKORC1 2255 consensus,2.150791737803605,Asian
+VKORC1 1542 consensus,1.9209140698174298,Asian
+VKORC1 1173 consensus,1.2289494040775968,Asian
+Current Smoker,0.909348802103227,Asian
+VKORC1 497 consensus,0.7792750232138707,Asian
+Weight (kg),0.6603549438007894,Asian
+Atorvastatin (Lipitor),0.4428988020070572,Asian
+Height (cm),0.4275918273291499,Asian
+Aspirin,0.3274068850835597,Asian
+Congestive Heart Failure and/or Cardiomyopathy,0.23137725250727512,Asian
+VKORC1 3730 consensus,0.09903587788966273,Asian
+"Herbal Medications, Vitamins, Supplements",0.027665028204078394,Asian
+Gender,0.02086250400520719,Asian
+Rifampin or Rifampicin,0.0,Asian
+Anti-fungal Azoles,0.0,Asian
+Macrolide Antibiotics,0.0,Asian
+Sulfonamide Antibiotics,0.0,Asian
+Cerivastatin (Baycol),0.0,Asian
+Phenytoin (Dilantin),0.0,Asian
+Carbamazepine (Tegretol),0.0,Asian
+Amiodarone (Cordarone),0.0,Asian
+Rosuvastatin (Crestor),0.0,Asian
+Pravastatin (Pravachol),0.0,Asian
+Lovastatin (Mevacor),0.0,Asian
+Fluvastatin (Lescol),0.0,Asian
+Simvastatin (Zocor),0.0,Asian
+Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day,0.0,Asian
+Acetaminophen or Paracetamol (Tylenol),0.0,Asian
+Valve Replacement,0.0,Asian
+Diabetes,0.0,Asian
+VKORC1     -4451 consensus,0.0,Asian
+Age,2.7662171038858197,Black
+VKORC1 1542 consensus,2.7650953207231765,Black
+Weight (kg),2.6134034960601698,Black
+Indication for Warfarin Treatment,2.237734081437281,Black
+VKORC1     -1639 consensus,2.165003185859198,Black
+CYP2C9 consensus,1.660792316884781,Black
+VKORC1 1173 consensus,1.3999771081471961,Black
+VKORC1 2255 consensus,1.1619653451143803,Black
+Height (cm),0.9439922491366678,Black
+Current Smoker,0.8066942449596829,Black
+Valve Replacement,0.6239838776691987,Black
+Carbamazepine (Tegretol),0.5795090194151393,Black
+Aspirin,0.2525800864256301,Black
+Amiodarone (Cordarone),0.24281075619678735,Black
+Lovastatin (Mevacor),0.21962517914168198,Black
+Congestive Heart Failure and/or Cardiomyopathy,0.1824427316445245,Black
+VKORC1 497 consensus,0.15559120630111145,Black
+Diabetes,0.14116352726800516,Black
+Phenytoin (Dilantin),0.12396246627657906,Black
+Simvastatin (Zocor),0.09286981873146202,Black
+Atorvastatin (Lipitor),0.08790210059505923,Black
+VKORC1 3730 consensus,0.07707037142980443,Black
+Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day,0.07585484505985152,Black
+Acetaminophen or Paracetamol (Tylenol),0.06333836137603155,Black
+Anti-fungal Azoles,0.05246395988996726,Black
+Gender,0.03984077286696287,Black
+"Herbal Medications, Vitamins, Supplements",0.039814777095240624,Black
+VKORC1     -4451 consensus,0.03478407051648819,Black
+Pravastatin (Pravachol),0.004817700192562591,Black
+Macrolide Antibiotics,0.0,Black
+Sulfonamide Antibiotics,0.0,Black
+Rifampin or Rifampicin,0.0,Black
+Rosuvastatin (Crestor),0.0,Black
+Fluvastatin (Lescol),0.0,Black
+Cerivastatin (Baycol),0.0,Black
+Age,3.5348856942802196,Black or African American
+Weight (kg),2.9414903507126673,Black or African American
+VKORC1 1542 consensus,1.8702266766216387,Black or African American
+VKORC1     -1639 consensus,1.8094715653926838,Black or African American
+VKORC1 2255 consensus,1.5949040008656519,Black or African American
+Indication for Warfarin Treatment,1.4346831430014149,Black or African American
+CYP2C9 consensus,1.3880262891533666,Black or African American
+Height (cm),1.1299963038353071,Black or African American
+VKORC1 1173 consensus,0.8102213044109595,Black or African American
+Current Smoker,0.6135851737024758,Black or African American
+Aspirin,0.2866277145786205,Black or African American
+Congestive Heart Failure and/or Cardiomyopathy,0.21299520975490985,Black or African American
+Diabetes,0.18726864299778706,Black or African American
+Amiodarone (Cordarone),0.17808068662349358,Black or African American
+Lovastatin (Mevacor),0.15539168871172146,Black or African American
+Valve Replacement,0.14629284460295192,Black or African American
+Atorvastatin (Lipitor),0.1243575337689406,Black or African American
+Acetaminophen or Paracetamol (Tylenol),0.08375944251295696,Black or African American
+Simvastatin (Zocor),0.06864815504264514,Black or African American
+Sulfonamide Antibiotics,0.06585282224412624,Black or African American
+VKORC1 497 consensus,0.057857488713076055,Black or African American
+Gender,0.052554500362647784,Black or African American
+Rosuvastatin (Crestor),0.046484455475698475,Black or African American
+VKORC1 3730 consensus,0.04102442107034336,Black or African American
+VKORC1     -4451 consensus,0.016023939707083542,Black or African American
+"Herbal Medications, Vitamins, Supplements",0.006522229346601153,Black or African American
+Anti-fungal Azoles,0.0,Black or African American
+Macrolide Antibiotics,0.0,Black or African American
+Rifampin or Rifampicin,0.0,Black or African American
+Phenytoin (Dilantin),0.0,Black or African American
+Carbamazepine (Tegretol),0.0,Black or African American
+Pravastatin (Pravachol),0.0,Black or African American
+Fluvastatin (Lescol),0.0,Black or African American
+Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day,0.0,Black or African American
+Cerivastatin (Baycol),0.0,Black or African American
+CYP2C9 consensus,4.093981669415842,Caucasian
+Age,3.2258635850220014,Caucasian
+VKORC1     -1639 consensus,2.7082433438545794,Caucasian
+Weight (kg),2.200832513926166,Caucasian
+Indication for Warfarin Treatment,1.8310769453201265,Caucasian
+VKORC1 2255 consensus,1.6967963110555464,Caucasian
+VKORC1 1173 consensus,1.6651771116025742,Caucasian
+VKORC1 1542 consensus,1.4670283438729537,Caucasian
+Height (cm),0.8224751671203675,Caucasian
+Amiodarone (Cordarone),0.5899388242519525,Caucasian
+Current Smoker,0.3720522104261485,Caucasian
+Carbamazepine (Tegretol),0.26344431842030397,Caucasian
+Congestive Heart Failure and/or Cardiomyopathy,0.24405980365299335,Caucasian
+Phenytoin (Dilantin),0.23879068583725602,Caucasian
+Valve Replacement,0.22752434380617825,Caucasian
+VKORC1 497 consensus,0.22213782211865085,Caucasian
+Aspirin,0.15206244003458677,Caucasian
+Diabetes,0.08366774485267126,Caucasian
+VKORC1 3730 consensus,0.04900698298989561,Caucasian
+Atorvastatin (Lipitor),0.04518194419608073,Caucasian
+Simvastatin (Zocor),0.04374824500159788,Caucasian
+Gender,0.03963989593165023,Caucasian
+Sulfonamide Antibiotics,0.031304809261816016,Caucasian
+VKORC1     -4451 consensus,0.017063282051660602,Caucasian
+Acetaminophen or Paracetamol (Tylenol),0.01554768410339049,Caucasian
+"Herbal Medications, Vitamins, Supplements",0.00531295863186292,Caucasian
+Pravastatin (Pravachol),0.003512365170949674,Caucasian
+Anti-fungal Azoles,0.0,Caucasian
+Macrolide Antibiotics,0.0,Caucasian
+Rifampin or Rifampicin,0.0,Caucasian
+Rosuvastatin (Crestor),0.0,Caucasian
+Lovastatin (Mevacor),0.0,Caucasian
+Fluvastatin (Lescol),0.0,Caucasian
+Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day,0.0,Caucasian
+Cerivastatin (Baycol),0.0,Caucasian
+Age,2.7219404837424706,Chinese
+VKORC1 1542 consensus,2.088919115824464,Chinese
+Weight (kg),1.6939214101872033,Chinese
+VKORC1 2255 consensus,1.4784014265608982,Chinese
+VKORC1     -1639 consensus,1.4482979925483261,Chinese
+CYP2C9 consensus,1.269873126292446,Chinese
+VKORC1 1173 consensus,0.897320591529147,Chinese
+Indication for Warfarin Treatment,0.49972669798934394,Chinese
+Gender,0.12709675391413944,Chinese
+VKORC1 497 consensus,0.12139397119667926,Chinese
+VKORC1 3730 consensus,0.08856845888716462,Chinese
+Carbamazepine (Tegretol),0.0,Chinese
+Current Smoker,0.0,Chinese
+"Herbal Medications, Vitamins, Supplements",0.0,Chinese
+Anti-fungal Azoles,0.0,Chinese
+Macrolide Antibiotics,0.0,Chinese
+Sulfonamide Antibiotics,0.0,Chinese
+Rifampin or Rifampicin,0.0,Chinese
+Phenytoin (Dilantin),0.0,Chinese
+Cerivastatin (Baycol),0.0,Chinese
+Amiodarone (Cordarone),0.0,Chinese
+Rosuvastatin (Crestor),0.0,Chinese
+Pravastatin (Pravachol),0.0,Chinese
+Lovastatin (Mevacor),0.0,Chinese
+Fluvastatin (Lescol),0.0,Chinese
+Atorvastatin (Lipitor),0.0,Chinese
+Simvastatin (Zocor),0.0,Chinese
+Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day,0.0,Chinese
+Acetaminophen or Paracetamol (Tylenol),0.0,Chinese
+Aspirin,0.0,Chinese
+Valve Replacement,0.0,Chinese
+Congestive Heart Failure and/or Cardiomyopathy,0.0,Chinese
+Diabetes,0.0,Chinese
+Height (cm),0.0,Chinese
+VKORC1     -4451 consensus,0.0,Chinese
+Age,2.948621561132662,Han Chinese
+VKORC1     -1639 consensus,2.018775551524715,Han Chinese
+VKORC1 1542 consensus,1.7856658973165156,Han Chinese
+Weight (kg),1.3543194889075603,Han Chinese
+Valve Replacement,0.9168702856503013,Han Chinese
+Height (cm),0.7826239803045634,Han Chinese
+Amiodarone (Cordarone),0.7294838762941216,Han Chinese
+VKORC1 2255 consensus,0.68018890936017,Han Chinese
+Indication for Warfarin Treatment,0.4756463954915771,Han Chinese
+VKORC1 1173 consensus,0.403492798645443,Han Chinese
+CYP2C9 consensus,0.37779402536127976,Han Chinese
+Diabetes,0.18998002223862745,Han Chinese
+Congestive Heart Failure and/or Cardiomyopathy,0.15979255615883908,Han Chinese
+Aspirin,0.057687832261528016,Han Chinese
+VKORC1 3730 consensus,0.043375464931839594,Han Chinese
+Gender,0.039673183736454634,Han Chinese
+Simvastatin (Zocor),0.0032135830888099575,Han Chinese
+VKORC1 497 consensus,0.0,Han Chinese
+Macrolide Antibiotics,0.0,Han Chinese
+Current Smoker,0.0,Han Chinese
+"Herbal Medications, Vitamins, Supplements",0.0,Han Chinese
+Anti-fungal Azoles,0.0,Han Chinese
+Cerivastatin (Baycol),0.0,Han Chinese
+Sulfonamide Antibiotics,0.0,Han Chinese
+Rifampin or Rifampicin,0.0,Han Chinese
+Phenytoin (Dilantin),0.0,Han Chinese
+Carbamazepine (Tegretol),0.0,Han Chinese
+Rosuvastatin (Crestor),0.0,Han Chinese
+Pravastatin (Pravachol),0.0,Han Chinese
+Lovastatin (Mevacor),0.0,Han Chinese
+Fluvastatin (Lescol),0.0,Han Chinese
+Atorvastatin (Lipitor),0.0,Han Chinese
+Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day,0.0,Han Chinese
+Acetaminophen or Paracetamol (Tylenol),0.0,Han Chinese
+VKORC1     -4451 consensus,0.0,Han Chinese
+VKORC1     -1639 consensus,3.4808993216698476,Hispanic
+VKORC1 1542 consensus,2.4214546929441374,Hispanic
+VKORC1 2255 consensus,2.0836388447989105,Hispanic
+Age,1.685479728122707,Hispanic
+VKORC1 1173 consensus,1.2090432474931405,Hispanic
+Height (cm),0.10561488084302449,Hispanic
+VKORC1 3730 consensus,0.09944454075084873,Hispanic
+Simvastatin (Zocor),0.08067010043761177,Hispanic
+Weight (kg),0.0362017271488891,Hispanic
+"Herbal Medications, Vitamins, Supplements",0.0,Hispanic
+Sulfonamide Antibiotics,0.0,Hispanic
+Macrolide Antibiotics,0.0,Hispanic
+Anti-fungal Azoles,0.0,Hispanic
+Gender,0.0,Hispanic
+Current Smoker,0.0,Hispanic
+CYP2C9 consensus,0.0,Hispanic
+Phenytoin (Dilantin),0.0,Hispanic
+VKORC1 497 consensus,0.0,Hispanic
+Rifampin or Rifampicin,0.0,Hispanic
+Cerivastatin (Baycol),0.0,Hispanic
+Carbamazepine (Tegretol),0.0,Hispanic
+Amiodarone (Cordarone),0.0,Hispanic
+Rosuvastatin (Crestor),0.0,Hispanic
+Pravastatin (Pravachol),0.0,Hispanic
+Lovastatin (Mevacor),0.0,Hispanic
+Fluvastatin (Lescol),0.0,Hispanic
+Atorvastatin (Lipitor),0.0,Hispanic
+Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day,0.0,Hispanic
+Acetaminophen or Paracetamol (Tylenol),0.0,Hispanic
+Aspirin,0.0,Hispanic
+Valve Replacement,0.0,Hispanic
+Congestive Heart Failure and/or Cardiomyopathy,0.0,Hispanic
+Diabetes,0.0,Hispanic
+Indication for Warfarin Treatment,0.0,Hispanic
+VKORC1     -4451 consensus,0.0,Hispanic
+CYP2C9 consensus,3.950925428541257,Indian
+VKORC1 1542 consensus,3.008162730045245,Indian
+Age,2.264782976736911,Indian
+VKORC1 1173 consensus,1.4826027168102405,Indian
+Weight (kg),1.2909658822477148,Indian
+Indication for Warfarin Treatment,1.1531792280872968,Indian
+VKORC1 2255 consensus,0.535174150325989,Indian
+VKORC1 497 consensus,0.25150613837934777,Indian
+VKORC1 3730 consensus,0.11214934734895189,Indian
+Gender,0.08794392325599612,Indian
+Simvastatin (Zocor),0.03825231912136951,Indian
+Height (cm),0.0063017072794706525,Indian
+Anti-fungal Azoles,0.0,Indian
+Sulfonamide Antibiotics,0.0,Indian
+Macrolide Antibiotics,0.0,Indian
+VKORC1     -1639 consensus,0.0,Indian
+"Herbal Medications, Vitamins, Supplements",0.0,Indian
+Current Smoker,0.0,Indian
+Phenytoin (Dilantin),0.0,Indian
+Rifampin or Rifampicin,0.0,Indian
+Cerivastatin (Baycol),0.0,Indian
+Carbamazepine (Tegretol),0.0,Indian
+Amiodarone (Cordarone),0.0,Indian
+Rosuvastatin (Crestor),0.0,Indian
+Pravastatin (Pravachol),0.0,Indian
+Lovastatin (Mevacor),0.0,Indian
+Fluvastatin (Lescol),0.0,Indian
+Atorvastatin (Lipitor),0.0,Indian
+Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day,0.0,Indian
+Acetaminophen or Paracetamol (Tylenol),0.0,Indian
+Aspirin,0.0,Indian
+Valve Replacement,0.0,Indian
+Congestive Heart Failure and/or Cardiomyopathy,0.0,Indian
+Diabetes,0.0,Indian
+VKORC1     -4451 consensus,0.0,Indian
+VKORC1     -1639 consensus,2.988155137575656,Intermediate
+CYP2C9 consensus,2.1800420985069904,Intermediate
+Age,1.930926606558096,Intermediate
+Weight (kg),1.479475091034148,Intermediate
+Height (cm),1.1552672632717456,Intermediate
+Valve Replacement,0.8229359364661999,Intermediate
+Indication for Warfarin Treatment,0.6931845226391111,Intermediate
+Amiodarone (Cordarone),0.6021691498168481,Intermediate
+Current Smoker,0.5599735425066827,Intermediate
+Aspirin,0.08422035962091912,Intermediate
+Gender,0.060966369126524034,Intermediate
+Macrolide Antibiotics,0.0,Intermediate
+Anti-fungal Azoles,0.0,Intermediate
+"Herbal Medications, Vitamins, Supplements",0.0,Intermediate
+VKORC1 1173 consensus,0.0,Intermediate
+VKORC1 497 consensus,0.0,Intermediate
+Rifampin or Rifampicin,0.0,Intermediate
+VKORC1 1542 consensus,0.0,Intermediate
+VKORC1 3730 consensus,0.0,Intermediate
+VKORC1 2255 consensus,0.0,Intermediate
+Sulfonamide Antibiotics,0.0,Intermediate
+Cerivastatin (Baycol),0.0,Intermediate
+Phenytoin (Dilantin),0.0,Intermediate
+Carbamazepine (Tegretol),0.0,Intermediate
+Rosuvastatin (Crestor),0.0,Intermediate
+Pravastatin (Pravachol),0.0,Intermediate
+Lovastatin (Mevacor),0.0,Intermediate
+Fluvastatin (Lescol),0.0,Intermediate
+Atorvastatin (Lipitor),0.0,Intermediate
+Simvastatin (Zocor),0.0,Intermediate
+Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day,0.0,Intermediate
+Acetaminophen or Paracetamol (Tylenol),0.0,Intermediate
+Congestive Heart Failure and/or Cardiomyopathy,0.0,Intermediate
+Diabetes,0.0,Intermediate
+VKORC1     -4451 consensus,0.0,Intermediate
+Age,2.1691571611522433,Japanese
+VKORC1     -1639 consensus,2.1486449610952594,Japanese
+VKORC1 1542 consensus,1.77766522498401,Japanese
+VKORC1 2255 consensus,1.3856619349895356,Japanese
+Weight (kg),1.3548519024438266,Japanese
+Indication for Warfarin Treatment,1.0910212145027878,Japanese
+VKORC1 1173 consensus,0.8534906231928201,Japanese
+Valve Replacement,0.7846350015933163,Japanese
+Height (cm),0.7502539343596113,Japanese
+CYP2C9 consensus,0.7024595317459004,Japanese
+Congestive Heart Failure and/or Cardiomyopathy,0.2816658129088664,Japanese
+VKORC1 3730 consensus,0.06797463382952679,Japanese
+Gender,0.026880372181407604,Japanese
+VKORC1 497 consensus,0.0,Japanese
+Current Smoker,0.0,Japanese
+"Herbal Medications, Vitamins, Supplements",0.0,Japanese
+Anti-fungal Azoles,0.0,Japanese
+Rifampin or Rifampicin,0.0,Japanese
+Macrolide Antibiotics,0.0,Japanese
+Sulfonamide Antibiotics,0.0,Japanese
+Cerivastatin (Baycol),0.0,Japanese
+Phenytoin (Dilantin),0.0,Japanese
+Carbamazepine (Tegretol),0.0,Japanese
+Amiodarone (Cordarone),0.0,Japanese
+Rosuvastatin (Crestor),0.0,Japanese
+Pravastatin (Pravachol),0.0,Japanese
+Lovastatin (Mevacor),0.0,Japanese
+Fluvastatin (Lescol),0.0,Japanese
+Atorvastatin (Lipitor),0.0,Japanese
+Simvastatin (Zocor),0.0,Japanese
+Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day,0.0,Japanese
+Acetaminophen or Paracetamol (Tylenol),0.0,Japanese
+Aspirin,0.0,Japanese
+Diabetes,0.0,Japanese
+VKORC1     -4451 consensus,0.0,Japanese
+Age,2.4883956588208833,Korean
+CYP2C9 consensus,1.896503724993352,Korean
+VKORC1     -1639 consensus,1.6612932888544916,Korean
+Weight (kg),1.3137296468819015,Korean
+VKORC1 1542 consensus,0.9369996228836769,Korean
+Height (cm),0.8121192086486142,Korean
+Amiodarone (Cordarone),0.6544510486309869,Korean
+VKORC1 1173 consensus,0.6002478009013291,Korean
+Current Smoker,0.17340025959456964,Korean
+Congestive Heart Failure and/or Cardiomyopathy,0.10964816280102944,Korean
+Diabetes,0.08989990604754479,Korean
+Gender,0.04212608637386785,Korean
+Aspirin,0.03543967660955267,Korean
+VKORC1 3730 consensus,0.027120394177740162,Korean
+"Herbal Medications, Vitamins, Supplements",0.021070062302630494,Korean
+VKORC1 497 consensus,0.0,Korean
+Rifampin or Rifampicin,0.0,Korean
+Anti-fungal Azoles,0.0,Korean
+VKORC1 2255 consensus,0.0,Korean
+Macrolide Antibiotics,0.0,Korean
+Sulfonamide Antibiotics,0.0,Korean
+Cerivastatin (Baycol),0.0,Korean
+Phenytoin (Dilantin),0.0,Korean
+Carbamazepine (Tegretol),0.0,Korean
+Rosuvastatin (Crestor),0.0,Korean
+Pravastatin (Pravachol),0.0,Korean
+Lovastatin (Mevacor),0.0,Korean
+Fluvastatin (Lescol),0.0,Korean
+Atorvastatin (Lipitor),0.0,Korean
+Simvastatin (Zocor),0.0,Korean
+Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day,0.0,Korean
+Acetaminophen or Paracetamol (Tylenol),0.0,Korean
+Valve Replacement,0.0,Korean
+Indication for Warfarin Treatment,0.0,Korean
+VKORC1     -4451 consensus,0.0,Korean
+VKORC1 1542 consensus,3.7449335234050145,Malay
+Age,3.128118830742391,Malay
+Weight (kg),2.1317476032900027,Malay
+VKORC1 2255 consensus,1.8741944450359769,Malay
+VKORC1 1173 consensus,1.7536804110178987,Malay
+Indication for Warfarin Treatment,0.984083241693227,Malay
+CYP2C9 consensus,0.9564872405272413,Malay
+VKORC1     -1639 consensus,0.5345748306885888,Malay
+VKORC1 3730 consensus,0.1544714653997274,Malay
+Gender,0.09536434121272427,Malay
+Carbamazepine (Tegretol),0.0,Malay
+Current Smoker,0.0,Malay
+"Herbal Medications, Vitamins, Supplements",0.0,Malay
+Anti-fungal Azoles,0.0,Malay
+Macrolide Antibiotics,0.0,Malay
+Sulfonamide Antibiotics,0.0,Malay
+Rifampin or Rifampicin,0.0,Malay
+VKORC1 497 consensus,0.0,Malay
+Phenytoin (Dilantin),0.0,Malay
+Cerivastatin (Baycol),0.0,Malay
+Amiodarone (Cordarone),0.0,Malay
+Rosuvastatin (Crestor),0.0,Malay
+Pravastatin (Pravachol),0.0,Malay
+Lovastatin (Mevacor),0.0,Malay
+Fluvastatin (Lescol),0.0,Malay
+Atorvastatin (Lipitor),0.0,Malay
+Simvastatin (Zocor),0.0,Malay
+Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day,0.0,Malay
+Acetaminophen or Paracetamol (Tylenol),0.0,Malay
+Aspirin,0.0,Malay
+Valve Replacement,0.0,Malay
+Congestive Heart Failure and/or Cardiomyopathy,0.0,Malay
+Diabetes,0.0,Malay
+Height (cm),0.0,Malay
+VKORC1     -4451 consensus,0.0,Malay
+Gender,0.0,Other
+Current Smoker,0.0,Other
+Phenytoin (Dilantin),0.0,Other
+Rifampin or Rifampicin,0.0,Other
+Sulfonamide Antibiotics,0.0,Other
+Macrolide Antibiotics,0.0,Other
+Anti-fungal Azoles,0.0,Other
+"Herbal Medications, Vitamins, Supplements",0.0,Other
+CYP2C9 consensus,0.0,Other
+Amiodarone (Cordarone),0.0,Other
+VKORC1     -1639 consensus,0.0,Other
+VKORC1 497 consensus,0.0,Other
+VKORC1 1173 consensus,0.0,Other
+VKORC1 1542 consensus,0.0,Other
+VKORC1 3730 consensus,0.0,Other
+VKORC1 2255 consensus,0.0,Other
+Carbamazepine (Tegretol),0.0,Other
+Cerivastatin (Baycol),0.0,Other
+Age,0.0,Other
+Aspirin,0.0,Other
+Height (cm),0.0,Other
+Weight (kg),0.0,Other
+Indication for Warfarin Treatment,0.0,Other
+Diabetes,0.0,Other
+Congestive Heart Failure and/or Cardiomyopathy,0.0,Other
+Valve Replacement,0.0,Other
+Acetaminophen or Paracetamol (Tylenol),0.0,Other
+Rosuvastatin (Crestor),0.0,Other
+Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day,0.0,Other
+Simvastatin (Zocor),0.0,Other
+Atorvastatin (Lipitor),0.0,Other
+Fluvastatin (Lescol),0.0,Other
+Lovastatin (Mevacor),0.0,Other
+Pravastatin (Pravachol),0.0,Other
+VKORC1     -4451 consensus,0.0,Other
+VKORC1     -1639 consensus,6.840870777701085,Other Mixed Race
+VKORC1 1542 consensus,4.870648505680956,Other Mixed Race
+Height (cm),1.1401866202831565,Other Mixed Race
+Aspirin,0.5257279509844042,Other Mixed Race
+Indication for Warfarin Treatment,0.4925785840570588,Other Mixed Race
+Weight (kg),0.07661264317259366,Other Mixed Race
+VKORC1 3730 consensus,0.005353409843662455,Other Mixed Race
+Gender,0.0,Other Mixed Race
+Current Smoker,0.0,Other Mixed Race
+Sulfonamide Antibiotics,0.0,Other Mixed Race
+Macrolide Antibiotics,0.0,Other Mixed Race
+Anti-fungal Azoles,0.0,Other Mixed Race
+"Herbal Medications, Vitamins, Supplements",0.0,Other Mixed Race
+VKORC1 1173 consensus,0.0,Other Mixed Race
+CYP2C9 consensus,0.0,Other Mixed Race
+VKORC1 497 consensus,0.0,Other Mixed Race
+Phenytoin (Dilantin),0.0,Other Mixed Race
+VKORC1 2255 consensus,0.0,Other Mixed Race
+Rifampin or Rifampicin,0.0,Other Mixed Race
+Cerivastatin (Baycol),0.0,Other Mixed Race
+Carbamazepine (Tegretol),0.0,Other Mixed Race
+Amiodarone (Cordarone),0.0,Other Mixed Race
+Age,0.0,Other Mixed Race
+Rosuvastatin (Crestor),0.0,Other Mixed Race
+Pravastatin (Pravachol),0.0,Other Mixed Race
+Lovastatin (Mevacor),0.0,Other Mixed Race
+Fluvastatin (Lescol),0.0,Other Mixed Race
+Atorvastatin (Lipitor),0.0,Other Mixed Race
+Simvastatin (Zocor),0.0,Other Mixed Race
+Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day,0.0,Other Mixed Race
+Acetaminophen or Paracetamol (Tylenol),0.0,Other Mixed Race
+Valve Replacement,0.0,Other Mixed Race
+Congestive Heart Failure and/or Cardiomyopathy,0.0,Other Mixed Race
+Diabetes,0.0,Other Mixed Race
+VKORC1     -4451 consensus,0.0,Other Mixed Race
+Gender,0.0,Pacific Islander
+Current Smoker,0.0,Pacific Islander
+Phenytoin (Dilantin),0.0,Pacific Islander
+Rifampin or Rifampicin,0.0,Pacific Islander
+Sulfonamide Antibiotics,0.0,Pacific Islander
+Macrolide Antibiotics,0.0,Pacific Islander
+Anti-fungal Azoles,0.0,Pacific Islander
+"Herbal Medications, Vitamins, Supplements",0.0,Pacific Islander
+CYP2C9 consensus,0.0,Pacific Islander
+Amiodarone (Cordarone),0.0,Pacific Islander
+VKORC1     -1639 consensus,0.0,Pacific Islander
+VKORC1 497 consensus,0.0,Pacific Islander
+VKORC1 1173 consensus,0.0,Pacific Islander
+VKORC1 1542 consensus,0.0,Pacific Islander
+VKORC1 3730 consensus,0.0,Pacific Islander
+VKORC1 2255 consensus,0.0,Pacific Islander
+Carbamazepine (Tegretol),0.0,Pacific Islander
+Cerivastatin (Baycol),0.0,Pacific Islander
+Age,0.0,Pacific Islander
+Aspirin,0.0,Pacific Islander
+Height (cm),0.0,Pacific Islander
+Weight (kg),0.0,Pacific Islander
+Indication for Warfarin Treatment,0.0,Pacific Islander
+Diabetes,0.0,Pacific Islander
+Congestive Heart Failure and/or Cardiomyopathy,0.0,Pacific Islander
+Valve Replacement,0.0,Pacific Islander
+Acetaminophen or Paracetamol (Tylenol),0.0,Pacific Islander
+Rosuvastatin (Crestor),0.0,Pacific Islander
+Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day,0.0,Pacific Islander
+Simvastatin (Zocor),0.0,Pacific Islander
+Atorvastatin (Lipitor),0.0,Pacific Islander
+Fluvastatin (Lescol),0.0,Pacific Islander
+Lovastatin (Mevacor),0.0,Pacific Islander
+Pravastatin (Pravachol),0.0,Pacific Islander
+VKORC1     -4451 consensus,0.0,Pacific Islander
+CYP2C9 consensus,3.778321274277994,White
+Age,3.233102179631367,White
+VKORC1     -1639 consensus,2.526931625794222,White
+Weight (kg),2.280740330064739,White
+VKORC1 1542 consensus,1.6984414714491436,White
+VKORC1 1173 consensus,1.3121186192540688,White
+VKORC1 2255 consensus,1.201772639028236,White
+Height (cm),1.1242136335242374,White
+Indication for Warfarin Treatment,1.1227954363681076,White
+Amiodarone (Cordarone),0.849196250114811,White
+VKORC1 497 consensus,0.5707996507006436,White
+Current Smoker,0.4025901910208982,White
+Valve Replacement,0.1886436822663464,White
+Aspirin,0.17797501636159013,White
+Congestive Heart Failure and/or Cardiomyopathy,0.13359943762633233,White
+Diabetes,0.1029150224227349,White
+Lovastatin (Mevacor),0.10251885685498296,White
+Atorvastatin (Lipitor),0.08236310379013512,White
+Simvastatin (Zocor),0.06612380191471211,White
+VKORC1 3730 consensus,0.05534516074812957,White
+VKORC1     -4451 consensus,0.047773873539642596,White
+Gender,0.0444897207765119,White
+Sulfonamide Antibiotics,0.026993534594348036,White
+"Herbal Medications, Vitamins, Supplements",0.019042670758753596,White
+Fluvastatin (Lescol),0.01349962996497156,White
+Acetaminophen or Paracetamol (Tylenol),0.012555873209631642,White
+Pravastatin (Pravachol),0.002337554572217695,White
+Macrolide Antibiotics,0.0,White
+Anti-fungal Azoles,0.0,White
+Rifampin or Rifampicin,0.0,White
+Phenytoin (Dilantin),0.0,White
+Carbamazepine (Tegretol),0.0,White
+Rosuvastatin (Crestor),0.0,White
+Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day,0.0,White
+Cerivastatin (Baycol),0.0,White

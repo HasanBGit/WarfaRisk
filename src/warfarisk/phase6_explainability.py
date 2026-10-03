@@ -60,9 +60,10 @@ def shap_feature_importance(fitted_pipeline, X: pd.DataFrame, sample_size: int |
     explainer = shap.Explainer(predict_fn, X_encoded_values)
     shap_values = explainer(X_encoded_values)
     mean_abs_shap = np.abs(shap_values.values).mean(axis=0)
-    return pd.DataFrame({"feature": X_sample.columns, "mean_abs_shap": mean_abs_shap}).sort_values(
-        "mean_abs_shap", ascending=False
-    )
+    mean_signed_shap = shap_values.values.mean(axis=0)
+    return pd.DataFrame(
+        {"feature": X_sample.columns, "mean_abs_shap": mean_abs_shap, "mean_signed_shap": mean_signed_shap}
+    ).sort_values("mean_abs_shap", ascending=False)
 
 
 def shap_by_ancestry_subgroup(fitted_pipeline, X: pd.DataFrame, group: pd.Series, sample_size: int | None = 200) -> pd.DataFrame:

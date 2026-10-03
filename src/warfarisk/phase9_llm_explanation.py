@@ -176,3 +176,49 @@ def citation_faithfulness_check(explanation_text: str, retrieved_passages: list[
         "unverifiable_citations": sorted(unverifiable),
         "fully_grounded": len(unverifiable) == 0,
     }
+
+
+def citation_accuracy_check(explanation_text: str, shap_report, tolerance: float = 0.05) -> dict:
+    """Catches the gap citation_faithfulness_check cannot: a correct citation
+    attached to a fabricated magnitude or direction, e.g. "[SHAP: VKORC1]"
+    cited next to a contribution value that does not match the real SHAP
+    output for that feature. For each `[SHAP: <feature>]` citation, reads the
+    numbers stated in the same sentence and flags the citation if none of
+    them is within `tolerance` (relative) of the feature's actual
+    mean_abs_shap value. This only checks SHAP citations, since a passage
+    citation's "value" is free text, not a single number to compare against.
+    """
+    import re
+
+    shap_values = {row.feature: row.mean_abs_shap for row in shap_report.itertuples()}
+    # A period only ends a sentence when it isn't sitting between two
+    # digits, so "0.82" isn't mistaken for a sentence boundary.
+    sentence_boundaries = [m.start() for m in re.finditer(r"(?<!\d)\.(?!\d)", explanation_text)]
+    mismatches = []
+    n_checked = 0
+    for match in re.finditer(r"\[SHAP:\s*([^\]]+)\]", explanation_text):
+        feature = match.group(1).strip()
+        if feature not in shap_values:
+            continue
+        before = [b for b in sentence_boundaries if b < match.start()]
+        after = [b for b in sentence_boundaries if b >= match.end()]
+        sentence_start = before[-1] + 1 if before else 0
+        sentence_end = after[0] if after else len(explanation_text)
+        sentence = explanation_text[sentence_start:sentence_end]
+        # Excludes a digit that's part of a feature name like "VKORC1" or
+        # "CYP2C9" (not preceded/followed by a letter or digit), so a stray
+        # "1" from the citation bracket can't coincidentally "match" a real
+        # SHAP value and mask an actual mismatch.
+        stated_numbers = [float(n) for n in re.findall(r"(?<![A-Za-z0-9])-?\d+\.?\d*(?![A-Za-z0-9])", sentence)]
+        if not stated_numbers:
+            continue
+        n_checked += 1
+        true_value = shap_values[feature]
+        if not any(abs(abs(n) - abs(true_value)) <= tolerance * max(abs(true_value), 1e-9) for n in stated_numbers):
+            mismatches.append({"feature": feature, "stated": stated_numbers, "actual": true_value})
+    return {
+        "n_shap_citations_checked": n_checked,
+        "n_mismatches": len(mismatches),
+        "mismatches": mismatches,
+        "fully_accurate": len(mismatches) == 0,
+    }
