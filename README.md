@@ -104,16 +104,22 @@ PharmGKB / the International Warfarin Pharmacogenetics Consortium for the IWPC d
 
 ## 📜 Citation
 
-This work is described in the following manuscript, currently in preparation.
+This work is published in the *Journal of Personalized Medicine*.
 
-> Barmandah, H.; Bawazir, O.A.; Marghalani, S.A.; Shaat, M.; Alkattan, A.N.; AlEissa, M.M. Beyond Mean Absolute Error: Ancestry-Stratified Calibration and Explainability for Warfarin Dosing Models. Manuscript in preparation, 2026.
+> Barmandah, H.; Bawazir, O.A.; Marghalani, S.A.; Shaat, M.; Alkattan, A.N.; AlEissa, M.M. Beyond Mean Absolute Error: Ancestry-Stratified Calibration and Explainability for Warfarin Dosing Models. *J. Pers. Med.* **2026**, *16* (10), 531. https://doi.org/10.3390/jpm16100531
 
 ```bibtex
-@unpublished{barmandah2026beyond,
+@Article{jpm16100531,
+    author={Barmandah, Hassan and Bawazir, Omar A. and Marghalani, Siraj Aldeen and Shaat, Muath and Alkattan, Abdullah N. and AlEissa, Mariam M.},
     title={Beyond Mean Absolute Error: Ancestry-Stratified Calibration and Explainability for Warfarin Dosing Models},
-    author={Barmandah, Hassan and Bawazir, Omar Abdullah and Marghalani, Siraj Aldeen and Shaat, Moath and Alkattan, Abdullah N. and AlEissa, Mariam M.},
+    journal={Journal of Personalized Medicine},
+    volume={16},
     year={2026},
-    note={Manuscript in preparation. Cite the published version once assigned.}
+    number={10},
+    article-number={531},
+    url={https://www.mdpi.com/2075-4426/16/10/531},
+    issn={2075-4426},
+    doi={10.3390/jpm16100531}
 }
 ```
 
