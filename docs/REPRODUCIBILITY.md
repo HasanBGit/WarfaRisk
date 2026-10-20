@@ -25,5 +25,14 @@ Note: `mapie_conformal_interval` is seeded via `random_state` (default
 saved prediction files from the original run, so a fresh MAPIE run may differ
 by about a percentage point.
 
-Models: Hugging Face `HassanB4/warfarisk-baselines`, `warfarisk-autogluon-6256`,
-`warfarisk-autogluon-1780`.
+The `method=mapie` rows in `results/phase5_*_mondrian_vs_mapie_coverage.csv` come
+from the same-run MAPIE baseline of `run_mondrian_local.py` (overall 90.2%,
+Black 80.8% on IWPC-6256). The supplement's MAPIE column (overall 89.8%, Black
+82.2%) comes from the headline file `phase5_iwpc6256_mapie_predictions.csv`
+(see `results/phase5_iwpc6256_mapie_coverage.csv` and
+`check_mapie_ancestry_binomial_ci_results.csv`). The Mondrian columns are
+identical in both.
+
+Models (Hugging Face, account `HassanB4`): `warfarisk-baselines`,
+`warfarisk-autogluon-6256`, `warfarisk-autogluon-1780`, `warfarisk-catboost-6256`.
+Split files and SHAP/EBM outputs are in the AutoGluon repos under `splits/` and `shap/`.
