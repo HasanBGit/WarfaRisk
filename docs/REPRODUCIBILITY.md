@@ -63,3 +63,11 @@ scikit-learn 1.9.1), regenerated cleaned IWPC CSVs, then `scripts/run_mondrian_l
   byte-identically in the clean environment. The trailing Phase 4 section of
   `run_catboost_local.py` fails on string-valued categorical columns; use
   `run_catboost_phase4_local.py` for the Phase 4 results.
+- Stacking ensemble (`run_phase4_local.py`, IWPC-6256) and NGBoost
+  (`run_ngboost_local.py`, both cohorts) also reproduce the committed
+  CSVs byte-identically in the clean environment.
+- App latency (local, CatBoost + leave-one-out attributions, 30 calls to
+  `/predict`): median 11 ms, 95th percentile 25 ms. LLM-explanation timings
+  depend on the external inference provider and are not reproducible offline.
+- Not re-run: AutoGluon `extreme_quality` (GPU, hours); its saved metrics are
+  on the Hugging Face model cards.
