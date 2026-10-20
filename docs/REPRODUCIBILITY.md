@@ -36,3 +36,25 @@ identical in both.
 Models (Hugging Face, account `HassanB4`): `warfarisk-baselines`,
 `warfarisk-autogluon-6256`, `warfarisk-autogluon-1780`, `warfarisk-catboost-6256`.
 Split files and SHAP/EBM outputs are in the AutoGluon repos under `splits/` and `shap/`.
+
+## Fresh-clone verification (2026-10-20)
+
+Clean clone of this repo, clean Python 3.11 environment (mapie 1.6.0,
+scikit-learn 1.9.1), regenerated cleaned IWPC CSVs, then `scripts/run_mondrian_local.py`:
+
+- Mondrian quantiles and Mondrian coverage reproduce exactly (identical
+  quantile CSVs, zero coverage difference) on both cohorts.
+- The MAPIE baseline does **not** reproduce exactly across environments even
+  with `random_state=20260725`. Overall coverage is stable (IWPC-6256 90.2%,
+  IWPC-1780 93.3%), but small-subgroup coverage moves: IWPC-6256 Black was 84.9%
+  in this run, 80.8% in the earlier same-run baseline and 82.2% in the headline
+  file. Subgroup MAPIE figures should therefore be read from the saved headline
+  results, with a few percentage points of run-to-run variation for subgroups of
+  about 50-75 patients.
+- `check_*` scripts regenerate their results CSVs byte-identically from the
+  saved predictions.
+- Evidence logs under `results/logs/` cover the later phases; the Phase 1 and
+  Phase 3 console logs cited in `docs/RESULTS.md` (`logs/phase1_*`,
+  `logs/phase3_*`) were not preserved. Their numbers are reproduced by
+  `results/phase3_full_iwpc6256_summary.csv` and the model `metrics.json` files
+  on Hugging Face.
