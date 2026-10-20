@@ -1,0 +1,20 @@
+group,n_calib,pooled_to_global,quantile_mg_per_week
+White,371,False,19.046033653946218
+Japanese,129,False,14.39925126435351
+Caucasian,100,False,22.704442226395336
+Black,53,False,24.39424278301484
+Han Chinese,44,False,15.469399965767742
+Korean,43,False,16.304358154628304
+Black or African American,31,False,20.734371142454926
+African-American,22,False,34.8033084121972
+Chinese,21,False,22.77042243034129
+Malay,16,False,22.980749531897374
+Intermediate,13,False,18.41463925080412
+African American,9,True,18.90512847679276
+Asian,7,True,18.90512847679276
+Indian,5,True,18.90512847679276
+Hispanic,4,True,18.90512847679276
+Other Mixed Race,3,True,18.90512847679276
+Persian,1,True,18.90512847679276
+Pacific Islander,1,True,18.90512847679276
+,0,True,18.90512847679276

@@ -29,6 +29,7 @@ def mapie_conformal_interval(
     y_train: pd.Series,
     X_test: pd.DataFrame,
     alpha: float = 0.1,
+    random_state: int = 20260725,
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     """Wraps any already-built sklearn-compatible pipeline (e.g. Phase 3's
     winner) in MAPIE's conformal regression interval. alpha=0.1 -> a 90%
@@ -53,7 +54,9 @@ def mapie_conformal_interval(
     except ImportError as e:
         raise ImportError("MAPIE (>=1.4) is required. Install with: uv add 'mapie>=1.4'") from e
 
-    mapie_model = CrossConformalRegressor(estimator=base_estimator, confidence_level=1 - alpha, method="plus", cv=5)
+    mapie_model = CrossConformalRegressor(
+        estimator=base_estimator, confidence_level=1 - alpha, method="plus", cv=5, random_state=random_state
+    )
     mapie_model.fit_conformalize(X_train, y_train)
     y_pred = mapie_model.predict(X_test)
     _point_again, y_interval = mapie_model.predict_interval(X_test)
@@ -142,6 +145,78 @@ def score_all_methods(
         report["method"] = method_name
         rows.append(report)
     return pd.concat(rows, ignore_index=True) if rows else pd.DataFrame(columns=["group", "n", "coverage", "method"])
+
+
+def mondrian_conformal_interval(
+    base_estimator,
+    X_train: pd.DataFrame,
+    y_train: pd.Series,
+    X_test: pd.DataFrame,
+    group_train: pd.Series,
+    group_test: pd.Series,
+    alpha: float = 0.1,
+    calib_fraction: float = 0.2,
+    min_group_n: int = 10,
+    random_state: int = 20260725,
+) -> tuple[np.ndarray, np.ndarray, np.ndarray, pd.DataFrame]:
+    """Group-conditional (Mondrian) split conformal prediction, evaluated
+    against reviewer feedback asking for a comparator to MAPIE's marginal-only
+    guarantee. Unlike mapie_conformal_interval, this computes a SEPARATE
+    nonconformity quantile per ancestry group rather than one pooled quantile,
+    so it targets per-subgroup coverage directly rather than aggregate
+    coverage.
+
+    Procedure (standard split conformal, applied per group): hold out
+    calib_fraction of the training fold as a calibration set, fit
+    base_estimator on the remainder, compute absolute residuals on the
+    calibration set, then for each group compute the finite-sample-corrected
+    quantile ceil((n_g+1)(1-alpha))/n_g of that group's own residuals. Groups
+    with fewer than min_group_n calibration points are pooled into the
+    overall (marginal) calibration residuals instead of using an
+    unstable/degenerate per-group quantile computed from too few points —
+    this pooling threshold (min_group_n, default 10, matching roughly 1/alpha
+    at alpha=0.1) is a stated design choice, not a property of Mondrian
+    conformal prediction itself; smaller thresholds let more groups have a
+    genuinely separate quantile at the cost of noisier per-group estimates.
+
+    Returns (point_prediction, lower, upper, group_quantiles) where
+    group_quantiles is a DataFrame reporting each group's calibration n,
+    whether it was pooled, and its resulting quantile (in mg/week), so the
+    pooling decision is auditable rather than hidden inside the function.
+    """
+    from sklearn.model_selection import train_test_split
+
+    X_fit, X_calib, y_fit, y_calib, group_fit_ignored, group_calib = train_test_split(
+        X_train, y_train, group_train, test_size=calib_fraction, random_state=random_state
+    )
+    base_estimator.fit(X_fit, y_fit)
+    y_pred_calib = base_estimator.predict(X_calib)
+    residuals_calib = np.abs(y_calib.to_numpy() - y_pred_calib)
+
+    global_n = len(residuals_calib)
+    global_level = min(1.0, np.ceil((global_n + 1) * (1 - alpha)) / global_n)
+    global_q = float(np.quantile(residuals_calib, global_level, method="higher"))
+
+    group_quantiles: dict[str, float] = {}
+    quantile_rows = []
+    for group_name in pd.unique(group_calib):
+        group_mask = (group_calib.to_numpy() == group_name)
+        n_g = int(group_mask.sum())
+        pooled = n_g < min_group_n
+        if pooled:
+            q_g = global_q
+        else:
+            level_g = min(1.0, np.ceil((n_g + 1) * (1 - alpha)) / n_g)
+            q_g = float(np.quantile(residuals_calib[group_mask], level_g, method="higher"))
+        group_quantiles[group_name] = q_g
+        quantile_rows.append({"group": group_name, "n_calib": n_g, "pooled_to_global": pooled, "quantile_mg_per_week": q_g})
+    quantile_report = pd.DataFrame(quantile_rows).sort_values("n_calib", ascending=False).reset_index(drop=True)
+
+    y_pred_test = base_estimator.predict(X_test)
+    q_per_test_point = np.array([group_quantiles.get(g, global_q) for g in group_test.to_numpy()])
+    lower = y_pred_test - q_per_test_point
+    upper = y_pred_test + q_per_test_point
+    return y_pred_test, lower, upper, quantile_report
 
 
 def uncertainty_toolbox_report(y_true: np.ndarray, y_pred: np.ndarray, y_std: np.ndarray) -> dict:

@@ -1,0 +1,7 @@
+metric,iwpc_equation,stacking_ensemble
+mae,9.177,9.127
+paired_diff_mean,0.049,
+paired_diff_95ci_lo,-0.188,
+paired_diff_95ci_hi,0.29,
+wilcoxon_p,0.3403,
+outside_pw20_pct,57.1,55.1

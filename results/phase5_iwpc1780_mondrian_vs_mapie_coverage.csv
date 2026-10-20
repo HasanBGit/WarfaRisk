@@ -1,0 +1,9 @@
+group,n,coverage,method
+overall,356,0.9325842696629213,mapie
+Asian,93,1.0,mapie
+Black,74,0.8648648648648649,mapie
+Other/unspecified,189,0.9259259259259259,mapie
+overall,356,0.9269662921348315,mondrian
+Asian,93,0.978494623655914,mondrian
+Black,74,0.972972972972973,mondrian
+Other/unspecified,189,0.8835978835978836,mondrian

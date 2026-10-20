@@ -1,0 +1,39 @@
+group,n,coverage,method
+overall,1207,0.9022369511184756,mapie
+African American,5,0.6,mapie
+African-American,24,0.625,mapie
+Asian,4,1.0,mapie
+Black,73,0.8082191780821918,mapie
+Black or African American,52,0.75,mapie
+Caucasian,124,0.8629032258064516,mapie
+Chinese,28,0.9285714285714286,mapie
+Han Chinese,45,1.0,mapie
+Hispanic,2,1.0,mapie
+Indian,11,1.0,mapie
+Intermediate,14,0.7857142857142857,mapie
+Japanese,170,0.9647058823529412,mapie
+Korean,53,0.9811320754716981,mapie
+Malay,18,1.0,mapie
+Other,1,1.0,mapie
+Other Mixed Race,2,1.0,mapie
+Pacific Islander,1,1.0,mapie
+White,493,0.9148073022312373,mapie
+overall,1207,0.9138359569179785,mondrian
+African American,5,0.6,mondrian
+African-American,24,0.875,mondrian
+Asian,4,1.0,mondrian
+Black,73,0.9315068493150684,mondrian
+Black or African American,52,0.7884615384615384,mondrian
+Caucasian,124,0.9274193548387096,mondrian
+Chinese,28,0.9285714285714286,mondrian
+Han Chinese,45,0.9777777777777777,mondrian
+Hispanic,2,1.0,mondrian
+Indian,11,1.0,mondrian
+Intermediate,14,0.8571428571428571,mondrian
+Japanese,170,0.8941176470588236,mondrian
+Korean,53,0.9433962264150944,mondrian
+Malay,18,1.0,mondrian
+Other,1,1.0,mondrian
+Other Mixed Race,2,1.0,mondrian
+Pacific Islander,1,1.0,mondrian
+White,493,0.920892494929006,mondrian
