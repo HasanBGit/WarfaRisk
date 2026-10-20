@@ -71,3 +71,8 @@ scikit-learn 1.9.1), regenerated cleaned IWPC CSVs, then `scripts/run_mondrian_l
   depend on the external inference provider and are not reproducible offline.
 - Not re-run: AutoGluon `extreme_quality` (GPU, hours); its saved metrics are
   on the Hugging Face model cards.
+- AutoGluon (IWPC-6256): the published `HassanB4/warfarisk-autogluon-6256`
+  model, downloaded from the Hub and evaluated on the fixed test split on a
+  different machine (macOS, CPU, AutoGluon 1.5.0), gives MAE 8.556, R2 0.475,
+  PW20 0.465 against the stored 8.552 / 0.475 / 0.466. The 0.004 difference
+  is platform-level floating-point variation in TabPFN inference.
