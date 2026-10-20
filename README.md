@@ -5,7 +5,7 @@ A nine-phase, fully reproducible machine learning pipeline for warfarin maintena
 #### By: Hassan Barmandah, Omar Abdullah Bawazir, Siraj Aldeen Marghalani, Moath Shaat, Abdullah N. Alkattan, and Mariam M. AlEissa (corresponding author), Alfaisal University, Riyadh
 
 [![Code](https://img.shields.io/badge/GitHub-Code-blue)](https://github.com/HasanBGit/WarfaRisk)
-[![HuggingFace](https://img.shields.io/badge/HuggingFace-3%20Models-F9D371?logo=huggingface&logoColor=black)](https://huggingface.co/collections/HassanB4/beyond-mae-ancestry-stratified-warfarin-dose-prediction-6a79b7f715e8533e72db4b4e)
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-4%20Models-F9D371?logo=huggingface&logoColor=black)](https://huggingface.co/collections/HassanB4/beyond-mae-ancestry-stratified-warfarin-dose-prediction-6a79b7f715e8533e72db4b4e)
 [![License](https://img.shields.io/badge/License-Apache%202.0-lightgrey)](LICENSE)
 
 > **This is a research artifact, not a validated clinical tool.** It has not been evaluated prospectively, carries no regulatory clearance, and should not be used to make an actual dosing decision.
@@ -51,7 +51,7 @@ predictor = TabularPredictor.load(local_dir)
 prediction = predictor.predict(your_dataframe)  # combined clinical+genetic features
 ```
 
-Model cards: [`warfarisk-baselines`](https://huggingface.co/HassanB4/warfarisk-baselines), [`warfarisk-autogluon-6256`](https://huggingface.co/HassanB4/warfarisk-autogluon-6256), [`warfarisk-autogluon-1780`](https://huggingface.co/HassanB4/warfarisk-autogluon-1780).
+Model cards: [`warfarisk-baselines`](https://huggingface.co/HassanB4/warfarisk-baselines), [`warfarisk-autogluon-6256`](https://huggingface.co/HassanB4/warfarisk-autogluon-6256), [`warfarisk-autogluon-1780`](https://huggingface.co/HassanB4/warfarisk-autogluon-1780), [`warfarisk-catboost-6256`](https://huggingface.co/HassanB4/warfarisk-catboost-6256). These are the models released on the Hub; the other architectures in the nine-model comparison are reproduced from the code and the result CSVs in `results/` (see [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md)).
 
 ### Option B: reproduce the pipeline
 

@@ -58,3 +58,8 @@ scikit-learn 1.9.1), regenerated cleaned IWPC CSVs, then `scripts/run_mondrian_l
   `logs/phase3_*`) were not preserved. Their numbers are reproduced by
   `results/phase3_full_iwpc6256_summary.csv` and the model `metrics.json` files
   on Hugging Face.
+- CatBoost: `run_catboost_local.py` Phase 3 (both cohorts) and
+  `run_catboost_phase4_local.py` (both cohorts) reproduce the committed CSVs
+  byte-identically in the clean environment. The trailing Phase 4 section of
+  `run_catboost_local.py` fails on string-valued categorical columns; use
+  `run_catboost_phase4_local.py` for the Phase 4 results.
