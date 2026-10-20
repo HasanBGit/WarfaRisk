@@ -76,3 +76,7 @@ scikit-learn 1.9.1), regenerated cleaned IWPC CSVs, then `scripts/run_mondrian_l
   different machine (macOS, CPU, AutoGluon 1.5.0), gives MAE 8.556, R2 0.475,
   PW20 0.465 against the stored 8.552 / 0.475 / 0.466. The 0.004 difference
   is platform-level floating-point variation in TabPFN inference.
+- AutoGluon (IWPC-1780): the published `HassanB4/warfarisk-autogluon-1780`
+  model evaluated on the fixed test split (n=356) gives MAE 7.959, R2 0.480,
+  PW20 0.497, matching the stored metrics. (On macOS, set `OMP_NUM_THREADS=1`;
+  LightGBM inference can otherwise hang.)
