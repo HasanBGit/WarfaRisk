@@ -107,9 +107,11 @@ Every phase after Phase 0 needs `data/eda_notebooks/cleaned/*.csv`. These files 
 
 ### Run the prototype interface
 
-The server in `prototype_app/server/app_server.py` loads the fitted CatBoost model and returns a dose prediction, leave-one-out feature attributions and a 90% conformal interval. No numbers are hardcoded.
+The server in `prototype_app/server/app_server.py` loads the fitted CatBoost model and returns a dose prediction, leave-one-out feature attributions and a 90% prediction interval. The interval is a fixed band whose half-width is the 90th percentile of the model's absolute errors on its held-out test set. It is not the MAPIE interval used in the per-ancestry calibration analysis. No numbers are hardcoded.
 
 An explanation layer grounds each explanation in PharmGKB and CPIC guideline text and in this project's own SHAP and ancestry findings. Every citation is checked against the retrieved evidence before it is shown. The language model is MedGemma-27b-text-it through Hugging Face Inference Providers. With no key configured, the server falls back to a deterministic, citation-verified generator. Copy [`prototype_app/.env.example`](prototype_app/.env.example) to set a key.
+
+A separate React and Django demo with fixed example data is in [WarfaRisk-Prototype-UI](https://github.com/HasanBGit/WarfaRisk-Prototype-UI). The interface connected to the trained model is the one in `prototype_app/`.
 
 ```bash
 cd prototype_app
@@ -137,6 +139,7 @@ The server is split into four modules:
 
 - The pipeline is for research only. It has no prospective clinical validation and no regulatory status.
 - IWPC-6256 splits Black and African American patients across three overlapping labels, which reduces the statistical power of each subgroup.
+- The prototype interface has not been evaluated prospectively. Its prediction interval comes from test-set residuals and carries no per-ancestry coverage guarantee.
 - No raw data is included. To reproduce from raw data you need your own access to IWPC and, optionally, PhysioNet. See [`data/DATA.md`](data/DATA.md).
 
 The full list is in [`docs/KNOWN_ISSUES.md`](docs/KNOWN_ISSUES.md).

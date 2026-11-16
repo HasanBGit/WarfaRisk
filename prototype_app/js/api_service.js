@@ -40,7 +40,7 @@ Do NOT introduce any medical fact that is not present in the inputs below, even 
 If the ancestry coverage note below is non-empty, include it verbatim as the final sentence.
 
 Predicted Stable Weekly Dose: ${predictionResult.predictedWeeklyDose} mg/week (Daily: ${predictionResult.dailyDose} mg/day)
-90% Conformal Prediction Interval: (${predictionResult.interval[0]} - ${predictionResult.interval[1]}) mg/week
+90% Prediction Interval (from held-out test residuals): (${predictionResult.interval[0]} - ${predictionResult.interval[1]}) mg/week
 
 SHAP feature attributions (feature: contribution):
 ${shapLines}
@@ -185,7 +185,7 @@ Explanation:`;
 
     generateDeterministicFallback(prediction, passages) {
         let lines = [];
-        lines.push(`The recommended stable weekly warfarin dose is estimated at ${prediction.predictedWeeklyDose} mg/week (${prediction.dailyDose} mg/day) with a 90% MAPIE conformal prediction interval of (${prediction.interval[0]} - ${prediction.interval[1]}) mg/week [MAPIE Split Conformal Uncertainty Quantification].`);
+        lines.push(`The recommended stable weekly warfarin dose is estimated at ${prediction.predictedWeeklyDose} mg/week (${prediction.dailyDose} mg/day) with a 90% prediction interval of (${prediction.interval[0]} - ${prediction.interval[1]}) mg/week [MAPIE Split Conformal Uncertainty Quantification].`);
 
         const vkorc = prediction.shapAttributions.find(s => s.feature.includes("VKORC1"));
         if (vkorc) {
