@@ -1,0 +1,49 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the paper below."
+title: "WarfaRisk: Reproducible Warfarin Dose Prediction Pipeline"
+type: software
+authors:
+  - family-names: Barmandah
+    given-names: Hassan
+  - family-names: Bawazir
+    given-names: Omar Abdullah
+  - family-names: Marghalani
+    given-names: Siraj Aldeen
+  - family-names: Shaat
+    given-names: Muath
+  - family-names: Alkattan
+    given-names: Abdullah N.
+  - family-names: AlEissa
+    given-names: Mariam M.
+license: Apache-2.0
+repository-code: "https://github.com/HasanBGit/WarfaRisk"
+preferred-citation:
+  type: article
+  title: "Beyond Mean Absolute Error: Ancestry-Stratified Calibration and Explainability for Warfarin Dosing Models"
+  authors:
+    - {family-names: Barmandah, given-names: Hassan}
+    - {family-names: Bawazir, given-names: Omar A.}
+    - {family-names: Marghalani, given-names: Siraj Aldeen}
+    - {family-names: Shaat, given-names: Muath}
+    - {family-names: Alkattan, given-names: Abdullah N.}
+    - {family-names: AlEissa, given-names: Mariam M.}
+  journal: Journal of Personalized Medicine
+  volume: 16
+  issue: 10
+  start: 531
+  year: 2026
+  doi: 10.3390/jpm16100531
+references:
+  - type: article
+    title: "WarfaRisk: A Reproducible, Fairness-Aware Machine Learning Pipeline for Warfarin Dose Prediction (Prototype)"
+    authors:
+      - {family-names: Barmandah, given-names: Hassan}
+      - {family-names: Marghalani, given-names: Siraj Aldeen}
+      - {family-names: Bawazir, given-names: Omar Abdullah}
+      - {family-names: Shaat, given-names: Muath}
+      - {family-names: Alkattan, given-names: Abdullah N.}
+      - {family-names: AlEissa, given-names: Mariam M.}
+    journal: AI
+    publisher: {name: MDPI}
+    year: 2026
+    notes: "Manuscript ai-4528916, accepted 9 October 2026"

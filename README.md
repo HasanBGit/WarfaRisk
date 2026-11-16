@@ -123,6 +123,21 @@ This work is published in the *Journal of Personalized Medicine*.
 }
 ```
 
+The prototype system (pipeline, web interface and explanation layer) is described in a companion paper, accepted in MDPI *AI* on 9 October 2026:
+
+```bibtex
+@article{barmandah2026warfarisk,
+  author  = {Barmandah, Hassan and Marghalani, Siraj Aldeen and Bawazir, Omar Abdullah and Shaat, Muath and Alkattan, Abdullah N. and AlEissa, Mariam M.},
+  title   = {{WarfaRisk}: A Reproducible, Fairness-Aware Machine Learning Pipeline for Warfarin Dose Prediction (Prototype)},
+  journal = {AI},
+  publisher = {MDPI},
+  year    = {2026},
+  note    = {Manuscript ai-4528916, accepted 9 October 2026},
+}
+```
+
+A machine-readable version is in [`CITATION.cff`](CITATION.cff).
+
 ---
 
 ## 📄 License
