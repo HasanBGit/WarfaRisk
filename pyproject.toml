@@ -71,3 +71,12 @@ packages = ["src/warfarisk"]
 
 [tool.uv]
 package = true
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RET"]
+ignore = ["B905", "E501"]

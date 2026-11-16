@@ -7,12 +7,17 @@ from warfarisk.phase4_ancestry_holdout import run_phase4_iwpc1780, run_phase4_iw
 df6256 = data_mod.load_iwpc_6256()
 df1780 = data_mod.load_iwpc_1780()
 
-print("=== Phase 4: ancestry holdout with real CatBoost (autocat wrapper), iwpc_6256 ===", flush=True)
+print(
+    "=== Phase 4: ancestry holdout with real CatBoost (autocat wrapper), iwpc_6256 ===", flush=True
+)
 result4_6256 = run_phase4_iwpc6256(df6256, build_catboost_autocat, which="combined")
 print(result4_6256.to_string(), flush=True)
 result4_6256.to_csv("phase4_iwpc6256_catboost_results.csv", index=False)
 
-print("\n=== Phase 4: ancestry holdout with real CatBoost (autocat wrapper), iwpc_1780 ===", flush=True)
+print(
+    "\n=== Phase 4: ancestry holdout with real CatBoost (autocat wrapper), iwpc_1780 ===",
+    flush=True,
+)
 result4_1780 = run_phase4_iwpc1780(df1780, build_catboost_autocat, which="combined")
 print(result4_1780.to_string(), flush=True)
 result4_1780.to_csv("phase4_iwpc1780_catboost_results.csv", index=False)

@@ -22,5 +22,8 @@ shap_report = shap_feature_importance(pipeline, X_test, sample_size=200)
 print("\n=== Top 15 features by mean |SHAP| ===", flush=True)
 print(shap_report.head(15).to_string(), flush=True)
 shap_report.to_csv("phase6_iwpc6256_stacking_ensemble_shap.csv", index=False)
-print(f"\nSaved to phase6_iwpc6256_stacking_ensemble_shap.csv at {datetime.datetime.now().isoformat()}", flush=True)
+print(
+    f"\nSaved to phase6_iwpc6256_stacking_ensemble_shap.csv at {datetime.datetime.now().isoformat()}",
+    flush=True,
+)
 print("PHASE6_DONE", flush=True)

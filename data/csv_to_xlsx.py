@@ -1,13 +1,14 @@
 import sys
-import pandas as pd
 from pathlib import Path
+
+import pandas as pd
 
 EXCEL_MAX_ROWS = 1_048_576
 
 
 def csv_to_xlsx(csv_path: Path, xlsx_path: Path, sheet_name: str = "data"):
     df = pd.read_csv(csv_path, low_memory=False)
-    sheet_name = sheet_name[:31]  # Excel sheet-name length limit
+    sheet_name = sheet_name[:31]
     if len(df) > EXCEL_MAX_ROWS - 1:
         raise ValueError(f"{csv_path} has {len(df)} rows, exceeds Excel's row limit")
     df.to_excel(xlsx_path, sheet_name=sheet_name, index=False, engine="openpyxl")

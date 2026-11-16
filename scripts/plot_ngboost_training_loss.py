@@ -1,14 +1,8 @@
-# /// script
-# requires-python = ">=3.12"
-# dependencies = [
-#     "matplotlib",
-#     "seaborn",
-#     "pandas",
-# ]
-# ///
-"""Plot NGBoost's natural-gradient training loss curve on both cohorts, from
-the actual logged fit (results/phase5_ngboost_training_loss.csv, transcribed
-from results/logs/logs_ngboost_local.log -- not synthetic)."""
+"""
+Plot NGBoost's natural-gradient training loss curve on both cohorts, from the actual
+logged fit (results/phase5_ngboost_training_loss.csv, transcribed from
+results/logs/logs_ngboost_local.log -- not synthetic)
+"""
 
 from pathlib import Path
 
@@ -18,13 +12,7 @@ import seaborn as sns
 
 
 def main():
-    """Plot NGBoost training loss by boosting iteration, both cohorts.
-
-    Saves
-    -----
-    ./figures/fig_ngboost_training_loss.png
-    ./figures/fig_ngboost_training_loss.pdf
-    """
+    """Plot NGBoost training loss by boosting iteration, both cohorts"""
     repo_root = Path(__file__).resolve().parent.parent
     df = pd.read_csv(repo_root / "results" / "phase5_ngboost_training_loss.csv").dropna()
 
@@ -36,18 +24,40 @@ def main():
 
     for cohort in ["iwpc_6256", "iwpc_1780"]:
         sub = df[df["cohort"] == cohort].sort_values("iter")
-        ax.plot(sub["iter"], sub["loss"], marker="o", markersize=5, linewidth=2,
-                color=colors[cohort], label=labels[cohort])
+        ax.plot(
+            sub["iter"],
+            sub["loss"],
+            marker="o",
+            markersize=5,
+            linewidth=2,
+            color=colors[cohort],
+            label=labels[cohort],
+        )
         last = sub.iloc[-1]
-        ax.annotate(f"{last['loss']:.3f}", xy=(last["iter"], last["loss"]),
-                    xytext=(8, 0), textcoords="offset points", va="center",
-                    fontsize=9, color=colors[cohort], weight="bold")
+        ax.annotate(
+            f"{last['loss']:.3f}",
+            xy=(last["iter"], last["loss"]),
+            xytext=(8, 0),
+            textcoords="offset points",
+            va="center",
+            fontsize=9,
+            color=colors[cohort],
+            weight="bold",
+        )
 
     ax.set_title("NGBoost Natural-Gradient Training Loss", loc="left", fontsize=13.5, pad=12)
     ax.set_xlabel("Boosting iteration", fontsize=11, labelpad=8, color="dimgrey")
-    ax.set_ylabel("Training loss (negative log-likelihood)", fontsize=11, labelpad=8, color="dimgrey")
-    ax.legend(loc="upper right", frameon=True, facecolor="white", framealpha=0.8,
-              edgecolor="lightgrey", labelcolor="dimgrey")
+    ax.set_ylabel(
+        "Training loss (negative log-likelihood)", fontsize=11, labelpad=8, color="dimgrey"
+    )
+    ax.legend(
+        loc="upper right",
+        frameon=True,
+        facecolor="white",
+        framealpha=0.8,
+        edgecolor="lightgrey",
+        labelcolor="dimgrey",
+    )
 
     sns.despine(left=True, bottom=True)
     ax.grid(alpha=0.5, linewidth=0.8, axis="y")

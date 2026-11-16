@@ -1,36 +1,7 @@
-"""Confirms IWPC-1780's continuous covariates were z-scored on the full
-released sample, not train-only, by inspecting the raw R data object the
-`simsl` CRAN package actually distributes (the source of IWPC-1780 in this
-project).
-
-Background: a reviewer pointed out that IWPC-1780's continuous covariates
-(age, weight, height) arrive already z-scored from the source, and asked
-whether the normalization parameters could have been estimated from the
-full dataset, which would leak held-out patients' information into every
-patient's scaled value before this project's own train/test split is ever
-applied. This script settles that empirically rather than by inference from
-the accompanying paper's text.
-
-Method: download the `simsl` package source tarball from CRAN, parse the
-bundled `data/warfarin.RData` object directly (it is a list of INR, A, X,
-not a data.frame, so the common `pyreadr` library returns nothing for it;
-the more general `rdata` library handles arbitrary R objects and works),
-and compute the mean/std of each continuous column across all 1,780
-patients.
-
-Result (as reported in the manuscript, Limitations): weight, height, and
-age all have mean 0.0 and standard deviation 1.0 to displayed precision
-across the complete 1,780-patient sample simultaneously. This is only
-possible if the scaling parameters were computed from the full sample
-before any train/test split existed; had they been computed on a train-only
-subset, the full sample's mean/std would not both land on exactly 0/1. The
-package ships no raw, unscaled version of this data, so this project cannot
-redo the scaling itself.
-
-Requires network access (downloads the CRAN tarball) and the `rdata`
-package (`pip install rdata`; a pre-built wheel is available, no compiler
-needed). Not part of the regular pipeline; run on demand to reproduce this
-specific finding.
+"""
+Confirms IWPC-1780's continuous covariates were z-scored on the full released sample,
+not train-only, by inspecting the raw R data object the `simsl` CRAN package actually
+distributes (the source of IWPC-1780 in this project)
 """
 
 from __future__ import annotations

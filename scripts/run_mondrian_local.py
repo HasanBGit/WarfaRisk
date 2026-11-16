@@ -14,7 +14,9 @@ def run_cohort(name, X_train, y_train, X_test, y_test, group_train, group_test):
     print(f"\n=== Phase 5: MAPIE vs Mondrian conformal calibration, {name} ===", flush=True)
 
     mapie_est = build_stacking_ensemble()
-    mapie_pred, mapie_lower, mapie_upper = mapie_conformal_interval(mapie_est, X_train, y_train, X_test, alpha=0.1)
+    mapie_pred, mapie_lower, mapie_upper = mapie_conformal_interval(
+        mapie_est, X_train, y_train, X_test, alpha=0.1
+    )
     mapie_report = stratified_conformal_coverage(y_test, mapie_lower, mapie_upper, group_test)
     mapie_report["method"] = "mapie"
 
@@ -22,7 +24,9 @@ def run_cohort(name, X_train, y_train, X_test, y_test, group_train, group_test):
     mondrian_pred, mondrian_lower, mondrian_upper, quantiles = mondrian_conformal_interval(
         mondrian_est, X_train, y_train, X_test, group_train, group_test, alpha=0.1
     )
-    mondrian_report = stratified_conformal_coverage(y_test, mondrian_lower, mondrian_upper, group_test)
+    mondrian_report = stratified_conformal_coverage(
+        y_test, mondrian_lower, mondrian_upper, group_test
+    )
     mondrian_report["method"] = "mondrian"
     mondrian_width = float((mondrian_upper - mondrian_lower).mean())
     mapie_width = float((mapie_upper - mapie_lower).mean())
@@ -33,7 +37,10 @@ def run_cohort(name, X_train, y_train, X_test, y_test, group_train, group_test):
     print(mondrian_report.to_string(), flush=True)
     print("--- Mondrian calibration quantiles by group (pooling audit) ---", flush=True)
     print(quantiles.to_string(), flush=True)
-    print(f"Mean interval width: MAPIE={mapie_width:.3f} mg/week, Mondrian={mondrian_width:.3f} mg/week", flush=True)
+    print(
+        f"Mean interval width: MAPIE={mapie_width:.3f} mg/week, Mondrian={mondrian_width:.3f} mg/week",
+        flush=True,
+    )
 
     comparison = pd.concat([mapie_report, mondrian_report], ignore_index=True)
     comparison.to_csv(f"phase5_{name}_mondrian_vs_mapie_coverage.csv", index=False)
@@ -53,7 +60,6 @@ def run_cohort(name, X_train, y_train, X_test, y_test, group_train, group_test):
     return comparison, quantiles, mapie_width, mondrian_width
 
 
-# --- iwpc_6256 ---
 split = splits.load_split("iwpc_6256")
 df = data_mod.load_iwpc_6256()
 train_df, test_df = splits.apply_split(df, split)
@@ -66,7 +72,6 @@ group_test_6256 = test_df["Race (Reported)"]
 
 run_cohort("iwpc6256", X_train, y_train, X_test, y_test, group_train_6256, group_test_6256)
 
-# --- iwpc_1780 ---
 split1780 = splits.load_split("iwpc_1780")
 df1780 = data_mod.load_iwpc_1780()
 train1780, test1780 = splits.apply_split(df1780, split1780)
@@ -77,7 +82,9 @@ y_test1780 = test1780[data_mod.IWPC1780_TARGET]
 group_train_1780 = iwpc1780_ancestry_group(train1780)
 group_test_1780 = iwpc1780_ancestry_group(test1780)
 
-run_cohort("iwpc1780", X_train1780, y_train1780, X_test1780, y_test1780, group_train_1780, group_test_1780)
+run_cohort(
+    "iwpc1780", X_train1780, y_train1780, X_test1780, y_test1780, group_train_1780, group_test_1780
+)
 
 print(f"\nAll done at {datetime.datetime.now().isoformat()}", flush=True)
 print("MONDRIAN_DONE", flush=True)

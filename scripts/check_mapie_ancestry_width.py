@@ -1,25 +1,4 @@
-"""Per-ancestry MAPIE interval width, recovered by positional alignment.
-
-Background: the original MAPIE run's saved predictions
-(phase5_iwpc6256_mapie_predictions.csv) have only y_true, y_pred, lower,
-upper columns -- no ancestry label was saved alongside them. This initially
-looked like a dead end for a per-ancestry MAPIE width table.
-
-It isn't. This file's row order is the same fixed IWPC-6256 test split
-(common.splits.load_split("iwpc_6256")) used everywhere else in this
-project. Verified directly: a fresh load of that split's y_true values
-matches this file's y_true column exactly, position for position, across
-all 1,207 rows. So the test set's "Race (Reported)" column (the ancestry
-label) can be attached to this file by position, recovering the missing
-label without re-running anything.
-
-Sanity check before trusting this: the recovered per-group coverage for the
-four ancestry labels underlying the manuscript's stated "60% to 82%" range
-matches the already-published numbers exactly (Black 82.2%, African-American
-62.5%, Black or African American 69.2%, African American [n=5] 60.0%),
-confirming this file is genuinely the canonical run behind those published
-figures, not a different or non-reproducible run.
-"""
+"""Per-ancestry MAPIE interval width, recovered by positional alignment"""
 
 from __future__ import annotations
 
@@ -57,7 +36,14 @@ def main() -> None:
         n = len(sub)
         coverage = ((sub["y_true"] >= sub["lower"]) & (sub["y_true"] <= sub["upper"])).mean()
         width = (sub["upper"] - sub["lower"]).mean()
-        rows.append({"ancestry_group": g, "n": n, "mapie_coverage_pct": round(coverage * 100, 1), "mapie_width_mg_per_week": round(width, 2)})
+        rows.append(
+            {
+                "ancestry_group": g,
+                "n": n,
+                "mapie_coverage_pct": round(coverage * 100, 1),
+                "mapie_width_mg_per_week": round(width, 2),
+            }
+        )
         print(f"{g:30s} n={n:3d} coverage={coverage * 100:.1f}% width={width:.2f} mg/week")
 
     pd.DataFrame(rows).to_csv("check_mapie_ancestry_width_results.csv", index=False)

@@ -1,19 +1,4 @@
-"""Phase 4 — ancestry-stratified / leave-one-ancestry-out validation.
-
-Implements TRAINING_PLAN.md Phase 4: direct replication, then extension, of
-the review's own Table 4 (train on all-but-one ancestry group, test only on
-the held-out group; compare against a matched in-group internal control).
-
-No new model is chosen here — this reuses whichever builder function from
-phase3_genetics_ablation.MODEL_REGISTRY the Phase 3 results table names as the
-winner. This module is a validation *protocol*, not a new architecture.
-
-Known, stated data gap (see TRAINING_PLAN.md Phase 4): neither IWPC extract
-resolves CYP2C9*5/*6/*8/*11 or rs12777823, the variants most relevant to
-African-ancestry patients. This phase will very likely reproduce the review's
-own finding that error concentrates in the least-represented, worst-covered
-ancestry group — expected, not a bug to tune away.
-"""
+"""Phase 4 — ancestry-stratified / leave-one-ancestry-out validation"""
 
 from __future__ import annotations
 
@@ -24,9 +9,12 @@ from warfarisk.common.metrics import regression_report
 
 
 def iwpc1780_ancestry_group(df: pd.DataFrame) -> pd.Series:
-    """1780's ancestry signal is two binary flags (Black, Asian), not one
-    categorical column like 6256's `Race (Reported)` — collapse into a single
-    group label so both cohorts can share the same holdout loop below."""
+    """
+    1780's ancestry signal is two binary flags (Black, Asian), not one categorical
+    column like 6256's `Race (Reported)` — collapse into a single group label so
+    both cohorts can share the same holdout loop below
+    """
+
     def _label(row):
         if row["Black"] == 1:
             return "Black"
@@ -46,10 +34,11 @@ def leave_one_ancestry_out(
     which: str = "combined",
     min_group_n: int = 20,
 ) -> pd.DataFrame:
-    """For every ancestry group with at least min_group_n patients: fit on
-    every OTHER group, test only on the held-out group, and separately fit a
-    matched in-group 80/20 internal control — reproduces the review's own
-    Table 4 shape (held-out-group MAE next to a matched in-group control).
+    """
+    For every ancestry group with at least min_group_n patients: fit on every OTHER
+    group, test only on the held-out group, and separately fit a matched in-group
+    80/20 internal control — reproduces the review's own Table 4 shape (held-out-
+    group MAE next to a matched in-group control)
     """
     if isinstance(ancestry_col_or_series, str):
         ancestry = df[ancestry_col_or_series]
@@ -80,12 +69,10 @@ def leave_one_ancestry_out(
         report["group"] = group
         rows.append(report)
 
-        # Matched in-group 80/20 internal control, same shape as the review's
-        # own "White internal 80/20 control" row in Table 4.
         in_group = df[df["_ancestry_group"] == group].sample(frac=1.0, random_state=0)
         split_idx = int(len(in_group) * 0.8)
         in_train, in_test = in_group.iloc[:split_idx], in_group.iloc[split_idx:]
-        if len(in_test) >= 5:  # skip the control when the held-out group is too small to sub-split meaningfully
+        if len(in_test) >= 5:
             X_in_train = feature_set_fn(in_train, which)
             X_in_test = feature_set_fn(in_test, which)
             control_pipeline = model_builder()

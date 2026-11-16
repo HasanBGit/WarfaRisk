@@ -1,15 +1,4 @@
-"""Per-ancestry SHAP feature importance, IWPC-6256, stacking ensemble.
-
-Extends run_phase6_shap_by_ancestry_1780.py to the primary cohort's full
-18-label Race (Reported) field, now that the per-ancestry SHAP capability
-has been verified correct on IWPC-1780 (sanity check there matched the
-published overall result exactly). This checks whether the explainability
-shift found on IWPC-1780's three coarse groups also holds at IWPC-6256's
-finer label resolution.
-
-Raw IWPC-6256 data is not bundled in this repo (per the Data Availability
-Statement) and is read from the private local working copy below.
-"""
+"""Per-ancestry SHAP feature importance, IWPC-6256, stacking ensemble"""
 
 from __future__ import annotations
 
@@ -26,7 +15,9 @@ RAW_IWPC_6256 = Path(
     "/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/SURE-Program/Models-Development"
     "/data/eda_notebooks/cleaned/iwpc_full_6256_clean.csv"
 )
-OUT_PATH = Path(__file__).resolve().parent.parent / "results" / "phase6_iwpc6256_shap_by_ancestry.csv"
+OUT_PATH = (
+    Path(__file__).resolve().parent.parent / "results" / "phase6_iwpc6256_shap_by_ancestry.csv"
+)
 
 
 def main() -> None:
@@ -42,11 +33,12 @@ def main() -> None:
     pipeline = build_stacking_ensemble()
     pipeline.fit(X_train, y_train)
 
-    # Sanity check: unstratified overall importance should match the already-published
-    # phase6_iwpc6256_stacking_ensemble_shap.csv (same pipeline, same split, same seed).
     overall = shap_feature_importance(pipeline, X_test, sample_size=200)
     top_feature, top_value = overall.iloc[0]["feature"], overall.iloc[0]["mean_abs_shap"]
-    print(f"Sanity check, overall top feature: {top_feature} = {top_value:.3f} (expected: VKORC1 -1639 consensus = 3.257)", flush=True)
+    print(
+        f"Sanity check, overall top feature: {top_feature} = {top_value:.3f} (expected: VKORC1 -1639 consensus = 3.257)",
+        flush=True,
+    )
 
     group = test_df["Race (Reported)"]
     print("Ancestry group sizes in test set:", flush=True)

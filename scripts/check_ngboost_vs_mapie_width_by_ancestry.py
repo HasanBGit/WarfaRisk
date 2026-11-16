@@ -1,25 +1,4 @@
-"""Per-ancestry NGBoost vs. MAPIE interval width, recovered by positional
-alignment against the fixed test split.
-
-Why this file exists: the manuscript's Discussion states that NGBoost
-tracks per-ancestry coverage better than MAPIE for the under-covered labels.
-That is a coverage-level observation, not an explanation. This script checks
-the actual mechanism: whether NGBoost's predicted interval width (its
-log-scale output is a boosted function of patient features, unlike MAPIE's
-single global conformal margin) varies by ancestry group in a way that lines
-up with which groups MAPIE under- or over-covers.
-
-Inputs this repo does not bundle (per the Data Availability Statement, raw
-patient-level data is excluded from the public release): the cleaned
-IWPC-6256 CSV and the two phases' saved per-patient prediction files. Both
-are read from the private local working copy (Models-Development) via the
-paths below; swap them for this repo's own `results/` outputs if those
-predictions files are ever added here.
-
-Row alignment is verified against each prediction file's own y_true column
-before trusting the positional ancestry join, same safeguard already used
-for the equivalent MAPIE-only check.
-"""
+"""Per-ancestry NGBoost vs"""
 
 from __future__ import annotations
 
@@ -30,16 +9,30 @@ import pandas as pd
 from warfarisk.common import data as data_mod
 from warfarisk.common import splits
 
-_DEV_ROOT = Path("/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/SURE-Program/Models-Development")
+_DEV_ROOT = Path(
+    "/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/SURE-Program/Models-Development"
+)
 RAW_IWPC_6256 = _DEV_ROOT / "data/eda_notebooks/cleaned/iwpc_full_6256_clean.csv"
 MAPIE_PREDICTIONS = _DEV_ROOT / "model_dev/phase5_iwpc6256_mapie_predictions.csv"
 NGBOOST_PREDICTIONS = _DEV_ROOT / "model_dev/phase5_iwpc6256_ngboost_predictions.csv"
 
-OUT_PATH = Path(__file__).resolve().parent.parent / "results" / "check_ngboost_vs_mapie_width_by_ancestry_results.csv"
+OUT_PATH = (
+    Path(__file__).resolve().parent.parent
+    / "results"
+    / "check_ngboost_vs_mapie_width_by_ancestry_results.csv"
+)
 
 GROUPS = [
-    "African American", "African-American", "Black or African American", "Intermediate",
-    "Black", "Caucasian", "Chinese", "White", "Japanese", "Korean",
+    "African American",
+    "African-American",
+    "Black or African American",
+    "Intermediate",
+    "Black",
+    "Caucasian",
+    "Chinese",
+    "White",
+    "Japanese",
+    "Korean",
 ]
 
 
@@ -69,12 +62,14 @@ def main() -> None:
         m = mapie[mapie["group"] == g]
         n_ = ngboost[ngboost["group"] == g]
         assert len(m) == len(n_)
-        rows.append({
-            "ancestry_group": g,
-            "n": len(m),
-            "mapie_width_mg_per_week": round(m["width"].mean(), 2),
-            "ngboost_width_mg_per_week": round(n_["width"].mean(), 2),
-        })
+        rows.append(
+            {
+                "ancestry_group": g,
+                "n": len(m),
+                "mapie_width_mg_per_week": round(m["width"].mean(), 2),
+                "ngboost_width_mg_per_week": round(n_["width"].mean(), 2),
+            }
+        )
         print(f"{g:30s} {len(m):4d} {m['width'].mean():12.2f} {n_['width'].mean():14.2f}")
 
     out = pd.DataFrame(rows)

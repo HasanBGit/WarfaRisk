@@ -1,22 +1,23 @@
-"""Phase 2 — leakage audit.
-
-Implements TRAINING_PLAN.md Phase 2: runs common/leakage.py's checks over
-every cohort's feature matrix and every generated split, and prints a
-pass/fail report. This is meant to run once after Phase 0's splits exist and
-before any model in Phase 3+ is fit — a fast, cheap gate, not a model.
-"""
+"""Phase 2 — leakage audit"""
 
 from __future__ import annotations
 
 from warfarisk.common import data as data_mod
 from warfarisk.common import splits
-from warfarisk.common.leakage import LeakageError, assert_disjoint_ids, audit_iwpc1780, audit_iwpc6256
+from warfarisk.common.leakage import (
+    LeakageError,
+    assert_disjoint_ids,
+    audit_iwpc1780,
+    audit_iwpc6256,
+)
 
 
 def audit_all() -> list[tuple[str, bool, str]]:
-    """Returns a list of (check_name, passed, detail) tuples instead of
-    raising on the first failure, so a single run reports every problem
-    found rather than stopping at the first one."""
+    """
+    Returns a list of (check_name, passed, detail) tuples instead of raising on the
+    first failure, so a single run reports every problem found rather than stopping
+    at the first one
+    """
     results: list[tuple[str, bool, str]] = []
 
     def _check(name: str, fn) -> None:
@@ -40,6 +41,7 @@ def audit_all() -> list[tuple[str, bool, str]]:
         )
 
     for dataset_name in ("iwpc_6256", "iwpc_1780", "eicu", "mimic3", "mimic4"):
+
         def _check_split(dataset_name=dataset_name):
             split = splits.load_split(dataset_name)
             assert_disjoint_ids(split.train_ids, split.test_ids, context=dataset_name)

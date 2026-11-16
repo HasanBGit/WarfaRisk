@@ -1,11 +1,4 @@
-"""Phase 1 — mandatory baselines, reported alongside every later result.
-
-Implements TRAINING_PLAN.md Phase 1: naive median-dose predictor, clinical-only
-linear regression, and warfit-learn-wrapped IWPC/Gage pharmacogenetic
-equations. Every later phase's model is compared against these three, not
-reported in isolation — this is what separates a real improvement from an
-artifact of a favorable split.
-"""
+"""Phase 1 — mandatory baselines, reported alongside every later result"""
 
 from __future__ import annotations
 
@@ -20,9 +13,11 @@ from warfarisk.common.runlog import append_run
 
 
 def naive_median_dose(y_train: pd.Series, y_test: pd.Series) -> dict:
-    """Predict the training-set median dose for every test patient — the
-    field's own reference floor (~34.1% PW20 per the review); any model that
-    can't clear this isn't adding value."""
+    """
+    Predict the training-set median dose for every test patient — the field's own
+    reference floor (~34.1% PW20 per the review); any model that can't clear this
+    isn't adding value
+    """
     median_dose = float(y_train.median())
     y_pred = np.full(len(y_test), median_dose)
     report = regression_report(y_test, y_pred)
@@ -43,33 +38,10 @@ def clinical_only_linear_regression(
 
 
 def warfit_learn_iwpc_baseline(df: pd.DataFrame) -> dict:
-    """Was meant to wrap warfit-learn's published IWPC pharmacogenetic
-    equation as a callable baseline. **Checked against a live install
-    (warfit-learn==0.2.1) on 2026-07-25 and this isn't possible as originally
-    planned:**
-
-    - The package contains no hardcoded closed-form IWPC/Gage coefficients
-      anywhere in its source (`estimators/`, `evaluation/`, `metrics/`,
-      `preprocessing/` — all inspected directly). `preprocessing.prepare_iwpc()`
-      only cleans/one-hot-encodes IWPC's raw columns into a fixed variable
-      set; the "equation" is produced by fitting a plain `LinearRegression`
-      on that output — i.e. it trains new coefficients on whatever data you
-      feed it, it does not apply the paper's original published coefficients.
-    - `prepare_iwpc()` is hard shape-locked to warfit-learn's own bundled raw
-      PharmGKB pickle: `_verify_shape()` asserts `df.shape == (6256, 68)`
-      and expects a column called `"Imputed VKORC1"` that doesn't exist in
-      this project's independently-cleaned data. This project's own
-      `iwpc_full_6256_clean.csv` is `(6037, 68)` — different row count
-      (post-cleaning exclusions differ) and a different VKORC1 encoding
-      (`*_consensus` columns, not one `Imputed VKORC1` column) — so calling
-      `prepare_iwpc()` on it fails the assertion rather than silently
-      producing a wrong number.
-
-    Getting a real "published IWPC equation" baseline still requires the
-    actual coefficients from the IWPC 2009 NEJM paper (Table 2), typed in by
-    hand against the primary source — not fabricated from memory here, and
-    not available from this dependency after all. Left unimplemented on
-    purpose; do not call this function until that's done.
+    """
+    Was meant to wrap warfit-learn's published IWPC pharmacogenetic equation as a
+    callable baseline. **Checked against a live install (warfit-learn==0.2.1) on
+    2026-07-25 and this isn't possible as originally planned:**
     """
     raise NotImplementedError(
         "warfit-learn 0.2.1 does not expose a reusable published-coefficient IWPC/Gage "
@@ -81,10 +53,12 @@ def warfit_learn_iwpc_baseline(df: pd.DataFrame) -> dict:
 
 
 def _iwpc_age_decade(age_band: str) -> float:
-    """IWPC's own cohort represents age as a decade band ("60 - 69", "90+"),
-    matching the "age in decades" term the published equation expects
-    directly — no conversion needed beyond parsing the band's leading digit
-    into a decade index (e.g. "60 - 69" -> 6)."""
+    """
+    IWPC's own cohort represents age as a decade band ("60 - 69", "90+"), matching
+    the "age in decades" term the published equation expects directly — no
+    conversion needed beyond parsing the band's leading digit into a decade index
+    (e.g. "60 - 69" -> 6)
+    """
     if pd.isna(age_band):
         return np.nan
     if age_band.strip() == "90+":
@@ -93,41 +67,17 @@ def _iwpc_age_decade(age_band: str) -> float:
 
 
 def iwpc_published_equation_predict(df: pd.DataFrame) -> np.ndarray:
-    """Computes the actual published IWPC pharmacogenetic dosing equation
-    (International Warfarin Pharmacogenetics Consortium, "Estimation of the
-    Warfarin Dose with Clinical and Pharmacogenetic Data", N Engl J Med
-    2009;360:753-64, Table 2) directly on raw iwpc_full_6256_clean.csv
-    columns — a fixed, published formula with fixed published coefficients,
-    not something to fit. Returns predicted weekly dose in mg.
-
-    **Provenance caveat, stated plainly**: these coefficients are transcribed
-    from the widely-published, widely-cited form of this equation as it
-    commonly appears in the pharmacogenomics literature and clinical
-    references (e.g. warfarindosing.org's public calculator implements the
-    same published formula) — they were not re-derived by directly
-    re-reading a copy of the original NEJM PDF's Table 2 in this session.
-    Before this baseline's numbers are cited in the manuscript, cross-check
-    the coefficients below against the primary source table directly.
-
-    Known limitation, inherent to the equation itself, not this
-    implementation: it only resolves CYP2C9 *1/*2/*3 and the core VKORC1
-    -1639 SNP — patients with rarer alleles (*5, *6, *11, *13, *14, all
-    present in this cohort in small numbers) are treated via the equation's
-    own "genotype unknown" indicator, exactly as the original algorithm
-    specifies for genotypes outside its 6 modeled combinations, not
-    approximated or dropped.
-
-    ONLY valid on raw-unit data (iwpc_full_6256_clean.csv) — iwpc_1780_clean.csv's
-    Weight/Height/Age are pre-z-scored, which would silently produce garbage
-    if pushed through these raw-unit coefficients, so this function
-    deliberately isn't offered for that cohort.
+    """
+    Computes the actual published IWPC pharmacogenetic dosing equation
+    (International Warfarin Pharmacogenetics Consortium, "Estimation of the Warfarin
+    Dose with Clinical and Pharmacogenetic Data", N Engl J Med 2009;360:753-64,
+    Table 2) directly on raw iwpc_full_6256_clean.csv columns — a fixed, published
+    formula with fixed published coefficients, not something to fit
     """
     age_decades = df["Age"].apply(_iwpc_age_decade)
     height_cm = df["Height (cm)"]
     weight_kg = df["Weight (kg)"]
 
-    # IWPC's own published handling for missing height/weight: impute with
-    # the cohort mean rather than drop the patient.
     height_cm = height_cm.fillna(height_cm.mean())
     weight_kg = weight_kg.fillna(weight_kg.mean())
     age_decades = age_decades.fillna(age_decades.mean())
@@ -144,8 +94,6 @@ def iwpc_published_equation_predict(df: pd.DataFrame) -> np.ndarray:
     cyp2c9_22 = (cyp2c9 == "*2/*2").astype(float)
     cyp2c9_23 = (cyp2c9 == "*2/*3").astype(float)
     cyp2c9_33 = (cyp2c9 == "*3/*3").astype(float)
-    # "unknown" per the equation's own design: never tested, OR a genotype
-    # combination outside the 6 it models (e.g. *1/*5, *1/*11) — not *1/*1.
     cyp2c9_unknown = (~cyp2c9.isin(known_genotypes | {"*1/*1"})).astype(float)
 
     race = df["Race (OMB)"]
@@ -184,10 +132,11 @@ def iwpc_published_equation_predict(df: pd.DataFrame) -> np.ndarray:
 
 
 def iwpc_published_equation_baseline(df_test: pd.DataFrame, y_test: pd.Series) -> dict:
-    """Evaluates the fixed published equation on a held-out test set — no
-    fitting step, since it's a fixed formula, but evaluated on the same
-    Phase-0 test split as every other Phase 1 baseline for a fair, direct
-    comparison."""
+    """
+    Evaluates the fixed published equation on a held-out test set — no fitting step,
+    since it's a fixed formula, but evaluated on the same Phase-0 test split as
+    every other Phase 1 baseline for a fair, direct comparison
+    """
     y_pred = iwpc_published_equation_predict(df_test)
     report = regression_report(y_test, y_pred)
     report["model"] = "iwpc_published_equation"
@@ -195,10 +144,10 @@ def iwpc_published_equation_baseline(df_test: pd.DataFrame, y_test: pd.Series) -
 
 
 def run_phase1_from_files() -> pd.DataFrame:
-    """Loads iwpc_full_6256_clean.csv, applies the saved Phase-0 split, and
-    runs the two baselines that don't need warfit-learn. This is the actual
-    entry point used to produce real results — run_phase1() alone only
-    operates on already-loaded/split DataFrames."""
+    """
+    Loads iwpc_full_6256_clean.csv, applies the saved Phase-0 split, and runs the
+    two baselines that don't need warfit-learn
+    """
     from common import splits
 
     df = data_mod.load_iwpc_6256()
@@ -208,10 +157,12 @@ def run_phase1_from_files() -> pd.DataFrame:
 
 
 def run_phase1(iwpc6256_train: pd.DataFrame, iwpc6256_test: pd.DataFrame) -> pd.DataFrame:
-    """Runs all three Phase 1 baselines on the IWPC-6256 cohort: naive
-    median, clinical-only linear regression, and the real published IWPC
-    equation (warfit_learn_iwpc_baseline is a separate, deliberately-broken
-    stub documenting why that package couldn't supply this instead)."""
+    """
+    Runs all three Phase 1 baselines on the IWPC-6256 cohort: naive median,
+    clinical-only linear regression, and the real published IWPC equation
+    (warfit_learn_iwpc_baseline is a separate, deliberately-broken stub documenting
+    why that package couldn't supply this instead)
+    """
     y_train = iwpc6256_train[data_mod.IWPC6256_TARGET]
     y_test = iwpc6256_test[data_mod.IWPC6256_TARGET]
     X_train = data_mod.iwpc6256_feature_set(iwpc6256_train, "clinical")
@@ -223,7 +174,13 @@ def run_phase1(iwpc6256_train: pd.DataFrame, iwpc6256_test: pd.DataFrame) -> pd.
         iwpc_published_equation_baseline(iwpc6256_test, y_test),
     ]
     for row in rows:
-        append_run(phase="phase1", experiment=row["model"], dataset="iwpc_6256", metric="mae", value=row["mae"])
+        append_run(
+            phase="phase1",
+            experiment=row["model"],
+            dataset="iwpc_6256",
+            metric="mae",
+            value=row["mae"],
+        )
     return pd.DataFrame(rows)
 
 

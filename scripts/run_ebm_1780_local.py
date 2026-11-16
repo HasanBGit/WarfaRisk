@@ -4,8 +4,10 @@ import pandas as pd
 
 from warfarisk.common import data as data_mod
 from warfarisk.common import splits
-from warfarisk.phase3_genetics_ablation import build_stacking_ensemble
-from warfarisk.phase6_explainability import compare_shap_vs_ebm, ebm_feature_importance, shap_feature_importance
+from warfarisk.phase6_explainability import (
+    compare_shap_vs_ebm,
+    ebm_feature_importance,
+)
 
 split = splits.load_split("iwpc_1780")
 df = data_mod.load_iwpc_1780()

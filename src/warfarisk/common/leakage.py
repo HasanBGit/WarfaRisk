@@ -1,11 +1,6 @@
-"""Phase 2 — leakage-audit assertions, used by phase2_leakage_audit.py and
-callable directly from any phase file before it fits a model.
-
-Two distinct failure modes this guards against, per TRAINING_PLAN.md Phase 2:
-  1. Outcome leakage: an INR/Target-INR column reaching X for a *dose* target
-     (INR is the response in some framings, not a legitimate predictor of dose).
-  2. Split leakage: the same patient/stay appearing in both train and test
-     because a longitudinal dataset was split by row instead of by ID.
+"""
+Phase 2 — leakage-audit assertions, used by phase2_leakage_audit.py and callable
+directly from any phase file before it fits a model
 """
 
 from __future__ import annotations
@@ -16,8 +11,7 @@ from . import data as data_mod
 
 
 class LeakageError(AssertionError):
-    """Raised when a leakage check fails. Subclasses AssertionError so it's
-    still catchable by generic test-runner assertion handling."""
+    """Raised when a leakage check fails"""
 
 
 def assert_no_leakage_columns(X: pd.DataFrame, forbidden_cols: list[str], context: str) -> None:

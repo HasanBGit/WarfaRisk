@@ -1,21 +1,6 @@
-"""Exact per-ancestry binomial confidence intervals for MAPIE coverage,
-plus a multiplicity-adjusted test against the 90% nominal target.
-
-Reuses the positional-recovery approach from check_mapie_ancestry_width.py:
-phase5_iwpc6256_mapie_predictions.csv has no ancestry column, but its row
-order matches the fixed IWPC-6256 test split exactly (verified there by
-row-for-row y_true comparison), so the ancestry label can be reattached by
-position.
-
-For each of the 18 ancestry labels in the test split, this computes the
-exact (Clopper-Pearson) 95% CI on MAPIE coverage via scipy's binomtest, and
-a two-sided exact binomial test of H0: coverage = 0.90. Labels with n < 10
-are excluded from testing (point estimate and CI only) since that is the
-same cutoff already used elsewhere in this project for Mondrian pooling;
-testing a group with, e.g., n = 1 is not statistically meaningful. The
-n >= 10 group's p-values are then adjusted with Benjamini-Hochberg FDR
-control, implemented directly (statsmodels is not installed in this
-environment) since it is a five-line, well-defined algorithm.
+"""
+Exact per-ancestry binomial confidence intervals for MAPIE coverage, plus a
+multiplicity-adjusted test against the 90% nominal target
 """
 
 from __future__ import annotations
@@ -89,7 +74,9 @@ def main() -> None:
     result_df["p_value_bh"] = pd.NA
     result_df.loc[tested_mask, "p_value_bh"] = adj
     result_df["significant_bh_0.05"] = pd.NA
-    result_df.loc[tested_mask, "significant_bh_0.05"] = result_df.loc[tested_mask, "p_value_bh"] < 0.05
+    result_df.loc[tested_mask, "significant_bh_0.05"] = (
+        result_df.loc[tested_mask, "p_value_bh"] < 0.05
+    )
 
     pd.set_option("display.width", 120)
     print(result_df.to_string(index=False))
@@ -99,7 +86,9 @@ def main() -> None:
 
     n_tested = int(tested_mask.sum())
     n_sig = int(result_df.loc[tested_mask, "significant_bh_0.05"].sum())
-    print(f"\n{n_tested} labels tested (n >= {MIN_N_FOR_TEST}); {n_sig} significant after Benjamini-Hochberg at 0.05.")
+    print(
+        f"\n{n_tested} labels tested (n >= {MIN_N_FOR_TEST}); {n_sig} significant after Benjamini-Hochberg at 0.05."
+    )
 
 
 if __name__ == "__main__":

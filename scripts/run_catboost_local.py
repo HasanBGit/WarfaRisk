@@ -9,7 +9,13 @@ print("=== Phase 3: CatBoost ablation, iwpc_6256 ===", flush=True)
 split6256 = splits.load_split("iwpc_6256")
 df6256 = data_mod.load_iwpc_6256()
 train6256, test6256 = splits.apply_split(df6256, split6256)
-result3_6256 = run_catboost_ablation(train6256, test6256, data_mod.iwpc6256_feature_set, data_mod.IWPC6256_TARGET, dataset_name="iwpc_6256")
+result3_6256 = run_catboost_ablation(
+    train6256,
+    test6256,
+    data_mod.iwpc6256_feature_set,
+    data_mod.IWPC6256_TARGET,
+    dataset_name="iwpc_6256",
+)
 print(result3_6256.to_string(), flush=True)
 result3_6256.to_csv("phase3_catboost_iwpc6256_results.csv", index=False)
 
@@ -17,7 +23,13 @@ print("\n=== Phase 3: CatBoost ablation, iwpc_1780 ===", flush=True)
 split1780 = splits.load_split("iwpc_1780")
 df1780 = data_mod.load_iwpc_1780()
 train1780, test1780 = splits.apply_split(df1780, split1780)
-result3_1780 = run_catboost_ablation(train1780, test1780, data_mod.iwpc1780_feature_set, data_mod.IWPC1780_TARGET, dataset_name="iwpc_1780")
+result3_1780 = run_catboost_ablation(
+    train1780,
+    test1780,
+    data_mod.iwpc1780_feature_set,
+    data_mod.IWPC1780_TARGET,
+    dataset_name="iwpc_1780",
+)
 print(result3_1780.to_string(), flush=True)
 result3_1780.to_csv("phase3_catboost_iwpc1780_results.csv", index=False)
 
