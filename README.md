@@ -42,7 +42,7 @@ The pipeline starts with baseline models and ends with explanations. Every phase
 The main findings:
 
 - AutoGluon with combined clinical and genetic features gives the best accuracy on both cohorts.
-- MAPIE and NGBoost reach close to the nominal 90% coverage overall (89.8 to 93.3%). A deep ensemble of the same architecture covers only 21.6 to 24.9%.
+- MAPIE and NGBoost reach close to the nominal 90% coverage overall (89.0 to 93.3%). A deep ensemble of the same architecture covers only 21.6 to 24.9%.
 - Split by ancestry, every label that plausibly captures Black or African American patients falls below 90% coverage, even when the overall figure looks fine.
 - SHAP and the EBM agree on the main predictors: VKORC1 genotype, age and weight.
 
@@ -63,7 +63,7 @@ MAE is in mg/week. PW20 is the share of predictions within 20% of the true dose.
 | IWPC-6256 | 89.8% |
 | IWPC-1780 | 93.3% |
 
-The per-architecture, per-ancestry and per-subgroup calibration tables are in [`docs/RESULTS.md`](docs/RESULTS.md). They include a result that does not hold in every label: the penalty for Black or African American patients does not replicate uniformly.
+The per-architecture, per-ancestry and per-subgroup calibration tables are in [`docs/RESULTS.md`](docs/RESULTS.md). They also cover the leave-one-ancestry-out error results. These do not fully reproduce an earlier analysis: the Black label shows no error penalty under either model, while Han Chinese and Caucasian show penalties that depend on the model.
 
 ## Repository layout
 
