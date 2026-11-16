@@ -27,7 +27,7 @@ South Asian                     1
 Haitian                         1
 Persian                         1
 Name: count, dtype: int64
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Diabetes' 'Aspirin' 'Acetaminophen or Paracetamol (Tylenol)'
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Diabetes' 'Aspirin' 'Acetaminophen or Paracetamol (Tylenol)'
  'Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day'
  'Atorvastatin (Lipitor)' 'Fluvastatin (Lescol)' 'Lovastatin (Mevacor)'
  'Pravastatin (Pravachol)' 'Rosuvastatin (Crestor)'
@@ -37,9 +37,9 @@ Name: count, dtype: int64
  'Macrolide Antibiotics' 'Anti-fungal Azoles'
  'Herbal Medications, Vitamins, Supplements' 'Current Smoker']. At least one non-missing value is needed for imputation with strategy='median'.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Simvastatin (Zocor)' 'VKORC1 497 consensus' 'VKORC1     -4451 consensus']. At least one non-missing value is needed for imputation with strategy='most_frequent'.
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Simvastatin (Zocor)' 'VKORC1 497 consensus' 'VKORC1     -4451 consensus']. At least one non-missing value is needed for imputation with strategy='most_frequent'.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Diabetes' 'Aspirin' 'Acetaminophen or Paracetamol (Tylenol)'
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Diabetes' 'Aspirin' 'Acetaminophen or Paracetamol (Tylenol)'
  'Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day'
  'Atorvastatin (Lipitor)' 'Fluvastatin (Lescol)' 'Lovastatin (Mevacor)'
  'Pravastatin (Pravachol)' 'Rosuvastatin (Crestor)'
@@ -49,27 +49,27 @@ Name: count, dtype: int64
  'Macrolide Antibiotics' 'Anti-fungal Azoles'
  'Herbal Medications, Vitamins, Supplements' 'Current Smoker']. At least one non-missing value is needed for imputation with strategy='median'.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Simvastatin (Zocor)' 'VKORC1 497 consensus' 'VKORC1     -4451 consensus']. At least one non-missing value is needed for imputation with strategy='most_frequent'.
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Simvastatin (Zocor)' 'VKORC1 497 consensus' 'VKORC1     -4451 consensus']. At least one non-missing value is needed for imputation with strategy='most_frequent'.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day']. At least one non-missing value is needed for imputation with strategy='median'.
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day']. At least one non-missing value is needed for imputation with strategy='median'.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day']. At least one non-missing value is needed for imputation with strategy='median'.
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day']. At least one non-missing value is needed for imputation with strategy='median'.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Current Smoker']. At least one non-missing value is needed for imputation with strategy='median'.
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Current Smoker']. At least one non-missing value is needed for imputation with strategy='median'.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Current Smoker']. At least one non-missing value is needed for imputation with strategy='median'.
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Current Smoker']. At least one non-missing value is needed for imputation with strategy='median'.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Height (cm)' 'Diabetes' 'Congestive Heart Failure and/or Cardiomyopathy'
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Height (cm)' 'Diabetes' 'Congestive Heart Failure and/or Cardiomyopathy'
  'Valve Replacement' 'Aspirin' 'Acetaminophen or Paracetamol (Tylenol)'
  'Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day'
  'Atorvastatin (Lipitor)' 'Fluvastatin (Lescol)' 'Lovastatin (Mevacor)'
@@ -80,21 +80,21 @@ Name: count, dtype: int64
  'Macrolide Antibiotics' 'Anti-fungal Azoles'
  'Herbal Medications, Vitamins, Supplements' 'Current Smoker']. At least one non-missing value is needed for imputation with strategy='median'.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Simvastatin (Zocor)']. At least one non-missing value is needed for imputation with strategy='most_frequent'.
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Simvastatin (Zocor)']. At least one non-missing value is needed for imputation with strategy='most_frequent'.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Height (cm)' 'Diabetes' 'Congestive Heart Failure and/or Cardiomyopathy'
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Height (cm)' 'Diabetes' 'Congestive Heart Failure and/or Cardiomyopathy'
  'Valve Replacement' 'Aspirin' 'Acetaminophen or Paracetamol (Tylenol)'
  'Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day'
  'Atorvastatin (Lipitor)' 'Fluvastatin (Lescol)' 'Lovastatin (Mevacor)'
@@ -105,9 +105,9 @@ Name: count, dtype: int64
  'Macrolide Antibiotics' 'Anti-fungal Azoles'
  'Herbal Medications, Vitamins, Supplements' 'Current Smoker']. At least one non-missing value is needed for imputation with strategy='median'.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Simvastatin (Zocor)']. At least one non-missing value is needed for imputation with strategy='most_frequent'.
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Simvastatin (Zocor)']. At least one non-missing value is needed for imputation with strategy='most_frequent'.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Diabetes' 'Congestive Heart Failure and/or Cardiomyopathy'
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Diabetes' 'Congestive Heart Failure and/or Cardiomyopathy'
  'Valve Replacement' 'Acetaminophen or Paracetamol (Tylenol)'
  'Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day'
  'Atorvastatin (Lipitor)' 'Fluvastatin (Lescol)' 'Lovastatin (Mevacor)'
@@ -117,7 +117,7 @@ Name: count, dtype: int64
  'Macrolide Antibiotics' 'Anti-fungal Azoles'
  'Herbal Medications, Vitamins, Supplements']. At least one non-missing value is needed for imputation with strategy='median'.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Diabetes' 'Congestive Heart Failure and/or Cardiomyopathy'
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Diabetes' 'Congestive Heart Failure and/or Cardiomyopathy'
  'Valve Replacement' 'Acetaminophen or Paracetamol (Tylenol)'
  'Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day'
  'Atorvastatin (Lipitor)' 'Fluvastatin (Lescol)' 'Lovastatin (Mevacor)'
@@ -127,7 +127,7 @@ Name: count, dtype: int64
  'Macrolide Antibiotics' 'Anti-fungal Azoles'
  'Herbal Medications, Vitamins, Supplements']. At least one non-missing value is needed for imputation with strategy='median'.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Height (cm)' 'Diabetes' 'Congestive Heart Failure and/or Cardiomyopathy'
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Height (cm)' 'Diabetes' 'Congestive Heart Failure and/or Cardiomyopathy'
  'Valve Replacement' 'Aspirin' 'Acetaminophen or Paracetamol (Tylenol)'
  'Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day'
  'Atorvastatin (Lipitor)' 'Fluvastatin (Lescol)' 'Lovastatin (Mevacor)'
@@ -138,21 +138,21 @@ Name: count, dtype: int64
  'Macrolide Antibiotics' 'Anti-fungal Azoles'
  'Herbal Medications, Vitamins, Supplements' 'Current Smoker']. At least one non-missing value is needed for imputation with strategy='median'.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Simvastatin (Zocor)']. At least one non-missing value is needed for imputation with strategy='most_frequent'.
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Simvastatin (Zocor)']. At least one non-missing value is needed for imputation with strategy='most_frequent'.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Height (cm)' 'Diabetes' 'Congestive Heart Failure and/or Cardiomyopathy'
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Height (cm)' 'Diabetes' 'Congestive Heart Failure and/or Cardiomyopathy'
  'Valve Replacement' 'Aspirin' 'Acetaminophen or Paracetamol (Tylenol)'
  'Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day'
  'Atorvastatin (Lipitor)' 'Fluvastatin (Lescol)' 'Lovastatin (Mevacor)'
@@ -163,17 +163,17 @@ Name: count, dtype: int64
  'Macrolide Antibiotics' 'Anti-fungal Azoles'
  'Herbal Medications, Vitamins, Supplements' 'Current Smoker']. At least one non-missing value is needed for imputation with strategy='median'.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Simvastatin (Zocor)']. At least one non-missing value is needed for imputation with strategy='most_frequent'.
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Simvastatin (Zocor)']. At least one non-missing value is needed for imputation with strategy='most_frequent'.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Congestive Heart Failure and/or Cardiomyopathy']. At least one non-missing value is needed for imputation with strategy='median'.
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Congestive Heart Failure and/or Cardiomyopathy']. At least one non-missing value is needed for imputation with strategy='median'.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Congestive Heart Failure and/or Cardiomyopathy']. At least one non-missing value is needed for imputation with strategy='median'.
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Congestive Heart Failure and/or Cardiomyopathy']. At least one non-missing value is needed for imputation with strategy='median'.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day']. At least one non-missing value is needed for imputation with strategy='median'.
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day']. At least one non-missing value is needed for imputation with strategy='median'.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day']. At least one non-missing value is needed for imputation with strategy='median'.
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day']. At least one non-missing value is needed for imputation with strategy='median'.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Congestive Heart Failure and/or Cardiomyopathy' 'Valve Replacement'
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Congestive Heart Failure and/or Cardiomyopathy' 'Valve Replacement'
  'Acetaminophen or Paracetamol (Tylenol)'
  'Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day'
  'Atorvastatin (Lipitor)' 'Lovastatin (Mevacor)' 'Pravastatin (Pravachol)'
@@ -183,23 +183,23 @@ Name: count, dtype: int64
  'Macrolide Antibiotics' 'Anti-fungal Azoles'
  'Herbal Medications, Vitamins, Supplements']. At least one non-missing value is needed for imputation with strategy='median'.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['VKORC1 497 consensus' 'VKORC1 1173 consensus' 'VKORC1 1542 consensus'
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['VKORC1 497 consensus' 'VKORC1 1173 consensus' 'VKORC1 1542 consensus'
  'VKORC1 3730 consensus' 'VKORC1 2255 consensus'
  'VKORC1     -4451 consensus']. At least one non-missing value is needed for imputation with strategy='most_frequent'.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (2000) reached and the optimization hasn't converged yet.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Congestive Heart Failure and/or Cardiomyopathy' 'Valve Replacement'
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['Congestive Heart Failure and/or Cardiomyopathy' 'Valve Replacement'
  'Acetaminophen or Paracetamol (Tylenol)'
  'Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day'
  'Atorvastatin (Lipitor)' 'Lovastatin (Mevacor)' 'Pravastatin (Pravachol)'
@@ -209,7 +209,7 @@ Name: count, dtype: int64
  'Macrolide Antibiotics' 'Anti-fungal Azoles'
  'Herbal Medications, Vitamins, Supplements']. At least one non-missing value is needed for imputation with strategy='median'.
   warnings.warn(
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['VKORC1 497 consensus' 'VKORC1 1173 consensus' 'VKORC1 1542 consensus'
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['VKORC1 497 consensus' 'VKORC1 1173 consensus' 'VKORC1 1542 consensus'
  'VKORC1 3730 consensus' 'VKORC1 2255 consensus'
  'VKORC1     -4451 consensus']. At least one non-missing value is needed for imputation with strategy='most_frequent'.
   warnings.warn(

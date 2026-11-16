@@ -7,15 +7,12 @@ from pathlib import Path
 import pandas as pd
 
 from warfarisk.common import data as data_mod
-from warfarisk.common import splits
+from warfarisk.common import paths, splits
 from warfarisk.phase3_genetics_ablation import build_stacking_ensemble
 from warfarisk.phase4_ancestry_holdout import iwpc1780_ancestry_group
 from warfarisk.phase6_explainability import shap_by_ancestry_subgroup, shap_feature_importance
 
-RAW_IWPC_1780 = Path(
-    "/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/SURE-Program/Models-Development"
-    "/data/eda_notebooks/cleaned/iwpc_1780_clean.csv"
-)
+RAW_IWPC_1780 = paths.IWPC_1780
 OUT_PATH = (
     Path(__file__).resolve().parent.parent / "results" / "phase6_iwpc1780_shap_by_ancestry.csv"
 )

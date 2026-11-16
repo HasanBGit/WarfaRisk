@@ -7,14 +7,11 @@ from pathlib import Path
 import pandas as pd
 
 from warfarisk.common import data as data_mod
-from warfarisk.common import splits
+from warfarisk.common import paths, splits
 
-_DEV_ROOT = Path(
-    "/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/SURE-Program/Models-Development"
-)
-RAW_IWPC_6256 = _DEV_ROOT / "data/eda_notebooks/cleaned/iwpc_full_6256_clean.csv"
-MAPIE_PREDICTIONS = _DEV_ROOT / "model_dev/phase5_iwpc6256_mapie_predictions.csv"
-NGBOOST_PREDICTIONS = _DEV_ROOT / "model_dev/phase5_iwpc6256_ngboost_predictions.csv"
+RAW_IWPC_6256 = paths.IWPC_6256
+MAPIE_PREDICTIONS = Path("phase5_iwpc6256_mapie_predictions.csv")
+NGBOOST_PREDICTIONS = Path("phase5_iwpc6256_ngboost_predictions.csv")
 
 OUT_PATH = (
     Path(__file__).resolve().parent.parent

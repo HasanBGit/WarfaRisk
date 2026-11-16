@@ -1,5 +1,5 @@
 Fitting EBM on (4830, 35) train rows...
-/Users/hassan/Documents/Work/SURE-AIC-Research/Warfin/Systematic Review /data/.venv/lib/python3.11/site-packages/interpret/glassbox/_ebm/_ebm.py:871: UserWarning: Missing values detected. Our visualizations do not currently display missing values. To retain the glassbox nature of the model you need to either set the missing values to an extreme value like -1000 that will be visible on the graphs, or manually examine the missing value score in ebm.term_scores_[term_index][0]
+<project>/Systematic Review /data/.venv/lib/python3.11/site-packages/interpret/glassbox/_ebm/_ebm.py:871: UserWarning: Missing values detected. Our visualizations do not currently display missing values. To retain the glassbox nature of the model you need to either set the missing values to an extreme value like -1000 that will be visible on the graphs, or manually examine the missing value score in ebm.term_scores_[term_index][0]
   warn(
 
 === EBM native feature importance (all features) ===
