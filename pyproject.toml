@@ -18,9 +18,6 @@ dependencies = [
     "huggingface_hub",
 ]
 
-# Per-phase optional dependency groups. Install only what a given phase needs, e.g.:
-#   uv sync --extra phase3
-#   uv run --extra phase7 python -m warfarisk.phase7_longitudinal_rl
 [project.optional-dependencies]
 phase1 = [
     "warfit-learn",

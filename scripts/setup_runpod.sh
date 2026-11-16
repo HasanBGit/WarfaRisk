@@ -1,22 +1,4 @@
 #!/usr/bin/env bash
-# Bootstrap a RunPod GPU pod for one phase of model_dev/.
-#
-# Adapted from a prior project's setup_runpod.sh, with two deliberate changes:
-#   1. No hardcoded pod host/port/key/token — read from .env or environment
-#      variables instead (see .env.example). The prior version hardcoded pod
-#      details at the top of the script, which is fine for host/port (they're
-#      not secret) but the prior project also ended up with a live token
-#      committed elsewhere — this script never writes a token to disk on the
-#      remote pod, it only exports it for the current SSH session.
-#   2. Installs from model_dev/pyproject.toml's per-phase optional-dependency
-#      groups (uv sync --extra phaseN) instead of a flat pip install list, so
-#      a pod for Phase 9 doesn't also install Phase 7's d3rlpy/torch stack it
-#      doesn't need.
-#
-# Usage:
-#   cp .env.example .env   # fill in HF_TOKEN, RUNPOD_HOST, RUNPOD_PORT, RUNPOD_SSH_KEY
-#   ./setup_runpod.sh phase7          # or phase7d, phase9, phase3, etc.
-#   ./setup_runpod.sh phase9 --with-claude-code   # also installs Node + Claude Code CLI on the pod
 
 set -euo pipefail
 
@@ -25,7 +7,6 @@ cd "$SCRIPT_DIR"
 
 if [ -f .env ]; then
   set -a
-  # shellcheck disable=SC1091
   source .env
   set +a
 fi
@@ -77,7 +58,6 @@ command -v uv >/dev/null 2>&1 || curl -LsSf https://astral.sh/uv/install.sh | sh
 export PATH="\$HOME/.cargo/bin:\$HOME/.local/bin:\$PATH"
 uv sync --extra "$PHASE"
 
-# Token is exported for this remote session only — never written to a file on the pod.
 export HF_TOKEN="$HF_TOKEN"
 echo "HF_TOKEN exported for this session (not persisted to disk on the pod)."
 REMOTE_SETUP
