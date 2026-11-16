@@ -1,46 +1,86 @@
-# Beyond Mean Absolute Error: Ancestry-Stratified Calibration and Explainability for Warfarin Dosing Models
+# WarfaRisk
 
-A nine-phase, fully reproducible machine learning pipeline for warfarin maintenance-dose prediction on the public IWPC pharmacogenomic cohorts. Best model (AutoGluon `extreme_quality`, combined clinical+genetic features): **MAE 8.55 / R² 0.475 / PW20 0.466** on IWPC-6256, **MAE 7.96 / R² 0.480 / PW20 0.497** on IWPC-1780. An ancestry-stratified calibration analysis surfaces a per-subgroup coverage gap the aggregate number alone hides.
-
-#### By: Hassan Barmandah, Omar Abdullah Bawazir, Siraj Aldeen Marghalani, Moath Shaat, Abdullah N. Alkattan, and Mariam M. AlEissa (corresponding author), Alfaisal University, Riyadh
+A nine-phase machine learning pipeline for predicting the weekly maintenance dose of warfarin, built on the public IWPC pharmacogenomic cohorts. It reports accuracy, calibration and explainability on the same fixed splits, and breaks calibration down by ancestry group.
 
 [![Code](https://img.shields.io/badge/GitHub-Code-blue)](https://github.com/HasanBGit/WarfaRisk)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-4%20Models-F9D371?logo=huggingface&logoColor=black)](https://huggingface.co/collections/HassanB4/beyond-mae-ancestry-stratified-warfarin-dose-prediction-6a79b7f715e8533e72db4b4e)
 [![License](https://img.shields.io/badge/License-Apache%202.0-lightgrey)](LICENSE)
 
-> **This is a research artifact, not a validated clinical tool.** It has not been evaluated prospectively, carries no regulatory clearance, and should not be used to make an actual dosing decision.
+> This is a research artifact, not a validated clinical tool. It has not been evaluated prospectively, has no regulatory clearance, and must not be used to make a dosing decision.
 
----
+Authors: Hassan Barmandah, Omar Abdullah Bawazir, Siraj Aldeen Marghalani, Moath Shaat, Abdullah N. Alkattan and Mariam M. AlEissa (corresponding author), Alfaisal University, Riyadh.
 
-## What this is
+## Contents
 
-The pipeline moves from mandatory baselines, through a nested clinical/genetic/combined feature ablation across nine model architectures, to ancestry-stratified leave-one-group-out fairness evaluation, a three-way calibration comparison (MAPIE conformal prediction, NGBoost, deep ensemble), and SHAP-vs-EBM cross-validated explainability — all on fixed, patient-level train/test splits under one documented random seed (`20260725`).
+- [Overview](#overview)
+- [Headline results](#headline-results)
+- [Repository layout](#repository-layout)
+- [Quick start](#quick-start)
+- [Development](#development)
+- [Limitations](#limitations)
+- [Data and license](#data-and-license)
+- [Acknowledgements](#acknowledgements)
+- [Citation](#citation)
 
-* **Nested feature ablation** across 9 architectures × 3 feature sets (clinical / genetic / combined), both IWPC cohorts
-* **Ancestry-stratified fairness evaluation**, cross-checked between two independent model families
-* **Calibration gap finding**: MAPIE and NGBoost reach near-nominal overall coverage (89.8–93.3%) while a same-architecture deep ensemble collapses to 21.6–24.9%; per-ancestry coverage then shows every label plausibly capturing Black/African American patients under-covered even when the aggregate looks fine
-* **Cross-validated explainability**: SHAP and an independently-fit EBM agree on the same dominant features (VKORC1 genotype, age, weight)
-* **Deployed clinical interface** ([`prototype_app/`](prototype_app/)) serving this pipeline's real trained model, real SHAP attributions, and real MAPIE conformal intervals, with a SHAP-conditioned RAG explanation layer
+## Overview
 
-Full results, tables, and evidence trail: [`docs/RESULTS.md`](docs/RESULTS.md). Known limitations: [`docs/KNOWN_ISSUES.md`](docs/KNOWN_ISSUES.md).
+The pipeline starts with baseline models and ends with explanations. Every phase runs on fixed, patient-level train and test splits generated from one documented random seed (`20260725`).
 
----
+| Phase | Name | What it does |
+| :--- | :--- | :--- |
+| 0 | Scaffolding | Creates the seeded splits and the data dictionary |
+| 1 | Baselines | Median dose, clinical-only linear model, published IWPC equation |
+| 2 | Leakage audit | Checks that no outcome-related column reaches the inputs and that train and test patients do not overlap |
+| 3 | Nested ablation | Compares clinical, genetic and combined features across nine model architectures |
+| 4 | Ancestry hold-out | Leaves one ancestry group out, checked with two model families |
+| 5 | Calibration | Compares MAPIE conformal prediction, NGBoost and a deep ensemble |
+| 6 | Explainability | Compares SHAP with an independently fitted EBM |
+| 7 | Longitudinal track | Reinforcement-learning and LSTM dosing, time to therapeutic INR, imputation, clinical embeddings |
+| 8 | Fairness reporting | Splits every results table by subgroup |
+| 9 | Explanation layer | Retrieval-based explanations with citation checks |
 
-## 🩺 Clinical Interface
+The main findings:
 
-`prototype_app/server/app_server.py` loads the fitted CatBoost model directly and serves real predictions, real leave-one-out feature attributions, and a real 90th-percentile conformal interval — no hardcoded numbers. A retrieval-augmented generation (RAG) layer grounds explanations in PharmGKB/CPIC guideline text and this project's own SHAP/ancestry findings, conditioned on each patient's top-ranked features, with every citation checked against retrieved evidence before display. Generative backbone: **MedGemma-27b-text-it** via Hugging Face Inference Providers (falls back to a deterministic, citation-verified generator with no key configured). See [`prototype_app/.env.example`](prototype_app/.env.example).
+- AutoGluon with combined clinical and genetic features gives the best accuracy on both cohorts.
+- MAPIE and NGBoost reach close to the nominal 90% coverage overall (89.8 to 93.3%). A deep ensemble of the same architecture covers only 21.6 to 24.9%.
+- Split by ancestry, every label that plausibly captures Black or African American patients falls below 90% coverage, even when the overall figure looks fine.
+- SHAP and the EBM agree on the main predictors: VKORC1 genotype, age and weight.
 
-```bash
-cd prototype_app
-uv run --with flask,flask-cors,catboost,pandas python3 server/app_server.py   # serves on :8787
-python3 -m http.server 8765                                                   # serves the static frontend
-```
+Full tables and the evidence trail are in [`docs/RESULTS.md`](docs/RESULTS.md).
 
----
+## Headline results
 
-## 🚀 How to Use
+| Phase | Cohort | Model | MAE | R² | PW20 |
+| :--- | :--- | :--- | :---: | :---: | :---: |
+| 1 | IWPC-6256 | IWPC published equation (baseline) | 9.177 | 0.413 | 0.429 |
+| 3 | IWPC-6256 | AutoGluon `extreme_quality` | 8.552 | 0.475 | 0.466 |
+| 3 | IWPC-1780 | AutoGluon `extreme_quality` | 7.959 | 0.480 | 0.497 |
 
-### Option A: load a published model directly
+MAE is in mg/week. PW20 is the share of predictions within 20% of the true dose.
+
+| Cohort | MAPIE coverage (target 90%) |
+| :--- | :---: |
+| IWPC-6256 | 89.8% |
+| IWPC-1780 | 93.3% |
+
+The per-architecture, per-ancestry and per-subgroup calibration tables are in [`docs/RESULTS.md`](docs/RESULTS.md). They include a result that does not hold in every label: the penalty for Black or African American patients does not replicate uniformly.
+
+## Repository layout
+
+| Path | Contents |
+| :--- | :--- |
+| `src/warfarisk/` | The pipeline, one module per phase, with shared helpers in `common/` |
+| `scripts/` | Run scripts, statistical checks and plotting scripts |
+| `prototype_app/` | Web interface and the Flask server behind it |
+| `configs/` | Pipeline and model hyperparameter settings |
+| `data/` | Split ID files, exploration notebooks and [`DATA.md`](data/DATA.md). No patient data. |
+| `results/` | Result tables and logs |
+| `docs/` | Results, known issues, reproducibility map and training plan |
+| `tests/` | Tests for the prototype server |
+
+## Quick start
+
+### Load a published model
 
 ```python
 from autogluon.tabular import TabularPredictor
@@ -48,72 +88,72 @@ from huggingface_hub import snapshot_download
 
 local_dir = snapshot_download("HassanB4/warfarisk-autogluon-6256")
 predictor = TabularPredictor.load(local_dir)
-prediction = predictor.predict(your_dataframe)  # combined clinical+genetic features
+prediction = predictor.predict(your_dataframe)  # combined clinical and genetic features
 ```
 
-Model cards: [`warfarisk-baselines`](https://huggingface.co/HassanB4/warfarisk-baselines), [`warfarisk-autogluon-6256`](https://huggingface.co/HassanB4/warfarisk-autogluon-6256), [`warfarisk-autogluon-1780`](https://huggingface.co/HassanB4/warfarisk-autogluon-1780), [`warfarisk-catboost-6256`](https://huggingface.co/HassanB4/warfarisk-catboost-6256). These are the models released on the Hub; the other architectures in the nine-model comparison are reproduced from the code and the result CSVs in `results/` (see [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md)).
+Four models are on the Hub: [`warfarisk-baselines`](https://huggingface.co/HassanB4/warfarisk-baselines), [`warfarisk-autogluon-6256`](https://huggingface.co/HassanB4/warfarisk-autogluon-6256), [`warfarisk-autogluon-1780`](https://huggingface.co/HassanB4/warfarisk-autogluon-1780) and [`warfarisk-catboost-6256`](https://huggingface.co/HassanB4/warfarisk-catboost-6256). The other architectures in the nine-model comparison can be reproduced from the code and the result CSVs in `results/`. See [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md).
 
-### Option B: reproduce the pipeline
+### Reproduce the pipeline
 
 ```bash
-uv sync                                        # base deps only
+uv sync                                        # base dependencies only
 uv run python -m warfarisk.phase0_scaffolding  # regenerate splits, or use the shipped data/splits/*.json
 uv run python -m warfarisk.phase1_baselines
 uv sync --extra phase3
-uv run python scripts/run_phase4_local.py      # etc.; see scripts/ and docs/RESULTS.md for the rest
+uv run python scripts/run_phase4_local.py      # continue with the scripts in scripts/
 ```
 
-Every phase past Phase 0 needs `data/eda_notebooks/cleaned/*.csv`, **not shipped** in this repository; see [`data/DATA.md`](data/DATA.md) for how to obtain the source data and rebuild it locally. Training config: [`configs/pipeline.yaml`](configs/pipeline.yaml), [`configs/model_hparams.yaml`](configs/model_hparams.yaml).
+Every phase after Phase 0 needs `data/eda_notebooks/cleaned/*.csv`. These files are not in the repository. [`data/DATA.md`](data/DATA.md) explains how to get the source data and rebuild them. Training settings are in [`configs/pipeline.yaml`](configs/pipeline.yaml) and [`configs/model_hparams.yaml`](configs/model_hparams.yaml).
 
-### Development
+### Run the prototype interface
+
+The server in `prototype_app/server/app_server.py` loads the fitted CatBoost model and returns a dose prediction, leave-one-out feature attributions and a 90% conformal interval. No numbers are hardcoded.
+
+An explanation layer grounds each explanation in PharmGKB and CPIC guideline text and in this project's own SHAP and ancestry findings. Every citation is checked against the retrieved evidence before it is shown. The language model is MedGemma-27b-text-it through Hugging Face Inference Providers. With no key configured, the server falls back to a deterministic, citation-verified generator. Copy [`prototype_app/.env.example`](prototype_app/.env.example) to set a key.
 
 ```bash
-uvx ruff check . && uvx ruff format --check .   # lint and formatting
+cd prototype_app
+uv run --with flask,flask-cors,catboost,pandas python3 server/app_server.py   # API on port 8787
+python3 -m http.server 8765                                                   # static front end on port 8765
+```
+
+## Development
+
+```bash
+uvx ruff check . && uvx ruff format --check .                  # lint and formatting
 uv run --with pytest,flask,flask-cors,catboost,pandas pytest   # prototype server tests
 ```
 
-The prototype server is split into `settings.py` (configuration), `dosing_model.py` (features, inference, attribution), `explain_service.py` (LLM proxy) and `app_server.py` (Flask app factory and routes).
+The server is split into four modules:
 
----
+| Module | Role |
+| :--- | :--- |
+| `settings.py` | Configuration from the environment and `.env` |
+| `dosing_model.py` | Features, inference and attribution |
+| `explain_service.py` | Proxy to the language model |
+| `app_server.py` | Flask app factory and routes |
 
-## 📊 Headline Results
+## Limitations
 
-| Phase | Cohort | Model | MAE | R² | PW20 |
-| :--- | :--- | :--- | :---: | :---: | :---: |
-| Phase 1 | IWPC-6256 | IWPC published equation (baseline) | 9.177 | 0.413 | 0.429 |
-| **Phase 3** | **IWPC-6256** | **AutoGluon `extreme_quality`** | **8.552** | **0.475** | **0.466** |
-| **Phase 3** | **IWPC-1780** | **AutoGluon `extreme_quality`** | **7.959** | **0.480** | **0.497** |
+- The pipeline is for research only. It has no prospective clinical validation and no regulatory status.
+- IWPC-6256 splits Black and African American patients across three overlapping labels, which reduces the statistical power of each subgroup.
+- No raw data is included. To reproduce from raw data you need your own access to IWPC and, optionally, PhysioNet. See [`data/DATA.md`](data/DATA.md).
 
-| Cohort | MAPIE Coverage (target 90%) |
-| :--- | :---: |
-| IWPC-6256 | 89.8% |
-| IWPC-1780 | 93.3% |
+The full list is in [`docs/KNOWN_ISSUES.md`](docs/KNOWN_ISSUES.md).
 
-Every ancestry group whose label plausibly captures Black/African American patients sits below the 90% nominal target, a fairness gap invisible in the aggregate number alone. Full per-architecture, per-ancestry, and per-subgroup calibration tables (including the honest finding that the Black/African-American penalty doesn't replicate uniformly across labels): [`docs/RESULTS.md`](docs/RESULTS.md).
+## Data and license
 
----
+The code is released under the Apache License 2.0. See [`LICENSE`](LICENSE). This repository does not redistribute any data. [`data/DATA.md`](data/DATA.md) lists the access terms for each source dataset.
 
-## ⚠️ Limitations
+## Acknowledgements
 
-* **Research-only**: no prospective clinical validation, no regulatory status
-* **Fragmented ancestry labels**: IWPC-6256 splits Black/African-American patients across three overlapping labels, fragmenting subgroup statistical power
-* **No raw data shipped**: third parties must independently obtain IWPC access (and, optionally, PhysioNet) to reproduce from raw data; see [`data/DATA.md`](data/DATA.md)
+PharmGKB and the International Warfarin Pharmacogenetics Consortium provided the IWPC dataset. PhysioNet provided the MIMIC-III, MIMIC-IV and eICU-CRD demo databases. The CPIC and PharmCAT projects provided the guideline data used by the explanation layer.
 
-Full list: [`docs/KNOWN_ISSUES.md`](docs/KNOWN_ISSUES.md).
+Links: [PharmGKB](https://www.pharmgkb.org/), [PhysioNet](https://physionet.org/), [Hugging Face model collection](https://huggingface.co/collections/HassanB4/beyond-mae-ancestry-stratified-warfarin-dose-prediction-6a79b7f715e8533e72db4b4e).
 
----
+## Citation
 
-## 🙏 Acknowledgements
-
-PharmGKB / the International Warfarin Pharmacogenetics Consortium for the IWPC dataset, PhysioNet for the MIMIC-III/IV and eICU-CRD demo databases, and the CPIC/PharmCAT projects for the guideline data referenced in the explainability layer.
-
-* [PharmGKB](https://www.pharmgkb.org/) · [PhysioNet](https://physionet.org/) · [Hugging Face Model Collection](https://huggingface.co/collections/HassanB4/beyond-mae-ancestry-stratified-warfarin-dose-prediction-6a79b7f715e8533e72db4b4e)
-
----
-
-## 📜 Citation
-
-This work is published in the *Journal of Personalized Medicine*.
+The pipeline and its results are published in the *Journal of Personalized Medicine*.
 
 > Barmandah, H.; Bawazir, O.A.; Marghalani, S.A.; Shaat, M.; Alkattan, A.N.; AlEissa, M.M. Beyond Mean Absolute Error: Ancestry-Stratified Calibration and Explainability for Warfarin Dosing Models. *J. Pers. Med.* **2026**, *16* (10), 531. https://doi.org/10.3390/jpm16100531
 
@@ -132,7 +172,7 @@ This work is published in the *Journal of Personalized Medicine*.
 }
 ```
 
-The prototype system (pipeline, web interface and explanation layer) is described in a companion paper, accepted in MDPI *AI* on 9 October 2026:
+The prototype system (pipeline, web interface and explanation layer) is described in a companion paper accepted by MDPI *AI* on 9 October 2026.
 
 ```bibtex
 @article{barmandah2026warfarisk,
@@ -146,9 +186,3 @@ The prototype system (pipeline, web interface and explanation layer) is describe
 ```
 
 A machine-readable version is in [`CITATION.cff`](CITATION.cff).
-
----
-
-## 📄 License
-
-Apache 2.0. No data is redistributed by this repository; see [`data/DATA.md`](data/DATA.md) for each source dataset's own access terms.
