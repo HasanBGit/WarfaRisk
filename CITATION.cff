@@ -45,5 +45,8 @@ references:
       - {family-names: AlEissa, given-names: Mariam M.}
     journal: AI
     publisher: {name: MDPI}
+    volume: 7
+    issue: 10
+    start: 431
     year: 2026
-    notes: "Manuscript ai-4528916, accepted 9 October 2026"
+    doi: 10.3390/ai7100431

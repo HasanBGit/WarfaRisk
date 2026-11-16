@@ -172,7 +172,9 @@ The pipeline and its results are published in the *Journal of Personalized Medic
 }
 ```
 
-The prototype system (pipeline, web interface and explanation layer) is described in a companion paper accepted by MDPI *AI* on 9 October 2026.
+The prototype system (pipeline, web interface and explanation layer) is described in a companion paper in MDPI *AI*.
+
+> Barmandah, H.; Marghalani, S.A.; Bawazir, O.A.; Shaat, M.; Alkattan, A.N.; AlEissa, M.M. WarfaRisk: A Reproducible, Fairness-Aware Machine Learning Pipeline for Warfarin Dose Prediction (Prototype). *AI* **2026**, *7* (10), 431. https://doi.org/10.3390/ai7100431
 
 ```bibtex
 @article{barmandah2026warfarisk,
@@ -180,8 +182,11 @@ The prototype system (pipeline, web interface and explanation layer) is describe
   title   = {{WarfaRisk}: A Reproducible, Fairness-Aware Machine Learning Pipeline for Warfarin Dose Prediction (Prototype)},
   journal = {AI},
   publisher = {MDPI},
+  volume  = {7},
+  number  = {10},
+  pages   = {431},
   year    = {2026},
-  note    = {Manuscript ai-4528916, accepted 9 October 2026},
+  doi     = {10.3390/ai7100431},
 }
 ```
 
