@@ -65,6 +65,15 @@ uv run python scripts/run_phase4_local.py      # etc.; see scripts/ and docs/RES
 
 Every phase past Phase 0 needs `data/eda_notebooks/cleaned/*.csv`, **not shipped** in this repository; see [`data/DATA.md`](data/DATA.md) for how to obtain the source data and rebuild it locally. Training config: [`configs/pipeline.yaml`](configs/pipeline.yaml), [`configs/model_hparams.yaml`](configs/model_hparams.yaml).
 
+### Development
+
+```bash
+uvx ruff check . && uvx ruff format --check .   # lint and formatting
+uv run --with pytest,flask,flask-cors,catboost,pandas pytest   # prototype server tests
+```
+
+The prototype server is split into `settings.py` (configuration), `dosing_model.py` (features, inference, attribution), `explain_service.py` (LLM proxy) and `app_server.py` (Flask app factory and routes).
+
 ---
 
 ## 📊 Headline Results

@@ -1,10 +1,3 @@
-/**
- * WarfaRisk Lightweight Vector DB (In-Memory TF-IDF + Cosine Similarity)
- * Grounded in PharmGKB Excel Allele Tables, CPIC 2017 Guidelines, IWPC
- * Literature, and real extracted findings from the warfarin ML/dosing
- * systematic and narrative reviews this project cites (Fulop et al. 2025,
- * Asiimwe et al. 2021, Fahmi et al. 2022 -- see js/real_guidelines_corpus.js)
- */
 
 class LightweightVectorDB {
     constructor() {
@@ -14,9 +7,6 @@ class LightweightVectorDB {
         this.vectors = [];
     }
 
-    /**
-     * Initialize corpus with real PharmGKB + CPIC 2017 guideline data
-     */
     initCorpus() {
         const corePassages = [
             {
@@ -77,9 +67,6 @@ class LightweightVectorDB {
         this.buildIndex();
     }
 
-    /**
-     * Tokenize text into normalized lowercase words
-     */
     tokenize(text) {
         return text.toLowerCase()
             .replace(/[^a-z0-9\*\-]/g, ' ')
@@ -87,9 +74,6 @@ class LightweightVectorDB {
             .filter(t => t.length > 1);
     }
 
-    /**
-     * Build TF-IDF index over corpus
-     */
     buildIndex() {
         this.vocabulary.clear();
         this.passages.forEach(p => {
@@ -111,9 +95,6 @@ class LightweightVectorDB {
         this.vectors = this.passages.map(p => this.computeVector(p.termFreq, p.tokens.length));
     }
 
-    /**
-     * Compute TF-IDF vector for document or query
-     */
     computeVector(termFreq, totalTokens) {
         const vec = {};
         for (const term in termFreq) {
@@ -125,9 +106,6 @@ class LightweightVectorDB {
         return vec;
     }
 
-    /**
-     * Calculate Cosine Similarity between two term vectors
-     */
     cosineSimilarity(vecA, vecB) {
         let dot = 0;
         let normA = 0;
@@ -149,9 +127,6 @@ class LightweightVectorDB {
         return dot / (Math.sqrt(normA) * Math.sqrt(normB));
     }
 
-    /**
-     * Query vector DB for top-K matching passages
-     */
     search(queryText, topK = 4) {
         const tokens = this.tokenize(queryText);
         const termFreq = {};
@@ -169,6 +144,5 @@ class LightweightVectorDB {
     }
 }
 
-// Global instance export
 window.vectorDB = new LightweightVectorDB();
 window.vectorDB.initCorpus();

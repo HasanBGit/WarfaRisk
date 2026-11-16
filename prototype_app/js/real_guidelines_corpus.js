@@ -1,17 +1,4 @@
-/**
- * WarfaRisk RAG Corpus — grounded in real dataset-derived content: PharmGKB
- * allele definition tables, gnomAD population allele frequencies, CPIC/IWPC
- * guideline formulas, and this project's own aggregate SHAP/calibration
- * findings computed directly on the IWPC cohorts. Per the project's own
- * data-handling rule (see PRSgene/data/DATA.md), no per-patient free-text
- * or row-level value from the IWPC dataset is embedded here — IWPC data is
- * not redistributable, and every passage below is either a public reference
- * table (PharmGKB/gnomAD), a published guideline formula, or an aggregate
- * statistic already computed and documented in this project's own results
- * (never an individual patient's record).
- */
 window.REAL_GUIDELINES_CORPUS = [
-  // ---- PharmGKB allele tables (public reference/lookup tables, not patient rows) ----
   {
     "id": "pharmgkb-cyp2c9-alleles",
     "source": "PharmGKB Official CYP2C9 Allele Definition Table",
@@ -53,7 +40,6 @@ window.REAL_GUIDELINES_CORPUS = [
     "gene": "Clinical+Genetics"
   },
 
-  // ---- gnomAD population allele frequencies (public reference data, 1000 Genomes) ----
   {
     "id": "gnomad-vkorc1-population-freq",
     "source": "gnomAD population frequencies (1000 Genomes dataset, this project's own data pipeline)",
@@ -87,8 +73,6 @@ window.REAL_GUIDELINES_CORPUS = [
     "gene": "CYP4F2"
   },
 
-  // ---- This project's own aggregate findings, computed directly on the IWPC cohorts.
-  // Aggregate/summary statistics only -- never a per-patient row, per DATA.md. ----
   {
     "id": "warfarisk-shap-feature-ranking",
     "source": "WarfaRisk Phase 6 SHAP Explainability (this project, computed on IWPC-6256)",
@@ -115,6 +99,3 @@ window.REAL_GUIDELINES_CORPUS = [
   },
 ];
 
-// Note: a MAPIE calibration passage (id "mapie-conformal-calibration") is
-// already defined as a core passage in vector_db.js's initCorpus() -- not
-// duplicated here to avoid a colliding id between the two arrays.

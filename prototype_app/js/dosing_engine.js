@@ -1,23 +1,8 @@
-/**
- * WarfaRisk Dosing Engine
- * Implements:
- * 1. IWPC Pharmacogenetic Equation (Baseline)
- * 2. Real CatBoost model inference (Phase 3 combined feature set, iwpc_6256)
- *    via the local inference server (server/app_server.py) — falls back to
- *    a labeled local heuristic only if that server is unreachable.
- * 3. 90th-percentile-residual interval, computed from the real model's own
- *    held-out test set (see server/artifacts/*.json)
- * 4. Subgroup Ancestry Calibration & Portability Warning Engine (grounded in
- *    Phase 5 MAPIE coverage results, see RESULTS.md)
- * 5. Real per-feature marginal impact (leave-one-out against the actual
- *    trained model), or a labeled local approximation on fallback
- */
 
 const INFERENCE_API_URL = "http://127.0.0.1:8787/predict";
 
 class WarfaRiskEngine {
     constructor() {
-        // Ancestry subgroup calibration coverage database (From Trained MAPIE Results: phase5_iwpc6256_mapie_coverage.csv)
         this.ancestryCalibrationMap = {
             "Caucasian": {
                 coverage: 86.3,
@@ -53,9 +38,6 @@ class WarfaRiskEngine {
         };
     }
 
-    /**
-     * Validate patient inputs against physiological convex hull
-     */
     validateInputs(patient) {
         const errors = [];
         const warnings = [];
@@ -78,9 +60,6 @@ class WarfaRiskEngine {
         return { isValid: errors.length === 0, errors, warnings, hasGenetics };
     }
 
-    /**
-     * Compute Published IWPC Baseline Equation (2009)
-     */
     computeIWPC(patient) {
         const ageDecades = (patient.age || 60) / 10.0;
         const height = patient.height || 170;
@@ -88,22 +67,18 @@ class WarfaRiskEngine {
 
         let sqrtDose = 5.6413 - (0.0087 * patient.age) + (0.0128 * height) - (0.0028 * weight);
 
-        // VKORC1 rs9923231 (-1639 G>A)
         if (patient.vkorc1 === "AG") sqrtDose -= 0.8674;
         else if (patient.vkorc1 === "AA") sqrtDose -= 1.6974;
 
-        // CYP2C9
         if (patient.cyp2c9 === "*1/*2") sqrtDose -= 0.5211;
         else if (patient.cyp2c9 === "*1/*3") sqrtDose -= 0.9357;
         else if (patient.cyp2c9 === "*2/*2") sqrtDose -= 1.0616;
         else if (patient.cyp2c9 === "*2/*3") sqrtDose -= 1.9206;
         else if (patient.cyp2c9 === "*3/*3") sqrtDose -= 2.3312;
 
-        // Comedications
         if (patient.amiodarone) sqrtDose -= 0.5503;
         if (patient.enzymeInducer) sqrtDose += 0.0129;
 
-        // Race (IWPC formulation)
         if (patient.ancestry === "Han Chinese" || patient.ancestry === "Japanese") sqrtDose += 0.216;
         else if (patient.ancestry.includes("Black")) sqrtDose += 0.406;
 
@@ -111,13 +86,6 @@ class WarfaRiskEngine {
         return Math.round(weeklyDose * 10) / 10;
     }
 
-    /**
-     * Compute Primary Prediction via the real trained CatBoost model,
-     * served locally by server/app_server.py. Throws if the backend is
-     * unreachable so the caller can fall back explicitly and label the
-     * result as a fallback rather than silently passing off a heuristic as
-     * model output.
-     */
     async predictDose(patient) {
         const validation = this.validateInputs(patient);
         const iwpcDose = this.computeIWPC(patient);
@@ -154,36 +122,23 @@ class WarfaRiskEngine {
         }
     }
 
-    /**
-     * Local hardcoded heuristic — NOT the trained model. Used only when
-     * server/app_server.py (the real CatBoost inference backend) can't be
-     * reached, so the UI never silently shows a fake number labeled as if
-     * it came from the trained model.
-     */
     predictDoseFallbackHeuristic(patient, validation, iwpcDose, ancestryInfo) {
         const hasGenetics = validation.hasGenetics;
 
-        let baseDose = 35.0; // Mean population weekly dose
+        let baseDose = 35.0;
 
-        // Age factor (-0.25 mg/week per year over 50)
         baseDose -= (patient.age - 50) * 0.26;
 
-        // Weight factor (+0.22 mg/week per kg over 70)
         baseDose += (patient.weight - 70) * 0.22;
 
-        // Height factor (+0.10 mg/week per cm over 170)
         baseDose += (patient.height - 170) * 0.10;
 
-        // Amiodarone (-32% reduction)
         if (patient.amiodarone) baseDose *= 0.68;
 
-        // Statins (-5% subtle interaction)
         if (patient.statin) baseDose *= 0.95;
 
-        // Enzyme Inducers (+45% increase)
         if (patient.enzymeInducer) baseDose *= 1.45;
 
-        // Genetics (Dominant drivers per SHAP analysis)
         if (hasGenetics) {
             if (patient.vkorc1 === "AG") baseDose -= 7.8;
             else if (patient.vkorc1 === "AA") baseDose -= 14.5;
@@ -198,13 +153,10 @@ class WarfaRiskEngine {
         const predictedWeekly = Math.max(7.0, Math.min(95.0, Math.round(baseDose * 10) / 10));
         const dailyDose = Math.round((predictedWeekly / 7.0) * 100) / 100;
 
-        // Heuristic-only interval (NOT the real model's conformal residual
-        // interval, which requires the backend)
         const halfWidth = hasGenetics ? 12.4 : 16.2;
         const intervalLower = Math.max(5.0, Math.round((predictedWeekly - halfWidth) * 10) / 10);
         const intervalUpper = Math.round((predictedWeekly + halfWidth) * 10) / 10;
 
-        // Compute illustrative feature attributions (NOT real SHAP/leave-one-out from a trained model)
         const shapAttributions = this.computeSHAP(patient, predictedWeekly, hasGenetics);
 
         return {
@@ -220,9 +172,6 @@ class WarfaRiskEngine {
         };
     }
 
-    /**
-     * Compute individual patient SHAP attributions (+/- mg/week impact)
-     */
     computeSHAP(patient, predictedDose, hasGenetics) {
         const attributions = [];
         const populationMeanDose = 35.0;
@@ -293,5 +242,4 @@ class WarfaRiskEngine {
     }
 }
 
-// Global instance export
 window.dosingEngine = new WarfaRiskEngine();

@@ -1,14 +1,9 @@
-/**
- * WarfaRisk Enterprise Application Controller
- * Handles SPA navigation, form state, trained model presets, RAG execution & settings
- */
 
 class WarfaRiskApp {
     constructor() {
         this.currentScreen = 1;
         this.activePrediction = null;
         
-        // Verified presets matching real trained dataset cohorts
         this.presets = {
             han_chinese: {
                 age: 68, weight: 72, height: 168, ancestry: "Han Chinese",
@@ -185,23 +180,6 @@ class WarfaRiskApp {
         this.generateRAGExplanation();
     }
 
-    /**
-     * SHAP-conditioned retrieval query construction.
-     *
-     * Rather than retrieving passages from a fixed "ancestry + genotype"
-     * template, the query is built from this specific patient's own
-     * top-ranked SHAP feature-attribution names — whatever the trained
-     * model actually says is driving *this* prediction, not a generic
-     * lookup. Retrieval therefore adapts per patient: a patient whose
-     * dose is driven mostly by clinical factors (age/weight/amiodarone)
-     * pulls different evidence than one whose dose is driven by VKORC1/
-     * CYP2C9 genotype. When the patient's ancestry subgroup has measured
-     * sub-nominal MAPIE coverage, the calibration status text is appended
-     * to the query too, so the retrieval step surfaces the population
-     * allele-frequency evidence that mechanistically explains the gap
-     * (Section on gnomAD passages in js/real_guidelines_corpus.js),
-     * rather than only a bare warning number with nothing behind it.
-     */
     buildShapConditionedQuery(prediction) {
         const topFeatures = (prediction.shapAttributions || [])
             .slice(0, 3)

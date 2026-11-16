@@ -80,3 +80,10 @@ src = ["src"]
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B", "SIM", "RET"]
 ignore = ["B905", "E501"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["warfarisk", "settings", "dosing_model", "explain_service"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src", "prototype_app/server"]
+testpaths = ["tests"]

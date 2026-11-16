@@ -10,7 +10,6 @@
 <body>
 <div class="app-shell">
 
-    <!-- Icon Sidebar -->
     <aside class="sidebar">
         <div class="sidebar-brand" title="WarfaRisk">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -49,7 +48,6 @@
 
     <div class="app-main">
 
-        <!-- Top Bar -->
         <header class="topbar">
             <div class="topbar-titles">
                 <h1>WarfaRisk <span class="eyebrow">Enterprise CDS v2.4</span></h1>
@@ -61,7 +59,6 @@
             </div>
         </header>
 
-        <!-- Patient Context Ribbon -->
         <div class="patient-ribbon">
             <div>
                 <strong>Active Patient:</strong>
@@ -72,13 +69,10 @@
             </div>
         </div>
 
-        <!-- Main Workspace Container -->
         <main class="main-wrapper">
 
-            <!-- SCREEN 1: PATIENT INTAKE & CLINICAL PARAMETERS -->
             <section class="screen-pane active" id="screen-1">
 
-                <!-- Quick Clinical Case Presets -->
                 <div class="card-panel">
                     <div class="card-header">
                         <h2>Clinical Case Presets</h2>
@@ -120,7 +114,6 @@
                     </div>
                 </div>
 
-                <!-- Clinical & Pharmacogenomic Intake Form -->
                 <div class="card-panel">
                     <div class="card-header">
                         <h2>Patient Clinical & Genotype Data Entry</h2>
@@ -130,7 +123,6 @@
                     <form id="patient-form" onsubmit="event.preventDefault(); app.runPredictionAndNavigate();">
                         <div class="form-grid-3">
 
-                            <!-- Demographics & Physical -->
                             <div class="input-field-group">
                                 <label for="input-age">Age (Years) <span class="sub">18 - 100 yrs</span></label>
                                 <input type="number" id="input-age" class="form-input" value="68" min="18" max="100" required onchange="app.updatePatientSummary()">
@@ -158,7 +150,6 @@
                                 </select>
                             </div>
 
-                            <!-- Genotype Matrix -->
                             <div class="input-field-group">
                                 <label for="input-vkorc1">VKORC1 -1639G>A Genotype <span class="sub">rs9923231</span></label>
                                 <select id="input-vkorc1" class="form-select" onchange="app.updatePatientSummary()">
@@ -184,7 +175,6 @@
 
                         </div>
 
-                        <!-- Comedications & Drug Interactions -->
                         <div class="med-section">
                             <label class="med-section-label">Concomitant Medication Flags (DDI Impact)</label>
                             <div class="med-grid">
@@ -212,11 +202,9 @@
                 </div>
             </section>
 
-            <!-- SCREEN 2: DOSE RECOMMENDATION & CONFORMAL UNCERTAINTY -->
             <section class="screen-pane" id="screen-2">
                 <div class="dose-hero-layout">
 
-                    <!-- Main Dose Recommendation Widget -->
                     <div class="dose-stat-card">
                         <span class="dose-stat-eyebrow">Recommended Stable Maintenance Weekly Dose</span>
                         <div class="dose-number-huge" id="res-weekly-dose">31.8</div>
@@ -227,7 +215,6 @@
                         </div>
                     </div>
 
-                    <!-- MAPIE 90% Conformal Prediction Interval -->
                     <div class="gauge-card">
                         <div class="card-header">
                             <h2>MAPIE 90% Conformal Interval</h2>
@@ -255,7 +242,6 @@
 
                 </div>
 
-                <!-- Ancestry Calibration & Portability Audit -->
                 <div class="card-panel" style="margin-top: 1.5rem;">
                     <div class="card-header">
                         <h2>Ancestry Calibration &amp; Portability Audit</h2>
@@ -285,12 +271,10 @@
                 </div>
             </section>
 
-            <!-- SCREEN 3: SHAP EXPLAINABILITY & RAG RATIONALE -->
             <section class="screen-pane" id="screen-3">
 
                 <div class="explain-grid">
 
-                    <!-- SHAP Feature Attribution Panel -->
                     <div class="card-panel">
                         <div class="card-header">
                             <h2>Patient SHAP Feature Attributions</h2>
@@ -301,10 +285,9 @@
                         </p>
 
                         <div class="shap-list-layout" id="shap-bar-list">
-                            <!-- Rendered dynamically -->
+
                         </div>
 
-                        <!-- Guideline Evidence Drawer -->
                         <details class="evidence-box">
                             <summary>Guideline Evidence Links (CPIC 2017 &amp; PharmGKB)</summary>
                             <p>
@@ -315,7 +298,6 @@
                         </details>
                     </div>
 
-                    <!-- Grounded RAG Explanation Card -->
                     <div class="rag-saas-card">
                         <div class="card-header">
                             <h2>Phase 9 RAG Explanation Layer</h2>
@@ -331,7 +313,6 @@
                             Generating grounded explanation via RAG vector search over real PharmGKB Excel allele tables and CPIC 2017 guidelines...
                         </div>
 
-                        <!-- Citation Verification Audit -->
                         <div class="rag-audit-row" id="rag-audit-status">
                             <span>Citation Audit: <strong id="rag-citation-count">3/3 Verified</strong></span>
                             <span>Strict Verification: Active</span>
@@ -350,7 +331,6 @@
     </div>
 </div>
 
-    <!-- API Settings Modal -->
     <div class="modal-overlay" id="modal-settings">
         <div class="modal-box">
             <div class="modal-top">
@@ -390,7 +370,6 @@
         </div>
     </div>
 
-    <!-- Scripts -->
     <script src="js/real_guidelines_corpus.js"></script>
     <script src="js/vector_db.js"></script>
     <script src="js/dosing_engine.js"></script>

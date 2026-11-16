@@ -1,18 +1,6 @@
-/**
- * WarfaRisk External LLM API Service & RAG Explanation Layer
- * Managed-key path (no client-side key): MedGemma-27b-text-it via Hugging
- * Face Inference Providers, server-proxied (see server/app_server.py),
- * falling back to OpenRouter if only that key is configured. A user-supplied
- * key in Settings can instead call OpenRouter, Gemini, or OpenAI directly.
- * With no key configured at all, falls back to a deterministic, citation-
- * verified generator (see generateDeterministicFallback below).
- */
 
 class APIService {
     constructor() {
-        // No client-side default key: with no key configured in Settings, the app
-        // routes explanation requests through the local backend's /explain proxy,
-        // which holds the OpenRouter key server-side (see server/app_server.py).
         this.BACKEND_EXPLAIN_URL = "http://127.0.0.1:8787/explain";
 
         const storedKey = localStorage.getItem("warfarisk_api_key");
@@ -34,9 +22,6 @@ class APIService {
         localStorage.setItem("warfarisk_custom_endpoint", this.customEndpoint);
     }
 
-    /**
-     * Build Prompt adhering to STRICT_CITATION_PROMPT_TEMPLATE from paper Phase 9
-     */
     buildStrictPrompt(predictionResult, passages) {
         const shapLines = predictionResult.shapAttributions
             .map(s => `- ${s.feature}: ${s.impact > 0 ? '+' : ''}${s.impact} mg/week`)
@@ -68,9 +53,6 @@ Ancestry coverage note (include verbatim as the final sentence if non-empty): ${
 Explanation:`;
     }
 
-    /**
-     * Perform RAG Explanation Generation
-     */
     async generateExplanation(predictionResult, queryText) {
         const passages = window.vectorDB.search(queryText || `warfarin dosing ${predictionResult.ancestryInfo.status}`, 4);
         const prompt = this.buildStrictPrompt(predictionResult, passages);
@@ -82,8 +64,6 @@ Explanation:`;
             let displayModel;
 
             if (this.apiKey) {
-                // User supplied their own key in Settings — call the provider directly.
-                // Auto-route OpenRouter keys to OpenRouter API even if provider is set to gemini
                 if (isOpenRouterKey || this.apiProvider === "openrouter") {
                     responseText = await this.callOpenRouter(prompt);
                 } else if (this.apiProvider === "gemini") {
@@ -93,9 +73,6 @@ Explanation:`;
                 }
                 displayModel = isOpenRouterKey ? "google/gemini-2.5-flash (OpenRouter)" : `${this.apiProvider} (${this.modelName})`;
             } else {
-                // No key configured — route through the local backend's /explain
-                // proxy, which holds the managed key(s) server-side and prefers
-                // MedGemma via Hugging Face over OpenRouter (see callBackendProxy).
                 const proxyResult = await this.callBackendProxy(prompt);
                 responseText = proxyResult.text;
                 const providerLabel = proxyResult.provider === "huggingface" ? "Hugging Face" : "OpenRouter";
@@ -114,15 +91,6 @@ Explanation:`;
         }
     }
 
-    /**
-     * Call the local backend's /explain proxy (server/app_server.py), which
-     * holds the API key(s) server-side. The backend prefers MedGemma-27b-
-     * text-it via Hugging Face Inference Providers (HF_TOKEN configured) --
-     * the domain-specialized model this RAG layer is designed around --
-     * falling back to OpenRouter (OPENROUTER_API_KEY) if only that is set.
-     * The response's own `model`/`provider` fields (not this.modelName)
-     * reflect which one actually ran the request.
-     */
     async callBackendProxy(prompt) {
         const response = await fetch(this.BACKEND_EXPLAIN_URL, {
             method: "POST",
@@ -137,9 +105,6 @@ Explanation:`;
         return data;
     }
 
-    /**
-     * Call OpenRouter API (google/gemini-2.5-flash default)
-     */
     async callOpenRouter(prompt) {
         const endpoint = this.customEndpoint || "https://openrouter.ai/api/v1/chat/completions";
         const model = (this.modelName && this.modelName.includes("/")) ? this.modelName : "google/gemini-2.5-flash";
@@ -172,9 +137,6 @@ Explanation:`;
         return data.choices[0].message.content.trim();
     }
 
-    /**
-     * Call Google Gemini API directly
-     */
     async callGemini(prompt) {
         const model = "gemini-1.5-flash";
         const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${this.apiKey}`;
@@ -197,9 +159,6 @@ Explanation:`;
         return data.candidates[0].content.parts[0].text.trim();
     }
 
-    /**
-     * Call OpenAI API endpoint
-     */
     async callOpenAI(prompt) {
         const endpoint = this.customEndpoint || "https://api.openai.com/v1/chat/completions";
         const response = await fetch(endpoint, {
@@ -224,9 +183,6 @@ Explanation:`;
         return data.choices[0].message.content.trim();
     }
 
-    /**
-     * Grounded Deterministic Fallback Generator
-     */
     generateDeterministicFallback(prediction, passages) {
         let lines = [];
         lines.push(`The recommended stable weekly warfarin dose is estimated at ${prediction.predictedWeeklyDose} mg/week (${prediction.dailyDose} mg/day) with a 90% MAPIE conformal prediction interval of (${prediction.interval[0]} - ${prediction.interval[1]}) mg/week [MAPIE Split Conformal Uncertainty Quantification].`);
@@ -253,9 +209,6 @@ Explanation:`;
         return lines.join(" ");
     }
 
-    /**
-     * Check citation faithfulness of bracketed sources in output
-     */
     verifyCitations(text, passages, shapAttributions) {
         const matches = text.match(/\[([^\]]+)\]/g) || [];
         const citations = matches.map(m => m.replace(/[\[\]]/g, ''));
@@ -265,10 +218,6 @@ Explanation:`;
             ...passages.map(p => p.title),
             ...shapAttributions.map(s => s.feature),
             ...shapAttributions.map(s => `SHAP: ${s.feature}`),
-            // Core corpus facts the deterministic (no-API-key) fallback always
-            // cites directly, regardless of whether this query's top-K vector
-            // search happened to retrieve them — same treatment as the MAPIE
-            // citation below, so these never falsely show as "unverified".
             "MAPIE Split Conformal Uncertainty Quantification",
             "VKORC1 -1639G>A Dosing Recommendation",
             "CYP2C9 Star Alleles & Metabolizer Status"
@@ -292,19 +241,7 @@ Explanation:`;
         };
     }
 
-    /**
-     * Check accuracy, not just existence, of a SHAP citation: does the
-     * mg/week value stated in the same sentence match that feature's actual
-     * signed impact? Catches a citation pointing at a real feature but
-     * attached to a fabricated magnitude or direction (verifyCitations only
-     * confirms the citation's source exists, not that the sentence
-     * represents it correctly). A cheap, deterministic pre-check, not a
-     * substitute for human review.
-     */
     verifyAccuracy(text, shapAttributions, tolerance = 0.3) {
-        // A period only ends a sentence when it isn't sandwiched between two
-        // digits, so a decimal mg/week value like "1.5" isn't mistaken for
-        // a sentence boundary.
         const sentenceBoundaries = [];
         const boundaryRe = /(?<!\d)\.(?!\d)/g;
         let boundaryMatch;
@@ -331,13 +268,6 @@ Explanation:`;
             const end = after.length ? after[0] : text.length;
             const sentence = text.slice(start, end);
 
-            // Excludes a digit run embedded in the feature's own label (e.g.
-            // the "1639" in "VKORC1 -1639G>A"). Must exclude an adjacent
-            // digit too, not just a letter: a lookahead of "not a letter"
-            // alone lets the regex backtrack to a shorter digit run whose
-            // next character is itself a digit (e.g. matching "163" out of
-            // "1639" because "9" isn't a letter), leaking part of the label
-            // through as a fabricated "stated" number.
             const numberRe = /(?<![A-Za-z0-9])-?\d+\.?\d*(?![A-Za-z0-9])/g;
             const stated = [...sentence.matchAll(numberRe)].map(m => parseFloat(m[0]));
             if (!stated.length) continue;

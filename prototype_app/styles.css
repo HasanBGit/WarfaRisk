@@ -1,6 +1,4 @@
-/* WarfaRisk Enterprise Clinical Decision Support (CDS) SaaS Design System
-   Light clinical-workspace theme: dark icon sidebar, white surfaces, indigo accent.
-*/
+
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
@@ -8,33 +6,28 @@
     --font-primary: 'Inter', system-ui, -apple-system, sans-serif;
     --font-heading: 'Inter', system-ui, -apple-system, sans-serif;
 
-    /* Page & surfaces */
     --bg-page: #EEF2FB;
     --surface: #FFFFFF;
     --surface-alt: #F6F8FC;
     --border-subtle: #E5E9F2;
     --border-strong: #D7DCEA;
 
-    /* Sidebar */
     --sidebar-bg: #14151F;
     --sidebar-hover: rgba(255, 255, 255, 0.06);
     --sidebar-text: #868CA3;
     --sidebar-text-active: #FFFFFF;
 
-    /* Brand accent */
     --accent: #4640DE;
     --accent-hover: #3A35C4;
     --accent-soft: #EEEDFC;
     --accent-soft-border: #D9D6F8;
     --accent-glow: rgba(70, 64, 222, 0.18);
 
-    /* Text hierarchy */
     --text-heading: #14161F;
     --text-body: #454A5C;
     --text-muted: #767C90;
     --text-subtle: #9CA1B3;
 
-    /* Clinical status badges */
     --green-bg: #E7F8EE;
     --green-border: #BEEBD0;
     --green-text: #1B8A4B;
@@ -75,13 +68,11 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* ============ App Shell ============ */
 .app-shell {
     display: flex;
     min-height: 100vh;
 }
 
-/* ============ Icon Sidebar ============ */
 .sidebar {
     width: 84px;
     flex-shrink: 0;
@@ -201,7 +192,6 @@ body {
     cursor: default;
 }
 
-/* ============ Main Column ============ */
 .app-main {
     flex: 1;
     min-width: 0;
@@ -288,7 +278,6 @@ body {
     font-size: 0.95rem;
 }
 
-/* Patient Context Sub-Header Banner */
 .patient-ribbon {
     background: var(--surface);
     border-bottom: 1px solid var(--border-subtle);
@@ -321,7 +310,6 @@ body {
     border: 1px solid var(--accent-soft-border);
 }
 
-/* Main Container & Layout */
 .main-wrapper {
     flex: 1;
     max-width: 1320px;
@@ -344,7 +332,6 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* SaaS Card Components */
 .card-panel {
     background: var(--surface);
     border: 1px solid var(--border-subtle);
@@ -390,7 +377,6 @@ body {
 .ui-badge.amber { background: var(--amber-bg); color: var(--amber-text); border: 1px solid var(--amber-border); }
 .ui-badge.red { background: var(--red-bg); color: var(--red-text); border: 1px solid var(--red-border); }
 
-/* Case Preset selector */
 .preset-list {
     display: flex;
     flex-direction: column;
@@ -467,7 +453,6 @@ body {
     color: var(--text-muted);
 }
 
-/* Form Layout & Inputs */
 .form-grid-3 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -578,7 +563,6 @@ body {
     margin-top: 1.5rem;
 }
 
-/* Screen 2: Dosing Hero Panel */
 .dose-hero-layout {
     display: grid;
     grid-template-columns: 1.1fr 1fr;
@@ -634,7 +618,6 @@ body {
     color: var(--text-subtle);
 }
 
-/* Conformal Gauge — clinical reference-range bar */
 .gauge-card {
     background: var(--surface);
     border: 1px solid var(--border-subtle);
@@ -694,7 +677,6 @@ body {
     font-weight: 500;
 }
 
-/* Status Cards */
 .clinical-alert-box {
     padding: 1.1rem 1.35rem;
     border-radius: var(--radius-md);
@@ -725,7 +707,6 @@ body {
 .status-dot-indicator.amber { background: var(--amber-text); }
 .status-dot-indicator.red { background: var(--red-text); }
 
-/* Screen 3: SHAP & RAG Layout */
 .explain-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -806,7 +787,6 @@ body {
 
 .evidence-box a { color: var(--accent); font-weight: 600; }
 
-/* RAG SaaS Container */
 .rag-saas-card {
     background: linear-gradient(165deg, var(--accent-soft) 0%, var(--surface) 55%);
     border: 1px solid var(--accent-soft-border);
@@ -857,7 +837,6 @@ body {
     color: var(--green-text);
 }
 
-/* Modal */
 .modal-overlay {
     display: none;
     position: fixed;
@@ -910,7 +889,6 @@ body {
     gap: 0.75rem;
 }
 
-/* Responsive */
 @media (max-width: 960px) {
     .app-shell { flex-direction: column; }
     .sidebar {
