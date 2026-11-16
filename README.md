@@ -91,6 +91,8 @@ predictor = TabularPredictor.load(local_dir)
 prediction = predictor.predict(your_dataframe)  # combined clinical and genetic features
 ```
 
+Built with PriorLabs-TabPFN: the two AutoGluon models include TabPFN components under the [Prior Labs License](https://huggingface.co/Prior-Labs/TabPFN-v2-reg/blob/main/LICENSE.txt). See [`NOTICE`](NOTICE).
+
 Four models are on the Hub: [`warfarisk-baselines`](https://huggingface.co/HassanB4/warfarisk-baselines), [`warfarisk-autogluon-6256`](https://huggingface.co/HassanB4/warfarisk-autogluon-6256), [`warfarisk-autogluon-1780`](https://huggingface.co/HassanB4/warfarisk-autogluon-1780) and [`warfarisk-catboost-6256`](https://huggingface.co/HassanB4/warfarisk-catboost-6256). The other architectures in the nine-model comparison can be reproduced from the code and the result CSVs in `results/`. See [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md).
 
 ### Reproduce the pipeline

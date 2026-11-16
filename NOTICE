@@ -1,0 +1,13 @@
+WarfaRisk
+Copyright 2026 WarfaRisk contributors
+
+This repository is released under the Apache License 2.0 (see LICENSE).
+
+Third-party material is not part of this repository and keeps its own license:
+- the IWPC dataset (distributed through PharmGKB);
+- the MIMIC-III, MIMIC-IV and eICU-CRD demo databases (PhysioNet);
+- the libraries listed in pyproject.toml.
+
+The AutoGluon models published on Hugging Face (HassanB4/warfarisk-autogluon-6256
+and HassanB4/warfarisk-autogluon-1780) include TabPFN components under the
+Prior Labs License v1.1. Built with PriorLabs-TabPFN.
