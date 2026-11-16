@@ -103,11 +103,13 @@ Explanation:`;
             }
 
             const verification = this.verifyCitations(responseText, passages, predictionResult.shapAttributions);
+            verification.accuracy = this.verifyAccuracy(responseText, predictionResult.shapAttributions);
             return { text: responseText, passages, provider: displayModel, verification };
         } catch (err) {
             console.warn("External LLM API call failed, falling back to Grounded Clinical Engine:", err);
             const fallbackText = this.generateDeterministicFallback(predictionResult, passages);
             const verification = this.verifyCitations(fallbackText, passages, predictionResult.shapAttributions);
+            verification.accuracy = this.verifyAccuracy(fallbackText, predictionResult.shapAttributions);
             return { text: fallbackText, passages, provider: "Grounded Clinical Engine (Fallback)", verification, apiError: err.message };
         }
     }
@@ -287,6 +289,72 @@ Explanation:`;
             unverifiedCount: unverified.length,
             unverified: unverified,
             isFullyGrounded: unverified.length === 0
+        };
+    }
+
+    /**
+     * Check accuracy, not just existence, of a SHAP citation: does the
+     * mg/week value stated in the same sentence match that feature's actual
+     * signed impact? Catches a citation pointing at a real feature but
+     * attached to a fabricated magnitude or direction (verifyCitations only
+     * confirms the citation's source exists, not that the sentence
+     * represents it correctly). A cheap, deterministic pre-check, not a
+     * substitute for human review.
+     */
+    verifyAccuracy(text, shapAttributions, tolerance = 0.3) {
+        // A period only ends a sentence when it isn't sandwiched between two
+        // digits, so a decimal mg/week value like "1.5" isn't mistaken for
+        // a sentence boundary.
+        const sentenceBoundaries = [];
+        const boundaryRe = /(?<!\d)\.(?!\d)/g;
+        let boundaryMatch;
+        while ((boundaryMatch = boundaryRe.exec(text)) !== null) {
+            sentenceBoundaries.push(boundaryMatch.index);
+        }
+
+        const mismatches = [];
+        let checked = 0;
+        const citationRe = /\[([^\]]+)\]/g;
+        let citationMatch;
+        while ((citationMatch = citationRe.exec(text)) !== null) {
+            const citation = citationMatch[1];
+            const feature = shapAttributions.find(s =>
+                citation.toLowerCase().includes(`shap: ${s.feature}`.toLowerCase()) ||
+                s.feature.toLowerCase().includes(citation.toLowerCase()) ||
+                citation.toLowerCase().includes(s.feature.toLowerCase())
+            );
+            if (!feature) continue;
+
+            const before = sentenceBoundaries.filter(b => b < citationMatch.index);
+            const after = sentenceBoundaries.filter(b => b >= citationMatch.index + citationMatch[0].length);
+            const start = before.length ? before[before.length - 1] + 1 : 0;
+            const end = after.length ? after[0] : text.length;
+            const sentence = text.slice(start, end);
+
+            // Excludes a digit run embedded in the feature's own label (e.g.
+            // the "1639" in "VKORC1 -1639G>A"). Must exclude an adjacent
+            // digit too, not just a letter: a lookahead of "not a letter"
+            // alone lets the regex backtrack to a shorter digit run whose
+            // next character is itself a digit (e.g. matching "163" out of
+            // "1639" because "9" isn't a letter), leaking part of the label
+            // through as a fabricated "stated" number.
+            const numberRe = /(?<![A-Za-z0-9])-?\d+\.?\d*(?![A-Za-z0-9])/g;
+            const stated = [...sentence.matchAll(numberRe)].map(m => parseFloat(m[0]));
+            if (!stated.length) continue;
+
+            checked += 1;
+            const actual = feature.impact;
+            const isAccurate = stated.some(n => Math.abs(n - actual) <= tolerance);
+            if (!isAccurate) {
+                mismatches.push({ feature: feature.feature, stated, actual });
+            }
+        }
+
+        return {
+            citationsChecked: checked,
+            inaccurateCount: mismatches.length,
+            inaccurate: mismatches,
+            isFullyAccurate: mismatches.length === 0
         };
     }
 }

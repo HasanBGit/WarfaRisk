@@ -231,8 +231,11 @@ class WarfaRiskApp {
 
         const auditEl = document.getElementById("rag-citation-count");
         const audit = ragRes.verification;
-        auditEl.textContent = `${audit.verifiedCount}/${audit.totalCitations} Verified (${audit.isFullyGrounded ? 'Fully Grounded' : 'Unverified Citations Present'})`;
-        auditEl.style.color = audit.isFullyGrounded ? "#1B8A4B" : "#93690F";
+        const accuracy = audit.accuracy;
+        const accurateCount = accuracy.citationsChecked - accuracy.inaccurateCount;
+        const fullyOk = audit.isFullyGrounded && accuracy.isFullyAccurate;
+        auditEl.textContent = `${audit.verifiedCount}/${audit.totalCitations} Verified, ${accurateCount}/${accuracy.citationsChecked} Accurate (${fullyOk ? 'Fully Grounded & Accurate' : 'Issue Present'})`;
+        auditEl.style.color = fullyOk ? "#1B8A4B" : "#93690F";
     }
 
     regenerateRAG() {
